@@ -1,0 +1,6 @@
+framework module HPGradientLoading {
+  umbrella header "HPGradientLoading-umbrella.h"
+
+  export *
+  module * { export * }
+}

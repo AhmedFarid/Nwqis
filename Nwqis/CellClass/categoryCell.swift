@@ -10,15 +10,9 @@ import UIKit
 
 class categoryCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var catBtnClass: (()->())?
+
+    @IBAction func catBtn(_ sender: Any) {
+        catBtnClass?()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

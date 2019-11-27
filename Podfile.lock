@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (4.9.1)
+  - HPGradientLoading (1.3.3):
+    - SnapKit (~> 5.0.0)
+    - VisualEffectView (~> 4.0.0)
+  - IQKeyboardManagerSwift (6.5.4)
+  - Kingfisher (5.10.1):
+    - Kingfisher/Core (= 5.10.1)
+  - Kingfisher/Core (5.10.1)
+  - SnapKit (5.0.1)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (5.0.0)
+  - UPCarouselFlowLayout (1.1.2)
+  - VisualEffectView (4.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - HPGradientLoading
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - SVProgressHUD
+  - SwiftyJSON
+  - UPCarouselFlowLayout
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - HPGradientLoading
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - SnapKit
+    - SVProgressHUD
+    - SwiftyJSON
+    - UPCarouselFlowLayout
+    - VisualEffectView
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  HPGradientLoading: b9e46a196b8caf68bd520de3ae02fcddbf5c3781
+  IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
+  Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
+  VisualEffectView: 8c05bdc77490d84aabfa9fd17b1ffd6476da0e2c
+
+PODFILE CHECKSUM: 786c8772b63bf0dc264b13a49a77f347d4361585
+
+COCOAPODS: 1.8.4

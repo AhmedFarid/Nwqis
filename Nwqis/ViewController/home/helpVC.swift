@@ -9,22 +9,32 @@
 import UIKit
 
 class helpVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        navigationController?.navigationBar.barTintColor = UIColor.green
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2588235294, green: 0.4039215686, blue: 0.6980392157, alpha: 1)
+        setUpNavColore(false)
+        
     }
-    */
-
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.navigationBar.barTintColor = UIColor.white
+        setUpNavColore(true)
+        
+    }
+    
+    
+    func setUpNavColore(_ isTranslucent: Bool){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = isTranslucent
+    }
 }

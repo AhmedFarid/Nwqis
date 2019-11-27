@@ -1,0 +1,6 @@
+framework module Pods_Nwqis {
+  umbrella header "Pods-Nwqis-umbrella.h"
+
+  export *
+  module * { export * }
+}
