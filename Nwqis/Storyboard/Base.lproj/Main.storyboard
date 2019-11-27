@@ -19,13 +19,13 @@
                                 <rect key="frame" x="-8" y="0.0" width="430" height="358.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhatsApp Image 2019-10-30 at 10.10.13 AM" translatesAutoresizingMaskIntoConstraints="NO" id="Jpv-HF-kVv">
-                                <rect key="frame" x="20" y="88" width="374" height="98"/>
+                                <rect key="frame" x="113.49999999999999" y="88" width="187.00000000000003" height="49.000000000000014"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jpv-HF-kVv" secondAttribute="height" multiplier="187:49" id="Sai-Ih-KFf"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your needs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52S-0w-Hj1">
-                                <rect key="frame" x="129" y="202" width="156" height="29"/>
+                                <rect key="frame" x="129" y="153" width="156" height="29"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
                                 <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -454,13 +454,13 @@
                                 <rect key="frame" x="-8" y="0.0" width="430" height="358.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhatsApp Image 2019-10-30 at 10.10.13 AM" translatesAutoresizingMaskIntoConstraints="NO" id="tCn-7r-4eH">
-                                <rect key="frame" x="20" y="88" width="374" height="98"/>
+                                <rect key="frame" x="113.49999999999999" y="88" width="187.00000000000003" height="49.000000000000014"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tCn-7r-4eH" secondAttribute="height" multiplier="187:49" id="CWp-4m-Puh"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your needs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUr-kG-iMd">
-                                <rect key="frame" x="129" y="202" width="156" height="29"/>
+                                <rect key="frame" x="129" y="153" width="156" height="29"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="21"/>
                                 <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -582,7 +582,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eE-3l-kOS">
-                                <rect key="frame" x="130" y="304.5" width="154.5" height="22"/>
+                                <rect key="frame" x="16" y="304.5" width="382" height="22"/>
                                 <state key="normal" title="Current location   " image="Path 94">
                                     <color key="titleColor" red="0.97247451539999996" green="0.97259086370000003" blue="0.97243505720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -595,16 +595,17 @@
                         <constraints>
                             <constraint firstItem="XGK-cn-BaE" firstAttribute="top" secondItem="8Cd-5f-akr" secondAttribute="bottom" constant="-42.5" id="0j2-X0-GMM"/>
                             <constraint firstItem="XGK-cn-BaE" firstAttribute="trailing" secondItem="9Oy-dz-hql" secondAttribute="trailing" id="IAF-Sm-fkg"/>
+                            <constraint firstItem="4eE-3l-kOS" firstAttribute="leading" secondItem="9Oy-dz-hql" secondAttribute="leading" constant="16" id="WyR-er-tkI"/>
                             <constraint firstItem="8Cd-5f-akr" firstAttribute="height" secondItem="Wgr-QH-IRl" secondAttribute="height" multiplier="0.4" id="Ysi-xg-w5I"/>
                             <constraint firstItem="8Cd-5f-akr" firstAttribute="leading" secondItem="9Oy-dz-hql" secondAttribute="leading" constant="-8" id="f2U-lO-LZg"/>
                             <constraint firstItem="4eE-3l-kOS" firstAttribute="bottom" secondItem="8Cd-5f-akr" secondAttribute="bottom" constant="-32" id="iKV-5F-14s"/>
                             <constraint firstAttribute="bottom" secondItem="XGK-cn-BaE" secondAttribute="bottom" id="iL9-7c-NoG"/>
                             <constraint firstItem="4eE-3l-kOS" firstAttribute="top" secondItem="lvd-ET-fP3" secondAttribute="bottom" constant="32" id="mcw-QC-hi1"/>
                             <constraint firstItem="8Cd-5f-akr" firstAttribute="trailing" secondItem="9Oy-dz-hql" secondAttribute="trailing" constant="8" id="mfs-se-7v6"/>
-                            <constraint firstItem="4eE-3l-kOS" firstAttribute="centerX" secondItem="Wgr-QH-IRl" secondAttribute="centerX" id="oVS-8s-nia"/>
                             <constraint firstItem="8Cd-5f-akr" firstAttribute="top" secondItem="Wgr-QH-IRl" secondAttribute="top" id="pUh-CK-JG9"/>
                             <constraint firstItem="9Oy-dz-hql" firstAttribute="trailing" secondItem="lvd-ET-fP3" secondAttribute="trailing" constant="16" id="pXC-oJ-0Y4"/>
                             <constraint firstItem="XGK-cn-BaE" firstAttribute="leading" secondItem="9Oy-dz-hql" secondAttribute="leading" id="pdq-BL-HAn"/>
+                            <constraint firstItem="9Oy-dz-hql" firstAttribute="trailing" secondItem="4eE-3l-kOS" secondAttribute="trailing" constant="16" id="tCX-R4-JsY"/>
                             <constraint firstItem="lvd-ET-fP3" firstAttribute="leading" secondItem="9Oy-dz-hql" secondAttribute="leading" constant="16" id="wSV-ow-31g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Oy-dz-hql"/>
@@ -613,7 +614,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Group 219" id="p0u-LR-6gn"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jiN-8c-dSt">
-                            <rect key="frame" x="94" y="0.0" width="229" height="44"/>
+                            <rect key="frame" x="92.5" y="0.0" width="229" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="WhatsApp Image 2019-10-30 at 10.10.13 AM-2"/>
                         </button>

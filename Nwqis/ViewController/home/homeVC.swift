@@ -39,6 +39,14 @@ class homeVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if helperAddress.getAddresss().area != nil {
+            self.curentLocationOUT.setTitle("\(helperAddress.getAddresss().streetAddresss ?? "") \(helperAddress.getAddresss().area ?? "") ", for: .normal)
+        }else {
+            self.curentLocationOUT.setTitle("Add Location", for: .normal)
+        }
+    }
+    
     
     func addCustomSpinar(){
         HPGradientLoading.shared.configation.isEnableDismissWhenTap = false
@@ -59,9 +67,9 @@ class homeVC: UIViewController {
                 }
                 if (placemarks?.count)! > 0 {
                     let pm = placemarks?[0] as CLPlacemark?
-                    let address = (pm?.thoroughfare)! + " " + (pm?.locality)! + " " + (pm?.country)!
-                    print("addersssss \(address)")
-                    self.curentLocationOUT.setTitle(address, for: .normal)
+                    helperAddress.saveNewAddress(city: pm?.administrativeArea ?? "", area: pm?.locality ?? "", zone: pm?.subLocality ?? "", streetAddresss: "\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "")", lat: "\(latitude)", long: "\(longitude)")
+                    print("\(String(describing: helperAddress.getAddresss().area))\(helperAddress.getAddresss().city ?? "")\(helperAddress.getAddresss().lat ?? "")")
+                    self.curentLocationOUT.setTitle("\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "") \(pm?.locality ?? "") \(pm?.country ?? "") ", for: .normal)
                     HPGradientLoading.shared.dismiss()
                 }else {
                     print("error2")

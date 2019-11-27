@@ -149,12 +149,14 @@ class addNewAddressVC: UIViewController {
             self.showAlert(title: title, message: messages)
             return
         }
-        
-        
-        
         helperAddress.saveNewAddress(city: cityTF.text ?? "", area: areaTF.text ?? "", zone: zoneTF.text ?? "", streetAddresss: streetAdressTF.text ?? "", lat: "\(self.map.centerCoordinate.latitude)", long: "\(self.map.centerCoordinate.longitude)")
         
         
+        let alert = UIAlertController(title: "New Address", message: "Success To Add New Address", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default,  handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
