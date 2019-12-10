@@ -40,3 +40,41 @@ class helperAddress: NSObject {
         return (def.object(forKey: "city") as? String,def.object(forKey: "area") as? String,def.object(forKey: "zone") as? String,def.object(forKey: "streetAddresss") as? String,def.object(forKey: "lat") as? String,def.object(forKey: "long") as? String)
     }
 }
+
+
+class helperLogin: NSObject {
+    
+    class func restartApp(){
+       guard let window = UIApplication.shared.keyWindow else {return}
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            var vc: UIViewController
+            if getAPIToken() == nil {
+                vc = sb.instantiateInitialViewController()!
+            }else {
+                vc = sb.instantiateViewController(withIdentifier: "Home")
+            }
+            window.rootViewController = vc
+            UIView.transition(with: window, duration: 0.5, options: .transitionFlipFromTop, animations: nil, completion: nil)
+        }
+    
+    class func dleteAPIToken() {
+           let def = UserDefaults.standard
+           def.removeObject(forKey: "user_token")
+           def.synchronize()
+           
+           restartApp()
+       }
+    
+    class func saveAPIToken(token: String) {
+        let def = UserDefaults.standard
+        def.setValue(token, forKey: "user_token")
+        def.synchronize()
+        
+        restartApp()
+    }
+    
+    class func getAPIToken() -> String? {
+        let def = UserDefaults.standard
+        return def.object(forKey: "user_token") as? String
+    }
+}

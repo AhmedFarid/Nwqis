@@ -64,5 +64,10 @@
 	<string>we need your location to get the nearest  request</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>we need your location to get the nearest  request</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import HPGradientLoading
 
 class loginVC: UIViewController {
-
+    
     @IBOutlet weak var emailTF: roundedTF!
     @IBOutlet weak var passwordTF: roundedTF!
     
@@ -18,14 +19,23 @@ class loginVC: UIViewController {
         super.viewDidLoad()
         setUpNavColore()
         imageText()
+        addCustomSpinar()
     }
     
     func setUpNavColore(){
-           self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-           self.navigationController?.navigationBar.shadowImage = UIImage()
-           self.navigationController?.navigationBar.isTranslucent = true
-       }
-       
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    func addCustomSpinar(){
+        HPGradientLoading.shared.configation.isEnableDismissWhenTap = false
+        HPGradientLoading.shared.configation.isBlurBackground = true
+        HPGradientLoading.shared.configation.isBlurLoadingActivity = true
+        HPGradientLoading.shared.configation.durationAnimation = 1.5
+        HPGradientLoading.shared.configation.fontTitleLoading = UIFont.systemFont(ofSize: 20)
+    }
+    
     
     func imageText() {
         
@@ -38,7 +48,43 @@ class loginVC: UIViewController {
             passwordTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
         }
     }
-
-
-}
+    @IBAction func loginBTN(_ sender: Any) {
+        
+        guard Connectivity.isConnectedToInternet == true else {
+            self.showAlert(title: "Login Fail", message: "check internet connection")
+            return
+        }
+        
+        guard let emails = emailTF.text, !emails.isEmpty else {
+            let messages = NSLocalizedString("enter your email", comment: "hhhh")
+            let title = NSLocalizedString("login", comment: "hhhh")
+            self.showAlert(title: title, message: messages)
+            return
+        }
+        
+        guard let passwords = passwordTF.text, !passwords.isEmpty else {
+            let messages = NSLocalizedString("enter your password", comment: "hhhh")
+            let title = NSLocalizedString("login", comment: "hhhh")
+            self.showAlert(title: title, message: messages)
+            return
+        }
+        
+        HPGradientLoading.shared.configation.fromColor = .white
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
+        
+        API_Auth.Login(email: emails, password: passwords){ (error, suces,success)  in
+            if suces {
+            if success == true {
+                print("success")
+            }else {
+                self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
+                }
+            }else{
+                self.showAlert(title: "Login Fail", message: "check internet connection")
+            }
+            HPGradientLoading.shared.dismiss()
+        }
+    }
+}	
 

@@ -35,9 +35,18 @@ class homeVC: UIViewController {
         locationManager.delegate = self
         //getMyLocation()
         addCustomSpinar()
+        setUpNavColore()
         
         
     }
+    
+    
+    func setUpNavColore(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         if helperAddress.getAddresss().area != nil {
