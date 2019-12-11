@@ -34,7 +34,7 @@ class homeVC: UIViewController {
         tabelView.dataSource = self
         locationManager.delegate = self
         //getMyLocation()
-        addCustomSpinar()
+        Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         setUpNavColore()
         
         
@@ -52,19 +52,9 @@ class homeVC: UIViewController {
         if helperAddress.getAddresss().area != nil {
             self.curentLocationOUT.setTitle("\(helperAddress.getAddresss().streetAddresss ?? "") \(helperAddress.getAddresss().area ?? "") ", for: .normal)
         }else {
-            self.curentLocationOUT.setTitle("Add Location", for: .normal)
+            self.curentLocationOUT.setTitle("Add Location ", for: .normal)
         }
     }
-    
-    
-    func addCustomSpinar(){
-        HPGradientLoading.shared.configation.isEnableDismissWhenTap = false
-        HPGradientLoading.shared.configation.isBlurBackground = true
-        HPGradientLoading.shared.configation.isBlurLoadingActivity = true
-        HPGradientLoading.shared.configation.durationAnimation = 1.5
-        HPGradientLoading.shared.configation.fontTitleLoading = UIFont.systemFont(ofSize: 20)
-    }
-    
     
     func convertLatLongToAddress(latitude:Double,longitude:Double){
         let location = CLLocation(latitude: latitude, longitude: longitude)

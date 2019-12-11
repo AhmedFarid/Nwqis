@@ -19,7 +19,7 @@ class loginVC: UIViewController {
         super.viewDidLoad()
         setUpNavColore()
         imageText()
-        addCustomSpinar()
+        Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
     }
     
     func setUpNavColore(){
@@ -27,16 +27,7 @@ class loginVC: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
     }
-    
-    func addCustomSpinar(){
-        HPGradientLoading.shared.configation.isEnableDismissWhenTap = false
-        HPGradientLoading.shared.configation.isBlurBackground = true
-        HPGradientLoading.shared.configation.isBlurLoadingActivity = true
-        HPGradientLoading.shared.configation.durationAnimation = 1.5
-        HPGradientLoading.shared.configation.fontTitleLoading = UIFont.systemFont(ofSize: 20)
-    }
-    
-    
+
     func imageText() {
         
         if let myImage = UIImage(named: "email"){
@@ -49,11 +40,6 @@ class loginVC: UIViewController {
         }
     }
     @IBAction func loginBTN(_ sender: Any) {
-        
-        guard Connectivity.isConnectedToInternet == true else {
-            self.showAlert(title: "Login Fail", message: "check internet connection")
-            return
-        }
         
         guard let emails = emailTF.text, !emails.isEmpty else {
             let messages = NSLocalizedString("enter your email", comment: "hhhh")

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import HPGradientLoading
 
 class helperAddress: NSObject {
     
@@ -41,6 +41,15 @@ class helperAddress: NSObject {
     }
 }
 
+class Spiner: NSObject {
+    class func addSpiner(isEnableDismiss: Bool, isBulurBackgroud: Bool, isBlurLoadin: Bool, durationAnimation: Double, fontSize: Int){
+        HPGradientLoading.shared.configation.isEnableDismissWhenTap = isEnableDismiss //fasle
+        HPGradientLoading.shared.configation.isBlurBackground = isBulurBackgroud //true
+        HPGradientLoading.shared.configation.isBlurLoadingActivity = isBlurLoadin //true
+        HPGradientLoading.shared.configation.durationAnimation = durationAnimation // 1.5
+        HPGradientLoading.shared.configation.fontTitleLoading = UIFont.systemFont(ofSize: CGFloat(fontSize)) //20
+    }
+}
 
 class helperLogin: NSObject {
     
