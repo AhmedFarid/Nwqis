@@ -13,31 +13,49 @@ import HPGradientLoading
 
 class homeVC: UIViewController {
     
-    
-    
     var percent: CGFloat = 0
     var timer: Timer? = Timer()
     
-    
     @IBOutlet weak var tabelView: UITableView!
     @IBOutlet weak var searchTF: roundedTF!
-    
     @IBOutlet weak var curentLocationOUT: UIButton!
     
     let locationManager = CLLocationManager()
+    
+    var categors = [categoriesModel]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageText()
+        searchTF.delegate = self
         tabelView.delegate = self
         tabelView.dataSource = self
         locationManager.delegate = self
         //getMyLocation()
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         setUpNavColore()
+        handleRefreshgetCat()
         
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if let destaiantion = segue.destination as? subCatVC{
+               if let sub = sender as? categoriesModel{
+                   destaiantion.singleItem = sub
+               }
+           }
+       }
+    
+    @objc private func handleRefreshgetCat() {
+        API_CategoursAndSubCategours.getAllCategours{(error: Error?, categors: [categoriesModel]?,suceess) in
+            if let categors = categors {
+                self.categors = categors
+                print("xxx\(self.categors)")
+                self.tabelView.reloadData()
+            }
+        }
     }
     
     
@@ -128,9 +146,8 @@ extension homeVC: UITableViewDelegate,UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tabelView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? categoryCell {
-            cell.catBtnClass = {
-                self.performSegue(withIdentifier: "suge", sender: nil)
-            }
+            let cat = categors[indexPath.row]
+            cell.configuerCell(prodect: cat)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         }else {
@@ -139,8 +156,12 @@ extension homeVC: UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "suge", sender: categors[indexPath.row])
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return categors.count
         
     }
     
@@ -162,5 +183,23 @@ extension homeVC: CLLocationManagerDelegate {
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         convertLatLongToAddress(latitude: locValue.latitude, longitude: locValue.longitude)
         self.locationManager.stopUpdatingLocation()
+    }
+}
+
+
+extension homeVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()  //if desired
+//        if let catss = categors.first(where: {$0.name == searchTF.text}) {
+//           // do something with foo
+//            tabelView.reloadData()
+//            print(catss)
+//        } else {
+//           // item could not be found
+//            print("not Fond")
+//        }
+        
+        
+        return true
     }
 }

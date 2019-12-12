@@ -17,11 +17,104 @@ class registerVC: UIViewController {
     @IBOutlet weak var area: roundedTF!
     @IBOutlet weak var password: roundedTF!
     @IBOutlet weak var email: roundedTF!
+    
+    
+    var cityId = 0
+    var statusID = 0
+    var city = [citysModel]()
+    var status = [statesModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageText()
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
+        createCityPiker()
+        
     }
+    
+    
+    @objc private func handleRefreshgetcity() {
+        API_CityAndAreas.getAllCity{(error: Error?, city: [citysModel]?) in
+            if let city = city {
+                self.city = city
+                print("xxx\(self.city)")
+                self.textEnabeld()
+            }
+        }
+    }
+    
+    
+    @objc private func handleRefreshgetStates() {
+        API_CityAndAreas.getAllStates(city_id: cityId){(error: Error?, status: [statesModel]?) in
+            if let status = status {
+                self.status = status
+                print("xxx\(self.status)")
+                self.textEnabeld()
+            }
+        }
+    }
+    
+    func createToolbar() {
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        //Customizations
+        toolBar.barTintColor = .black
+        toolBar.tintColor = .white
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(registerVC.dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        location.inputAccessoryView = toolBar
+        area.inputAccessoryView = toolBar
+        
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    func textEnabeld() {
+        
+        if city.isEmpty == true {
+            location.isEnabled = false
+        }else {
+            location.isEnabled = true
+        }
+        
+        if status.isEmpty == true {
+            area.isEnabled = false
+        }else{
+            area.isEnabled = true
+        }
+    }
+    
+    func createCityPiker(){
+        let citys = UIPickerView()
+        citys.delegate = self
+        citys.dataSource = self
+        citys.tag = 0
+        location.inputView = citys
+        handleRefreshgetcity()
+        citys.reloadAllComponents()
+    }
+    
+    func createStatusPiker(){
+        let stauts = UIPickerView()
+        stauts.delegate = self
+        stauts.dataSource = self
+        stauts.tag = 1
+        area.inputView = stauts
+        handleRefreshgetStates()
+        stauts.reloadAllComponents()
+    }
+    
+    
+    
     
     func imageText() {
         
@@ -125,7 +218,7 @@ class registerVC: UIViewController {
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
         
-        API_Auth.SignUp(fullName: names, phone: phones, city_id: locations, state_id: areas, password: passwords, email: emails){ (error, suces,success,emailError,phoneError)  in
+        API_Auth.SignUp(fullName: names, phone: phones, city_id: "\(cityId)", state_id: "\(statusID)", password: passwords, email: emails){ (error, suces,success,emailError,phoneError)  in
             if suces {
                 if success == true {
                     print("success")
@@ -157,3 +250,43 @@ class registerVC: UIViewController {
 }
 
 
+extension registerVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if pickerView.tag == 0{
+            return 1
+        }else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView.tag == 0{
+            return city.count
+        }else {
+            return status.count
+        }
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView.tag == 0{
+            return city[row].name
+        }else{
+            return status[row].name
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 0{
+            location.text = city[row].name
+            cityId = city[row].id
+            createStatusPiker()
+            //self.view.endEditing(false)
+        }else {
+            area.text = status[row].name
+            statusID = status[row].id
+        }
+        
+    }
+}

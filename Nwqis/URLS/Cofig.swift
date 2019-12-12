@@ -16,6 +16,11 @@ struct URLs {
     
     static let Login =  main + "customer/login"
     static let Signup = main + "customer/signup"
+    static let cities = main + "customer/cities"
+    static let states = main + "customer/states"
+    static let categories = main + "customer/categories"
+    static let subcategories = main + "customer/subcategories"
+    static let banners = main + "customer/banners"
 
 }
 

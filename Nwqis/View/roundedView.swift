@@ -17,6 +17,12 @@ class roundedView: UIView {
            }
        }
        
+    
+    @IBInspectable var cornerRadiuscostom: CGFloat = 0{
+        didSet{
+            self.layer.cornerRadius = cornerRadiuscostom
+        }
+    }
        @IBInspectable var borderWidth: CGFloat = 0{
            didSet{
                self.layer.borderWidth = borderWidth
