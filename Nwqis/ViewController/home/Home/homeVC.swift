@@ -41,20 +41,28 @@ class homeVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if let destaiantion = segue.destination as? subCatVC{
-               if let sub = sender as? categoriesModel{
-                   destaiantion.singleItem = sub
-               }
-           }
-       }
+        if let destaiantion = segue.destination as? subCatVC{
+            if let sub = sender as? categoriesModel{
+                destaiantion.singleItem = sub
+            }
+        }else if let destaiantion = segue.destination as? searchVC {
+            if let sub = sender as? categoriesModel {
+                destaiantion.singelItems = sub
+            }
+        }
+    }
     
     @objc private func handleRefreshgetCat() {
+        HPGradientLoading.shared.configation.fromColor = .white
+               HPGradientLoading.shared.configation.toColor = .blue
+               HPGradientLoading.shared.showLoading(with: "Loading...")
         API_CategoursAndSubCategours.getAllCategours{(error: Error?, categors: [categoriesModel]?,suceess) in
             if let categors = categors {
                 self.categors = categors
                 print("xxx\(self.categors)")
                 self.tabelView.reloadData()
             }
+            HPGradientLoading.shared.dismiss()
         }
     }
     
@@ -77,22 +85,22 @@ class homeVC: UIViewController {
     func convertLatLongToAddress(latitude:Double,longitude:Double){
         let location = CLLocation(latitude: latitude, longitude: longitude)
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-                if error != nil {
-                    HPGradientLoading.shared.dismiss()
-                    self.showAlert(title: "Error", message: "Error to get your location")
-                    return
-                }
-                if (placemarks?.count)! > 0 {
-                    let pm = placemarks?[0] as CLPlacemark?
-                    helperAddress.saveNewAddress(city: pm?.administrativeArea ?? "", area: pm?.locality ?? "", zone: pm?.subLocality ?? "", streetAddresss: "\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "")", lat: "\(latitude)", long: "\(longitude)")
-                    print("\(String(describing: helperAddress.getAddresss().area))\(helperAddress.getAddresss().city ?? "")\(helperAddress.getAddresss().lat ?? "")")
-                    self.curentLocationOUT.setTitle("\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "") \(pm?.locality ?? "") \(pm?.country ?? "") ", for: .normal)
-                    HPGradientLoading.shared.dismiss()
-                }else {
-                    print("error2")
-                }
-            })
-        }
+            if error != nil {
+                HPGradientLoading.shared.dismiss()
+                self.showAlert(title: "Error", message: "Error to get your location")
+                return
+            }
+            if (placemarks?.count)! > 0 {
+                let pm = placemarks?[0] as CLPlacemark?
+                helperAddress.saveNewAddress(city: pm?.administrativeArea ?? "", area: pm?.locality ?? "", zone: pm?.subLocality ?? "", streetAddresss: "\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "")", lat: "\(latitude)", long: "\(longitude)")
+                print("\(String(describing: helperAddress.getAddresss().area))\(helperAddress.getAddresss().city ?? "")\(helperAddress.getAddresss().lat ?? "")")
+                self.curentLocationOUT.setTitle("\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "") \(pm?.locality ?? "") \(pm?.country ?? "") ", for: .normal)
+                HPGradientLoading.shared.dismiss()
+            }else {
+                print("error2")
+            }
+        })
+    }
     
     
     func getMyLocation(){
@@ -139,11 +147,11 @@ class homeVC: UIViewController {
 }
 
 extension homeVC: UITableViewDelegate,UITableViewDataSource {
-        
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tabelView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? categoryCell {
             let cat = categors[indexPath.row]
@@ -157,7 +165,12 @@ extension homeVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "suge", sender: categors[indexPath.row])
+        let cell = categors[indexPath.row]
+        if cell.count_subcategoires == 0{
+            self.performSegue(withIdentifier: "suge3", sender: categors[indexPath.row])
+        }else {
+            self.performSegue(withIdentifier: "suge", sender: categors[indexPath.row])
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -190,14 +203,14 @@ extension homeVC: CLLocationManagerDelegate {
 extension homeVC: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()  //if desired
-//        if let catss = categors.first(where: {$0.name == searchTF.text}) {
-//           // do something with foo
-//            tabelView.reloadData()
-//            print(catss)
-//        } else {
-//           // item could not be found
-//            print("not Fond")
-//        }
+        //        if let catss = categors.first(where: {$0.name == searchTF.text}) {
+        //           // do something with foo
+        //            tabelView.reloadData()
+        //            print(catss)
+        //        } else {
+        //           // item could not be found
+        //            print("not Fond")
+        //        }
         
         
         return true

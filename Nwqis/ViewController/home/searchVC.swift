@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class searchVC: UIViewController {
     
@@ -16,6 +17,7 @@ class searchVC: UIViewController {
     var timer = Timer()
     var counter = 0
     var singleItem: SubcategoriesModel?
+    var singelItems: categoriesModel?
     var banner = [banners]()
     
     
@@ -27,11 +29,13 @@ class searchVC: UIViewController {
         handleRefreshgetBanner()
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.navigationItem.titleView = navTitleWithImageAndText(titleText: " Pharmacy", imageName: "pharmacy")
+
+        self.navigationItem.title = ("\(singleItem?.name ?? "")\(singelItems?.name ?? "")")
         handleRefreshgetBanner()
     }
     
-   
+    
+    
     
     @objc private func handleRefreshgetBanner() {
         API_Requsests.getCatBanner(category_id: singleItem?.category_id ?? ""){(error: Error?, banner: [banners]?,suceess) in
@@ -125,11 +129,11 @@ extension searchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CollectionViewCell {
             let banners = banner[indexPath.row]
             cell.configuerCell(prodect: banners)
-             return cell
+            return cell
         }else {
             return CollectionViewCell()
         }
-       
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
