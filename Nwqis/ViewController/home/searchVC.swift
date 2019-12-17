@@ -13,9 +13,16 @@ class searchVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageview: UIPageControl!
+    @IBOutlet weak var descrption: costomTV!
     
     var timer = Timer()
     var counter = 0
+    var city_id = 0
+    var state_id = 0
+    var subcat = ""
+    
+    var catId = ""
+    
     var singleItem: SubcategoriesModel?
     var singelItems: categoriesModel?
     var banner = [banners]()
@@ -29,6 +36,12 @@ class searchVC: UIViewController {
         handleRefreshgetBanner()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        if singelItems?.id == 0 {
+            catId = singleItem?.category_id ?? ""
+        }else if singleItem?.category_id == "0"{
+            catId = "\(singelItems?.id ?? 0)"
+        }
 
         self.navigationItem.title = ("\(singleItem?.name ?? "")\(singelItems?.name ?? "")")
         handleRefreshgetBanner()
@@ -37,8 +50,23 @@ class searchVC: UIViewController {
     
     
     
+    @IBAction func sendBTN(_ sender: Any) {
+        
+        if singleItem?.id == nil{
+            subcat = ""
+        }else{
+            subcat = "\(singleItem?.id ?? 0)"
+        }
+        
+        API_Requests.addRequest(description: descrption.text ?? "", city_id: "\(city_id)", state_id: "\(state_id)", lat: "0.0", lng: "0.0", category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")", subcategory_id: subcat) { (error, success, sucess, message, error1, erroer2) in
+            if sucess == true {
+                print(message)
+            }
+        }
+    }
+    
     @objc private func handleRefreshgetBanner() {
-        API_Requsests.getCatBanner(category_id: singleItem?.category_id ?? ""){(error: Error?, banner: [banners]?,suceess) in
+        API_Requsests.getCatBanner(category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")"){(error: Error?, banner: [banners]?,suceess) in
             if let banner = banner {
                 self.banner = banner
                 print("xxx\(self.banner)")

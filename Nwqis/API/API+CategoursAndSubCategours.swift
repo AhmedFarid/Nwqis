@@ -12,20 +12,22 @@ import SwiftyJSON
 
 class API_CategoursAndSubCategours: NSObject {
     
-    class func getAllCategours(completion: @escaping (_ error: Error?,_ categours: [categoriesModel]?,_ success: Bool?)-> Void) {
+    class func getAllCategours(search: String,Url: String,completion: @escaping (_ error: Error?,_ categours: [categoriesModel]?,_ success: Bool?)-> Void) {
         
         guard let user_token = helperLogin.getAPIToken() else {
             completion(nil,nil,false)
             return
         }
-        
-        let url = URLs.categories
         let lang = NSLocalizedString("en", comment: "profuct list lang")
         let headers = [
             "X-localization": lang,
             "Authorization": "Bearer \(user_token)"
         ]
-        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.queryString, headers: headers) .responseJSON  { response in
+        
+        let parameters = [
+                   "search": search
+               ]
+        Alamofire.request(Url, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: headers) .responseJSON  { response in
             switch response.result
             {
             case .failure(let error):
@@ -54,25 +56,24 @@ class API_CategoursAndSubCategours: NSObject {
         }
     }
     
-    class func getAllSubCategours(category_id: Int,completion: @escaping (_ error: Error?,_ categours: [SubcategoriesModel]?,_ success: Bool?)-> Void) {
+    class func getAllSubCategours(search: String, Url:String,category_id: Int,completion: @escaping (_ error: Error?,_ categours: [SubcategoriesModel]?,_ success: Bool?)-> Void) {
            
            guard let user_token = helperLogin.getAPIToken() else {
                completion(nil,nil,false)
                return
            }
-           
-           let url = URLs.subcategories
            let lang = NSLocalizedString("en", comment: "profuct list lang")
         
         let parameters = [
-            "category_id": category_id
-        ]
+            "category_id": category_id,
+            "search":search
+            ] as [String : Any]
         
            let headers = [
                "X-localization": lang,
                "Authorization": "Bearer \(user_token)"
            ]
-           Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: headers) .responseJSON  { response in
+           Alamofire.request(Url, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: headers) .responseJSON  { response in
                switch response.result
                {
                case .failure(let error):

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D7B1A14AE6C32178D2AC503 /* Pods_Nwqis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018E99C0A744C3E8EEBD09 /* Pods_Nwqis.framework */; };
 		6906D38F238430B900CEA89F /* roundedTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906D38E238430B900CEA89F /* roundedTF.swift */; };
 		690BA7B0238E8A67008BD3B5 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690BA7AF238E8A67008BD3B5 /* helper.swift */; };
 		6927FDD923A13FBE00DF3C2B /* cityAndAreasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927FDD823A13FBE00DF3C2B /* cityAndAreasModel.swift */; };
@@ -27,11 +28,16 @@
 		694CC50A23A29A6F00F371B8 /* API+Requsests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CC50923A29A6F00F371B8 /* API+Requsests.swift */; };
 		694CC50C23A29A9C00F371B8 /* banners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CC50B23A29A9C00F371B8 /* banners.swift */; };
 		694CC50E23A2A40E00F371B8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CC50D23A2A40E00F371B8 /* CollectionViewCell.swift */; };
+		6959BA6D23A90942001DB7AF /* FilterDeleget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6959BA6C23A90942001DB7AF /* FilterDeleget.swift */; };
+		6959BA6F23A94C38001DB7AF /* API+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6959BA6E23A94C38001DB7AF /* API+Requests.swift */; };
 		6978658723A6890300EDEEB7 /* profileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978658623A6890300EDEEB7 /* profileVC.swift */; };
 		6978658923A68A4200EDEEB7 /* API+Prfoile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978658823A68A4200EDEEB7 /* API+Prfoile.swift */; };
 		6978658B23A6921700EDEEB7 /* editProifleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978658A23A6921700EDEEB7 /* editProifleVC.swift */; };
+		698421BF23A7E5DF000C63BD /* offersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698421BE23A7E5DF000C63BD /* offersModel.swift */; };
+		698421C223A7EAB1000C63BD /* offersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698421C123A7EAB1000C63BD /* offersCell.swift */; };
 		698664272386A4CA00848F61 /* registerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698664262386A4CA00848F61 /* registerVC.swift */; };
 		6986642B2386A6FF00848F61 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986642A2386A6FF00848F61 /* homeVC.swift */; };
+		699443B923A7A4D10027A268 /* downCategourysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699443B823A7A4D10027A268 /* downCategourysVC.swift */; };
 		69B461DC2386C53E00A53D60 /* searchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B461DB2386C53E00A53D60 /* searchVC.swift */; };
 		69B461DE2386C5D800A53D60 /* categoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B461DD2386C5D800A53D60 /* categoryCell.swift */; };
 		69B461E02386E64100A53D60 /* customRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B461DF2386E64100A53D60 /* customRoundView.swift */; };
@@ -43,10 +49,10 @@
 		69E1416C238C16CF001D8FDE /* addNewAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1416B238C16CF001D8FDE /* addNewAddressVC.swift */; };
 		69F764C3239E67200022D3C2 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F764C2239E67200022D3C2 /* LocationSearchTable.swift */; };
 		69FFD48F238A90860008A965 /* helpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FFD48E238A90860008A965 /* helpVC.swift */; };
-		8C0FA294A7E88D8E8C6F6477 /* Pods_Nwqis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834CD970437569EE3366D156 /* Pods_Nwqis.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19018E99C0A744C3E8EEBD09 /* Pods_Nwqis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nwqis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B32A4DF77EB2E83938F025F /* Pods-Nwqis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nwqis.debug.xcconfig"; path = "Target Support Files/Pods-Nwqis/Pods-Nwqis.debug.xcconfig"; sourceTree = "<group>"; };
 		6906D38E238430B900CEA89F /* roundedTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedTF.swift; sourceTree = "<group>"; };
 		690BA7AF238E8A67008BD3B5 /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
@@ -70,11 +76,16 @@
 		694CC50923A29A6F00F371B8 /* API+Requsests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Requsests.swift"; sourceTree = "<group>"; };
 		694CC50B23A29A9C00F371B8 /* banners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = banners.swift; sourceTree = "<group>"; };
 		694CC50D23A2A40E00F371B8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		6959BA6C23A90942001DB7AF /* FilterDeleget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDeleget.swift; sourceTree = "<group>"; };
+		6959BA6E23A94C38001DB7AF /* API+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Requests.swift"; sourceTree = "<group>"; };
 		6978658623A6890300EDEEB7 /* profileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileVC.swift; sourceTree = "<group>"; };
 		6978658823A68A4200EDEEB7 /* API+Prfoile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Prfoile.swift"; sourceTree = "<group>"; };
 		6978658A23A6921700EDEEB7 /* editProifleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editProifleVC.swift; sourceTree = "<group>"; };
+		698421BE23A7E5DF000C63BD /* offersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offersModel.swift; sourceTree = "<group>"; };
+		698421C123A7EAB1000C63BD /* offersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offersCell.swift; sourceTree = "<group>"; };
 		698664262386A4CA00848F61 /* registerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerVC.swift; sourceTree = "<group>"; };
 		6986642A2386A6FF00848F61 /* homeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
+		699443B823A7A4D10027A268 /* downCategourysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downCategourysVC.swift; sourceTree = "<group>"; };
 		69B461DB2386C53E00A53D60 /* searchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchVC.swift; sourceTree = "<group>"; };
 		69B461DD2386C5D800A53D60 /* categoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryCell.swift; sourceTree = "<group>"; };
 		69B461DF2386E64100A53D60 /* customRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customRoundView.swift; sourceTree = "<group>"; };
@@ -86,7 +97,6 @@
 		69E1416B238C16CF001D8FDE /* addNewAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNewAddressVC.swift; sourceTree = "<group>"; };
 		69F764C2239E67200022D3C2 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		69FFD48E238A90860008A965 /* helpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpVC.swift; sourceTree = "<group>"; };
-		834CD970437569EE3366D156 /* Pods_Nwqis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nwqis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B193A57F5F11BD7AB87E8084 /* Pods-Nwqis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nwqis.release.xcconfig"; path = "Target Support Files/Pods-Nwqis/Pods-Nwqis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C0FA294A7E88D8E8C6F6477 /* Pods_Nwqis.framework in Frameworks */,
+				4D7B1A14AE6C32178D2AC503 /* Pods_Nwqis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +118,7 @@
 				6927FDD823A13FBE00DF3C2B /* cityAndAreasModel.swift */,
 				6927FDDC23A152D900DF3C2B /* categoursSubcategoursModel.swift */,
 				694CC50B23A29A9C00F371B8 /* banners.swift */,
+				698421BE23A7E5DF000C63BD /* offersModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +171,7 @@
 		693488742384046A00871ABE /* CellClass */ = {
 			isa = PBXGroup;
 			children = (
+				698421C023A7EA89000C63BD /* Profile */,
 				694CC50723A2947E00F371B8 /* catAndSubcatCellCells */,
 				694CC50D23A2A40E00F371B8 /* CollectionViewCell.swift */,
 			);
@@ -222,8 +234,18 @@
 			children = (
 				6978658623A6890300EDEEB7 /* profileVC.swift */,
 				6978658A23A6921700EDEEB7 /* editProifleVC.swift */,
+				699443B823A7A4D10027A268 /* downCategourysVC.swift */,
+				6959BA6C23A90942001DB7AF /* FilterDeleget.swift */,
 			);
 			path = profile;
+			sourceTree = "<group>";
+		};
+		698421C023A7EA89000C63BD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				698421C123A7EAB1000C63BD /* offersCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		698664282386A4D800848F61 /* Auth */ = {
@@ -263,6 +285,7 @@
 				6927FDDE23A154D500DF3C2B /* API+CategoursAndSubCategours.swift */,
 				694CC50923A29A6F00F371B8 /* API+Requsests.swift */,
 				6978658823A68A4200EDEEB7 /* API+Prfoile.swift */,
+				6959BA6E23A94C38001DB7AF /* API+Requests.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -279,7 +302,7 @@
 		A85194DD1FDD992D4EA2DA23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				834CD970437569EE3366D156 /* Pods_Nwqis.framework */,
+				19018E99C0A744C3E8EEBD09 /* Pods_Nwqis.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -304,7 +327,7 @@
 				693488582384040500871ABE /* Sources */,
 				693488592384040500871ABE /* Frameworks */,
 				6934885A2384040500871ABE /* Resources */,
-				5EA6DDE89E8ABE699E025D91 /* [CP] Embed Pods Frameworks */,
+				32C98BA4ED2B2EBE86C9F1D6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -362,7 +385,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5EA6DDE89E8ABE699E025D91 /* [CP] Embed Pods Frameworks */ = {
+		32C98BA4ED2B2EBE86C9F1D6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,13 +433,17 @@
 			files = (
 				69B461DE2386C5D800A53D60 /* categoryCell.swift in Sources */,
 				693488642384040500871ABE /* loginVC.swift in Sources */,
+				699443B923A7A4D10027A268 /* downCategourysVC.swift in Sources */,
 				6978658923A68A4200EDEEB7 /* API+Prfoile.swift in Sources */,
+				698421C223A7EAB1000C63BD /* offersCell.swift in Sources */,
 				69E1416C238C16CF001D8FDE /* addNewAddressVC.swift in Sources */,
+				6959BA6F23A94C38001DB7AF /* API+Requests.swift in Sources */,
 				69F764C3239E67200022D3C2 /* LocationSearchTable.swift in Sources */,
 				694CC50323A2830600F371B8 /* subCatVC.swift in Sources */,
 				69B461E02386E64100A53D60 /* customRoundView.swift in Sources */,
 				694CC50C23A29A9C00F371B8 /* banners.swift in Sources */,
 				694CC50A23A29A6F00F371B8 /* API+Requsests.swift in Sources */,
+				6959BA6D23A90942001DB7AF /* FilterDeleget.swift in Sources */,
 				698664272386A4CA00848F61 /* registerVC.swift in Sources */,
 				69364C7F2385591A005DB4E5 /* textImage.swift in Sources */,
 				690BA7B0238E8A67008BD3B5 /* helper.swift in Sources */,
@@ -437,6 +464,7 @@
 				693488622384040500871ABE /* SceneDelegate.swift in Sources */,
 				6927FDDF23A154D500DF3C2B /* API+CategoursAndSubCategours.swift in Sources */,
 				69CC0B05239FC78300C7E058 /* API+Auth.swift in Sources */,
+				698421BF23A7E5DF000C63BD /* offersModel.swift in Sources */,
 				69CC0B02239FC62000C7E058 /* Cofig.swift in Sources */,
 				69E1416A238C034A001D8FDE /* showAlert.swift in Sources */,
 				69B461E22386EDA100A53D60 /* costomTV.swift in Sources */,

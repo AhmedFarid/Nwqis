@@ -50,6 +50,9 @@ class editProifleVC: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = isTranslucent
     }
     
+    func editPassword() {
+    }
+    
     @IBAction func editBTN(_ sender: Any) {
         
         guard let names = fullnameTF.text, !names.isEmpty else {

@@ -23,6 +23,10 @@ struct URLs {
     static let banners = main + "customer/banners"
     static let userProfile = main + "customer/user"
     static let editProfile = main + "customer/editProfile"
+    static let offers = main + "customer/offers"
+    static let searchCategory = main + "customer/searchCategory"
+    static let searchSubCategory = main + "customer/searchSubCategory"
+    static let addShortList = main + "customer/addShortList"
 
 
 }

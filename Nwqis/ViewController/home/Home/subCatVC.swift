@@ -7,55 +7,84 @@
 //
 
 import UIKit
+import HPGradientLoading
 
 class subCatVC: UIViewController {
-
-    @IBOutlet weak var loactionBtn: UIButton!
+    
+    //@IBOutlet weak var loactionBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTF: roundedTF!
+    @IBOutlet weak var noCatTF: UILabel!
     
     
-    
+    var city_id = 0
+    var state_id = 0
     var Subcategor = [SubcategoriesModel]()
     var singleItem: categoriesModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchTF.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        handleRefreshgetCat()
+        noCatTF.isHidden = true
+        searchTF.clearButtonMode = .always
+        Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
+        imageText()
+        handleRefreshgetCat(url: URLs.subcategories, search: "")
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if let destaiantion = segue.destination as? searchVC{
-               if let sub = sender as? SubcategoriesModel{
-                   destaiantion.singleItem = sub
-               }
-           }
-       }
+    func imageText() {
+        if let myImage = UIImage(named: "icon_search"){
+            searchTF.withImage(direction: .Left, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0, green: 0.3333333333, blue: 1, alpha: 1))
+        }
+    }
     
-    @objc private func handleRefreshgetCat() {
-        API_CategoursAndSubCategours.getAllSubCategours(category_id: singleItem?.id ?? 0){(error: Error?, Subcategor: [SubcategoriesModel]?,suceess) in
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destaiantion = segue.destination as? searchVC{
+            if let sub = sender as? SubcategoriesModel{
+                destaiantion.singleItem = sub
+            }
+            destaiantion.city_id = city_id
+            destaiantion.state_id = state_id
+        }
+    }
+    
+    @objc private func handleRefreshgetCat(url:String,search:String) {
+        HPGradientLoading.shared.configation.fromColor = .white
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
+        API_CategoursAndSubCategours.getAllSubCategours(search: search, Url: url, category_id: singleItem?.id ?? 0){(error: Error?, Subcategor: [SubcategoriesModel]?,suceess) in
             if let Subcategor = Subcategor {
                 self.Subcategor = Subcategor
                 print("xxx\(self.Subcategor)")
                 self.tableView.reloadData()
+                
+            }
+            HPGradientLoading.shared.dismiss()
+            
+            if Subcategor?.count == 0 {
+                self.tableView.isHidden = true
+                self.noCatTF.isHidden = false
+            }else {
+                self.tableView.isHidden = false
+                self.noCatTF.isHidden = true
             }
         }
     }
     
-
-
+    
+    
 }
 
 
 extension subCatVC: UITableViewDelegate,UITableViewDataSource {
-        
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? subCatCell {
             let cat = Subcategor[indexPath.row]
@@ -85,5 +114,21 @@ extension subCatVC: UITableViewDelegate,UITableViewDataSource {
         let view:UIView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.bounds.size.width, height: 10))
         view.backgroundColor = .clear
         return view
+    }
+}
+
+
+extension subCatVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        guard searchTF.text?.isEmpty == true else {
+            handleRefreshgetCat(url: URLs.searchSubCategory, search: searchTF.text ?? "")
+            return false
+        }
+        return true
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        handleRefreshgetCat(url: URLs.subcategories, search: searchTF.text ?? "")
+        return true
     }
 }
