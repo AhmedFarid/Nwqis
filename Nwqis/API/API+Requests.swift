@@ -108,5 +108,51 @@ class API_Requests: NSObject {
                     }
                 }
             }
+    
+    class func getMyRequestsDitels(shortlist_id: String, completion: @escaping (_ error: Error?,_ categours: [myRequestsDitels]?,_ success: Bool?)-> Void) {
+    
+    guard let user_token = helperLogin.getAPIToken() else {
+        completion(nil,nil,false)
+        return
+    }
+    let url = URLs.customershortListsDetails
+    let lang = NSLocalizedString("en", comment: "profuct list lang")
+        
+        let parameters = [
+            "shortlist_id": shortlist_id
+        ]
+        
+    let headers = [
+        "X-localization": lang,
+        "Authorization": "Bearer \(user_token)"
+    ]
+    Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: headers) .responseJSON  { response in
+                switch response.result
+                {
+                case .failure(let error):
+                    completion(error, nil, false)
+                    print(error)
+                    
+                case .success(let value):
+                    print(value)
+                    let json = JSON(value)
+                    let success = json["success"].bool
+                    if success == true {
+                        guard let dataArray = json["data"].array else{
+                            completion(nil, nil,success)
+                            return
+                        }
+                        print(dataArray)
+                        var products = [myRequestsDitels]()
+                        for data in dataArray {
+                            if let data = data.dictionary, let prodect = myRequestsDitels.init(dict: data){
+                                products.append(prodect)
+                            }
+                        }
+                        completion(nil, products,success)
+                    }
+                }
+            }
+        }
         }
 

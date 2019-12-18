@@ -35,6 +35,25 @@ class offersModel: NSObject {
     
 }
 
+class myRequestsDitels: NSObject {
+    var id: Int
+    var email: String
+    var phone: String
+    var image: String
+    var lat: String
+    var lng: String
+    
+    init?(dict: [String: JSON]){
+        guard let id = dict["id"]?.int,let email = dict["email"]?.string,let phone = dict["phone"]?.string,let image = dict["image"]?.string,let lat = dict["lat"]?.string,let lng = dict["lng"]?.string else {return nil}
+        self.id = id
+        self.email = email
+        self.phone = phone
+        self.image = image
+        self.lat = lat
+        self.lng = lng
+    }
+}
+
 class myRequests: NSObject {
     var descriptin: String
     var image: String

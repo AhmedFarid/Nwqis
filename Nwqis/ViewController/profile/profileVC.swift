@@ -12,6 +12,7 @@ import HPGradientLoading
 
 class profileVC: UIViewController {
     
+    @IBOutlet weak var filterBTN: UIButton!
     @IBOutlet weak var emailLb: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLb: UILabel!
@@ -31,6 +32,8 @@ class profileVC: UIViewController {
         super.viewDidLoad()
         offersLabel.isHidden = true
         handleRefreshgetProfile()
+        handleRefreshgetGetMyRequests()
+        filterBTN.isHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         myRequestsTabelView.delegate = self
@@ -47,7 +50,7 @@ class profileVC: UIViewController {
         segmentView.setTitleTextAttributes(titleTextAttributes, for: .selected)
         segmentView.layer.cornerRadius = segmentView.bounds.height / 2
         segmentView.layer.borderWidth = 3
-        segmentView.layer.borderColor = UIColor.white.cgColor
+        segmentView.layer.borderColor = #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
         segmentView.clipsToBounds = true
         segmentView.layer.masksToBounds = true
         
@@ -126,9 +129,11 @@ class profileVC: UIViewController {
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch segmentView.selectedSegmentIndex {
         case 0:
+            filterBTN.isHidden = true
             tableView.isHidden = true
             handleRefreshgetGetMyRequests()
         case 1:
+            filterBTN.isHidden = false
             tableView.isHidden = false
             myRequestsTabelView.isHidden = true
             handleRefreshgetOffers(category_id: "")
@@ -142,6 +147,10 @@ class profileVC: UIViewController {
             destaiantion.email = email
             destaiantion.fullName = name
             destaiantion.phone = phone
+        }else if let destaiantion = segue.destination as? myRequestsDitelsVC {
+            if let sub = sender as? myRequests{
+                destaiantion.singleItem = sub
+            }
         }
     }
     
@@ -190,6 +199,15 @@ extension profileVC: UITableViewDelegate,UITableViewDataSource {
             }else {
                 return myRequestsCell()
             }
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.tag == 0 {
+            print("x")
+        }else {
+            performSegue(withIdentifier: "suge2", sender: myRequest[indexPath.row])
         }
         
     }

@@ -28,6 +28,7 @@ struct URLs {
     static let searchSubCategory = main + "customer/searchSubCategory"
     static let addShortList = main + "customer/addShortList"
     static let customershortLists = main + "customer/CustomershortLists"
+    static let customershortListsDetails = main + "customer/CustomershortListsDetails"
 
 
 }
