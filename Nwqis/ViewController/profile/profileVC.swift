@@ -17,8 +17,10 @@ class profileVC: UIViewController {
     @IBOutlet weak var nameLb: UILabel!
     @IBOutlet weak var offersLabel: UILabel!
     @IBOutlet weak var segmentView: UISegmentedControl!
+    @IBOutlet weak var myRequestsTabelView: UITableView!
     
     var offers = [offersModel]()
+    var myRequest = [myRequests]()
     var singleItem: categoriesModel?
     var email = ""
     var phone = ""
@@ -31,7 +33,9 @@ class profileVC: UIViewController {
         handleRefreshgetProfile()
         tableView.delegate = self
         tableView.dataSource = self
-        handleRefreshgetOffers(category_id: 3)
+        myRequestsTabelView.delegate = self
+        myRequestsTabelView.dataSource = self
+        tableView.isHidden = true
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         setupSegment()
     }
@@ -55,7 +59,7 @@ class profileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         handleRefreshgetProfile()
-        handleRefreshgetOffers(category_id: 3)
+        //handleRefreshgetOffers(category_id: "")
     }
     
     @IBAction func settingBTN(_ sender: Any) {
@@ -64,11 +68,11 @@ class profileVC: UIViewController {
     }
     
     
-    @objc private func handleRefreshgetOffers(category_id: Int) {
+    @objc private func handleRefreshgetOffers(category_id: String) {
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
-        API_Prfoile.getOffers(category_id: category_id){(error: Error?, offers: [offersModel]?,suceess) in
+        API_Prfoile.getOffers(category_id: "\(category_id)"){(error: Error?, offers: [offersModel]?,suceess) in
             if let offers = offers {
                 self.offers = offers
                 print("xxx\(self.offers)")
@@ -85,6 +89,29 @@ class profileVC: UIViewController {
         }
     }
     
+    
+    @objc private func handleRefreshgetGetMyRequests() {
+        HPGradientLoading.shared.configation.fromColor = .white
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
+        API_Requests.getMyRequests{(error: Error?, myRequest: [myRequests]?,suceess) in
+            if let myRequest = myRequest {
+                self.myRequest = myRequest
+                print("xxx\(self.myRequest)")
+                self.myRequestsTabelView.reloadData()
+            }
+            if myRequest?.count == 0 {
+                self.myRequestsTabelView.isHidden = true
+                self.offersLabel.isHidden = false
+                self.offersLabel.text = "No Requests"
+            }else {
+                self.myRequestsTabelView.isHidden = false
+                self.offersLabel.isHidden = true
+            }
+            HPGradientLoading.shared.dismiss()
+        }
+    }
+    
     @IBAction func showCatBTn(_ sender: Any) {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "tableView") as! downCategourysVC
@@ -93,6 +120,21 @@ class profileVC: UIViewController {
         self.present(navigationController, animated: true, completion: nil)
         
         
+    }
+    
+    
+    @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        switch segmentView.selectedSegmentIndex {
+        case 0:
+            tableView.isHidden = true
+            handleRefreshgetGetMyRequests()
+        case 1:
+            tableView.isHidden = false
+            myRequestsTabelView.isHidden = true
+            handleRefreshgetOffers(category_id: "")
+        default:
+            break;
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,19 +172,34 @@ extension profileVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? offersCell {
-            let cat = offers[indexPath.row]
-            cell.configuerCell(prodect: cat)
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            return cell
-        }else {
-            return offersCell()
+        if tableView.tag == 0{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? offersCell {
+                let cat = offers[indexPath.row]
+                cell.configuerCell(prodect: cat)
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                return cell
+            }else {
+                return offersCell()
+            }
+        }else{
+            if let cell = myRequestsTabelView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? myRequestsCell {
+                let cat = myRequest[indexPath.row]
+                cell.configuerCell(prodect: cat)
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                return cell
+            }else {
+                return myRequestsCell()
+            }
         }
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return offers.count
+        if tableView.tag == 0{
+            return offers.count
+        }else {
+            return myRequest.count
+        }
         
     }
     
@@ -159,6 +216,6 @@ extension profileVC: UITableViewDelegate,UITableViewDataSource {
 
 extension profileVC: FilterDeleget{
     func filterValueSelected(value: Int) {
-        handleRefreshgetOffers(category_id: value)
+        handleRefreshgetOffers(category_id: "\(value)")
     }
 }

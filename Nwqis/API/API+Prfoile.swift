@@ -109,7 +109,7 @@ class API_Prfoile: NSObject {
            }
        }
     
-    class func getOffers(category_id: Int,completion: @escaping (_ error: Error?,_ categours: [offersModel]?,_ success: Bool?)-> Void) {
+    class func getOffers(category_id: String,completion: @escaping (_ error: Error?,_ categours: [offersModel]?,_ success: Bool?)-> Void) {
         
         guard let user_token = helperLogin.getAPIToken() else {
             completion(nil,nil,false)
@@ -122,6 +122,8 @@ class API_Prfoile: NSObject {
         let parameters = [
             "category_id": category_id
         ]
+        
+        print(parameters)
         
         let headers = [
             "X-localization": lang,

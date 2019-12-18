@@ -8,12 +8,14 @@
 
 import UIKit
 import Kingfisher
+import HPGradientLoading
 
 class searchVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageview: UIPageControl!
     @IBOutlet weak var descrption: costomTV!
+    @IBOutlet weak var requestImage: UIImageView!
     
     var timer = Timer()
     var counter = 0
@@ -42,15 +44,51 @@ class searchVC: UIViewController {
         }else if singleItem?.category_id == "0"{
             catId = "\(singelItems?.id ?? 0)"
         }
-
+        
         self.navigationItem.title = ("\(singleItem?.name ?? "")\(singelItems?.name ?? "")")
         handleRefreshgetBanner()
     }
     
     
+    var picker_imag: UIImage? {
+        didSet{
+            guard let image = picker_imag else {return}
+            requestImage.isHidden = false
+            self.requestImage.image = image
+        }
+    }
+    
+    
+    @IBAction func uplodImageBTN(_ sender: Any) {
+        let piker = UIImagePickerController()
+        piker.allowsEditing = true
+        piker.sourceType = .photoLibrary
+        piker.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Chose A Source", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                piker.sourceType = .camera
+                self.present(piker, animated: true, completion: nil)
+            }else {
+                print("notFound")
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            piker.sourceType = .photoLibrary
+            self.present(piker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+        
+    }
     
     
     @IBAction func sendBTN(_ sender: Any) {
+        HPGradientLoading.shared.configation.fromColor = .white
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
         
         if singleItem?.id == nil{
             subcat = ""
@@ -58,10 +96,15 @@ class searchVC: UIViewController {
             subcat = "\(singleItem?.id ?? 0)"
         }
         
-        API_Requests.addRequest(description: descrption.text ?? "", city_id: "\(city_id)", state_id: "\(state_id)", lat: "0.0", lng: "0.0", category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")", subcategory_id: subcat) { (error, success, sucess, message, error1, erroer2) in
-            if sucess == true {
-                print(message)
+        API_Requests.addRequest(description: descrption.text ?? "", city_id: "\(city_id)", state_id: "\(state_id)", lat: "0.0", lng: "0.0", category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")", subcategory_id: subcat, image: requestImage.image ?? #imageLiteral(resourceName: "WhatsApp Image 2019-11-07 at 11.08.38 AM")) { (error, success, sucess, message, error1, erroer2) in
+            if success{
+                if sucess == true {
+                    self.showAlert(title: "", message: "success add Request")
+                }
+            }else{
+                self.showAlert(title: "", message: "check internet connection")
             }
+            HPGradientLoading.shared.dismiss()
         }
     }
     
@@ -184,5 +227,21 @@ extension searchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
         
+    }
+}
+
+extension searchVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.picker_imag = editedImage
+        }else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            self.picker_imag = originalImage
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }

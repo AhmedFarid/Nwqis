@@ -69,5 +69,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>we need to acess you photo library to get photos to your request </string>
+	<key>NSCameraUsageDescription</key>
+	<string>we need to acess you camera to get photos to your request </string>
 </dict>
 </plist>

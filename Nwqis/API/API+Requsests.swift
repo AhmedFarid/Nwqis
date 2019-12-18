@@ -26,7 +26,7 @@ class API_Requsests: NSObject {
         let parameters = [
             "category_id": category_id
         ]
-        
+        print(parameters)
         let headers = [
             "X-localization": lang,
             "Authorization": "Bearer \(user_token)"

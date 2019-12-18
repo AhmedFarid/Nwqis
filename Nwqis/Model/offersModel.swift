@@ -35,10 +35,14 @@ class offersModel: NSObject {
     
 }
 
-//"" : "eu6RtCq0DH",
-//"" : "pLrrslhI67g",
-//"" : "https:\/\/ppt-world.com\/uploads\/offers\/1575466137.jpg",
-//"" : "11",
-//"" : "https:\/\/ppt-world.com\/uploads\/shops\/1576169652.png",
-//"" : 5,
-//"" : "11"
+class myRequests: NSObject {
+    var descriptin: String
+    var image: String
+    init?(dict: [String: JSON]){
+        guard let descriptin = dict["description"]?.string,let image = dict["image"]?.string else {return nil}
+        self.descriptin = descriptin
+        self.image = image
+    }
+}
+
+

@@ -51,23 +51,31 @@ class homeVC: UIViewController {
     }
     
     @objc private func handleRefreshgetcity() {
+        HPGradientLoading.shared.configation.fromColor = .white
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
            API_CityAndAreas.getAllCity{(error: Error?, city: [citysModel]?) in
                if let city = city {
                    self.city = city
                    print("xxx\(self.city)")
                    self.textEnabeld()
                }
+            HPGradientLoading.shared.dismiss()
            }
        }
        
        
        @objc private func handleRefreshgetStates() {
+        HPGradientLoading.shared.configation.fromColor = .white
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
            API_CityAndAreas.getAllStates(city_id: cityId){(error: Error?, status: [statesModel]?) in
                if let status = status {
                    self.status = status
                    print("xxx\(self.status)")
                    self.textEnabeld()
                }
+            HPGradientLoading.shared.dismiss()
            }
        }
        
