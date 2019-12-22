@@ -18,7 +18,7 @@ class myRequDItelsCell: UITableViewCell {
     var message: (()->())?
     
     func configuerCell(prodect: myRequestsDitels) {
-        
+        name.text = prodect.name
         images.image = UIImage(named: "3")
         self.images.layer.cornerRadius = 10.0
         images.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMinXMinYCorner]

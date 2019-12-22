@@ -30,6 +30,14 @@ class myRequestsDitelsVC: UIViewController {
         handleRefreshgetRequestsDitels()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destaiantion = segue.destination as? replayMessageVC{
+            if let sub = sender as? myRequestsDitels{
+                destaiantion.singleItems = sub
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
            navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2588235294, green: 0.4039215686, blue: 0.6980392157, alpha: 1)
            setUpNavColore(false)
@@ -51,7 +59,7 @@ class myRequestsDitelsVC: UIViewController {
     
     func setUpView() {
         descText.text = singleItem?.descriptin
-        
+        catInfoLabel.text = "Request to: \(singleItem?.category_name ?? "") \(singleItem?.subcategory_name ?? "")"
         let x = singleItem?.image ?? ""
         let encodedLinkx = x.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
         let encodedURLx = NSURL(string: encodedLinkx!)! as URL
@@ -65,7 +73,7 @@ class myRequestsDitelsVC: UIViewController {
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
-        API_Requests.getMyRequestsDitels(shortlist_id: "1"){(error: Error?, myRequestsDitel: [myRequestsDitels]?,suceess) in
+        API_Requests.getMyRequestsDitels(shortlist_id: "\(singleItem?.id ?? 0)"){(error: Error?, myRequestsDitel: [myRequestsDitels]?,suceess) in
             if let myRequestsDitel = myRequestsDitel {
                 self.myRequestsDitel = myRequestsDitel
                 print("xxx\(self.myRequestsDitel)")
@@ -94,6 +102,10 @@ extension myRequestsDitelsVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.message = {
                 print("xxxxxx")
+            }
+            
+            cell.message = {
+                self.performSegue(withIdentifier: "messageSuge", sender: self.myRequestsDitel[indexPath.row])
             }
             return cell
         }else {

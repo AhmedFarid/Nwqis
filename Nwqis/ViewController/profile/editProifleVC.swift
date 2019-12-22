@@ -44,6 +44,11 @@ class editProifleVC: UIViewController {
     }
     
     
+    @IBAction func logoutBTN(_ sender: Any) {
+        helperLogin.dleteAPIToken()
+    }
+    
+    
     func setUpNavColore(_ isTranslucent: Bool){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

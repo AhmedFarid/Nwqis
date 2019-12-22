@@ -115,7 +115,7 @@ class API_Requests: NSObject {
         completion(nil,nil,false)
         return
     }
-    let url = URLs.customershortListsDetails
+    let url = URLs.getShopsThatAcceptTheShortlist
     let lang = NSLocalizedString("en", comment: "profuct list lang")
         
         let parameters = [

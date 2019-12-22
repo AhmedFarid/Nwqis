@@ -28,7 +28,10 @@ struct URLs {
     static let searchSubCategory = main + "customer/searchSubCategory"
     static let addShortList = main + "customer/addShortList"
     static let customershortLists = main + "customer/CustomershortLists"
-    static let customershortListsDetails = main + "customer/CustomershortListsDetails"
+    static let getShopsThatAcceptTheShortlist = main + "customer/get_shops_that_accept_the_shortlist"
+    static let customerInboxes = main + "customer/customer_inboxes"
+    static let inboxHistory = main + "customer/inbox_history"
+    static let addCustomerShopInbox = main + "customer/addCustomerShopInbox"
 
 
 }
