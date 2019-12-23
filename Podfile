@@ -15,5 +15,9 @@ target 'Nwqis' do
   pod 'SVProgressHUD'
   pod 'FittedSheets'
   pod 'HPGradientLoading'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
   
 end
