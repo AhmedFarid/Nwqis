@@ -53,6 +53,45 @@ class API_Auth: NSObject {
         
     }
     
+    class func FBLogin(social_id:String, completion: @escaping (_ error: Error?, _ success: Bool, _ status: Bool?)->Void) {
+        
+        let url = URLs.socialLogin
+        print(url)
+        let parameters = [
+            "social_id": social_id
+            ] as [String : Any]
+        
+        let headers = [
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        ]
+        print(parameters)
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: headers) .responseJSON { response in
+            switch response.result
+            {
+            case .failure(let error):
+                completion(error, false,false)
+                print(error)
+                //self.showAlert(title: "Error", message: "\(error)")
+                
+            case .success(let value):
+                let json = JSON(value)
+                print(value)
+                if let access_token = json["access_token"].string {
+                    print("user token \(access_token)")
+                    helperLogin.saveAPIToken(token: access_token)
+                    completion(nil, true,false)
+                }else {
+                    let success = json["success"].bool
+                    print(success ?? "no")
+                    completion(nil,true,success)
+                }
+                
+            }
+        }
+        
+    }
+    
     class func SignUp(fullName:String,phone:String,city_id: String,state_id: String,password: String, email:String, completion: @escaping (_ error: Error?, _ success: Bool, _ status: Bool?,_ phoneError: String?,_ emailError: String?)->Void) {
         
         let url = URLs.Signup

@@ -139,6 +139,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="fbLoginBTN:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjC-ih-rje"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snv-9R-5gu">
                                 <rect key="frame" x="85" y="721.5" width="244" height="36"/>
@@ -674,7 +677,7 @@
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gwr-IA-WSa">
-                            <rect key="frame" x="94" y="0.0" width="229" height="44"/>
+                            <rect key="frame" x="92.5" y="0.0" width="229" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="WhatsApp Image 2019-10-30 at 10.10.13 AM-2">
                                 <color key="titleShadowColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>

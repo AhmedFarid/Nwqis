@@ -32,6 +32,7 @@ struct URLs {
     static let customerInboxes = main + "customer/customer_inboxes"
     static let inboxHistory = main + "customer/inbox_history"
     static let addCustomerShopInbox = main + "customer/addCustomerShopInbox"
+    static let socialLogin = main + "customer/social_login"
 
 
 }

@@ -73,5 +73,32 @@
 	<string>we need to acess you photo library to get photos to your request </string>
 	<key>NSCameraUsageDescription</key>
 	<string>we need to acess you camera to get photos to your request </string>
+    
+    
+
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb2205321109768926</string>
+      </array>
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>2205321109768926</string>
+    <key>FacebookDisplayName</key>
+    <string>Nwqis</string>
+    
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-share-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
+    
+    
 </dict>
 </plist>

@@ -12,14 +12,19 @@ import Firebase
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
+import FacebookCore
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let gcmMessageIDKey = "gcm.message_id"
+    //var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+        
         // [START set_messaging_delegate]
         Messaging.messaging().delegate = self
         // [END set_messaging_delegate]
@@ -47,7 +52,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         BarButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -200, vertical: 0), for:UIBarMetrics.default)
+       
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+
         
+        return true
+    }
+    
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        guard let urlScheme = url.scheme else { return false }
+        if urlScheme.hasPrefix("fb") {
+            return ApplicationDelegate.shared.application(app, open: url, options: options)
+        }
         return true
     }
     
