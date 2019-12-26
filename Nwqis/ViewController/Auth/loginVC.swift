@@ -84,7 +84,7 @@ class loginVC: UIViewController {
                         HPGradientLoading.shared.configation.toColor = .blue
                         HPGradientLoading.shared.showLoading(with: "Loading...")
                         
-                        API_Auth.FBLogin(social_id: id){ (error, suces,success) in
+                        API_Auth.FBLogin(full_name: "\(fname) \(lname)", email: email, social_id: id){ (error, suces,success) in
                             if suces {
                                 if success == true {
                                     print("success")

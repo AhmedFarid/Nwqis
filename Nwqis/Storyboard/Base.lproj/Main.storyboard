@@ -671,11 +671,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ior-qL-DFY">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="Group 219" id="gNg-MB-f9y">
-                            <connections>
-                                <segue destination="Ab7-VI-Ytv" kind="show" id="QZs-YK-beS"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="Group 219" id="gNg-MB-f9y"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gwr-IA-WSa">
                             <rect key="frame" x="92.5" y="0.0" width="229" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -683,21 +679,20 @@
                                 <color key="titleShadowColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="chat" id="dud-uJ-nND">
-                            <connections>
-                                <segue destination="BCU-Hx-QRC" kind="show" id="ZFo-BN-aNZ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="chat" id="dud-uJ-nND"/>
                     </navigationItem>
                     <connections>
                         <outlet property="chooseArea" destination="MZ3-a5-UDx" id="Dod-dv-sBw"/>
                         <outlet property="chooseLocation" destination="GWr-Qr-PBm" id="ELe-nN-sPg"/>
+                        <outlet property="messageBTN" destination="dud-uJ-nND" id="f7j-GH-tQV"/>
                         <outlet property="notCatLabel" destination="XE6-Jh-mQo" id="OLB-Qk-VmM"/>
                         <outlet property="searchTF" destination="lvd-ET-fP3" id="jWn-yc-bTj"/>
                         <outlet property="tabelView" destination="XGK-cn-BaE" id="f60-91-aGJ"/>
                         <segue destination="cx1-Zd-jnk" kind="show" identifier="suge2" id="pRt-pU-Ooa"/>
                         <segue destination="KfS-90-Lv3" kind="show" identifier="suge" id="Nhx-MB-Lr0"/>
                         <segue destination="nAu-MO-c5C" kind="show" identifier="suge3" id="RrG-rY-JpJ"/>
+                        <segue destination="Ab7-VI-Ytv" kind="show" identifier="profileSuge" id="691-TP-qn5"/>
+                        <segue destination="BCU-Hx-QRC" kind="show" identifier="chatSuge" id="a4a-Va-6dJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ntr-9I-FZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

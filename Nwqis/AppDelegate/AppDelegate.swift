@@ -84,6 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("ssssssss\(userInfo)")
     }
     
+    
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // If you are receiving a notification message while your app is in the background,
@@ -144,6 +146,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
+        let application = UIApplication.shared
+        
+        if(application.applicationState == .active){
+          print("user tapped the notification bar when the app is in foreground")
+          
+        }
+        
+        if(application.applicationState == .inactive)
+        {
+          print("user tapped the notification bar when the app is in background")
+        }
+        
         let userInfo = response.notification.request.content.userInfo
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
@@ -162,14 +176,14 @@ extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
         
-        //            API_Notifatction.sendKayFireBase(firebaseToken: fcmToken) { (error, succes, data, states) in
-        //                if succes {
-        //                    if states == true {
-        //                        print(data ?? "")
-        //                    }
-        //                }
-        //            }
-        //
+                    API_Notifactions.sendKayFireBase(firebaseToken: fcmToken) { (error, succes, data, states) in
+                        if succes {
+                            if states == true {
+                                print(data ?? "")
+                            }
+                        }
+                    }
+        
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // TODO: If necessary send token to application server.

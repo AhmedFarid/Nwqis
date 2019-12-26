@@ -11,7 +11,7 @@ import Foundation
 
 struct URLs {
     
-    static let main = "https://ppt-world.com/api/"
+    static let main = "https://nwqis.com/api/"
     
     
     static let Login =  main + "customer/login"
@@ -33,7 +33,9 @@ struct URLs {
     static let inboxHistory = main + "customer/inbox_history"
     static let addCustomerShopInbox = main + "customer/addCustomerShopInbox"
     static let socialLogin = main + "customer/social_login"
-
+    static let updateFirebaseToken = main + "customer/updateFirebaseToken"
+    static let countNewNotifications = main + "customer/countNewNotifications"
+    static let countNewMessages = main + "customer/countNewMessages"
 
 }
 

@@ -53,12 +53,14 @@ class API_Auth: NSObject {
         
     }
     
-    class func FBLogin(social_id:String, completion: @escaping (_ error: Error?, _ success: Bool, _ status: Bool?)->Void) {
+    class func FBLogin(full_name: String,email: String ,social_id:String, completion: @escaping (_ error: Error?, _ success: Bool, _ status: Bool?)->Void) {
         
         let url = URLs.socialLogin
         print(url)
         let parameters = [
-            "social_id": social_id
+            "social_id": social_id,
+            "email": email,
+            "full_name": full_name
             ] as [String : Any]
         
         let headers = [

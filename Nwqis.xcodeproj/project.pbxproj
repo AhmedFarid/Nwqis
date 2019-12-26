@@ -10,6 +10,8 @@
 		4D7B1A14AE6C32178D2AC503 /* Pods_Nwqis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19018E99C0A744C3E8EEBD09 /* Pods_Nwqis.framework */; };
 		6906D38F238430B900CEA89F /* roundedTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906D38E238430B900CEA89F /* roundedTF.swift */; };
 		690BA7B0238E8A67008BD3B5 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690BA7AF238E8A67008BD3B5 /* helper.swift */; };
+		6910EB8F23B39476002630B5 /* BadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910EB8E23B39476002630B5 /* BadgeButton.swift */; };
+		6910EB9123B3ABDA002630B5 /* API+Notifactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910EB9023B3ABDA002630B5 /* API+Notifactions.swift */; };
 		6927FDD923A13FBE00DF3C2B /* cityAndAreasModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927FDD823A13FBE00DF3C2B /* cityAndAreasModel.swift */; };
 		6927FDDB23A1406B00DF3C2B /* API+CityAndAreas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927FDDA23A1406B00DF3C2B /* API+CityAndAreas.swift */; };
 		6927FDDD23A152D900DF3C2B /* categoursSubcategoursModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927FDDC23A152D900DF3C2B /* categoursSubcategoursModel.swift */; };
@@ -68,6 +70,8 @@
 		1B32A4DF77EB2E83938F025F /* Pods-Nwqis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nwqis.debug.xcconfig"; path = "Target Support Files/Pods-Nwqis/Pods-Nwqis.debug.xcconfig"; sourceTree = "<group>"; };
 		6906D38E238430B900CEA89F /* roundedTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roundedTF.swift; sourceTree = "<group>"; };
 		690BA7AF238E8A67008BD3B5 /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
+		6910EB8E23B39476002630B5 /* BadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeButton.swift; sourceTree = "<group>"; };
+		6910EB9023B3ABDA002630B5 /* API+Notifactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Notifactions.swift"; sourceTree = "<group>"; };
 		6927FDD823A13FBE00DF3C2B /* cityAndAreasModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityAndAreasModel.swift; sourceTree = "<group>"; };
 		6927FDDA23A1406B00DF3C2B /* API+CityAndAreas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+CityAndAreas.swift"; sourceTree = "<group>"; };
 		6927FDDC23A152D900DF3C2B /* categoursSubcategoursModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoursSubcategoursModel.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 				69B461DF2386E64100A53D60 /* customRoundView.swift */,
 				69B461E12386EDA100A53D60 /* costomTV.swift */,
 				692A6A9B23AF918300973645 /* rondedSegent.swift */,
+				6910EB8E23B39476002630B5 /* BadgeButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,6 +345,7 @@
 				6978658823A68A4200EDEEB7 /* API+Prfoile.swift */,
 				6959BA6E23A94C38001DB7AF /* API+Requests.swift */,
 				692A6A9F23AFA79400973645 /* API+Messages.swift */,
+				6910EB9023B3ABDA002630B5 /* API+Notifactions.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -523,6 +529,8 @@
 				6978658B23A6921700EDEEB7 /* editProifleVC.swift in Sources */,
 				6986642B2386A6FF00848F61 /* homeVC.swift in Sources */,
 				693488622384040500871ABE /* SceneDelegate.swift in Sources */,
+				6910EB8F23B39476002630B5 /* BadgeButton.swift in Sources */,
+				6910EB9123B3ABDA002630B5 /* API+Notifactions.swift in Sources */,
 				6927FDDF23A154D500DF3C2B /* API+CategoursAndSubCategours.swift in Sources */,
 				69CC0B05239FC78300C7E058 /* API+Auth.swift in Sources */,
 				698421BF23A7E5DF000C63BD /* offersModel.swift in Sources */,

@@ -21,7 +21,8 @@ class homeVC: UIViewController {
     @IBOutlet weak var notCatLabel: UILabel!
     @IBOutlet weak var tabelView: UITableView!
     @IBOutlet weak var searchTF: roundedTF!
-//    @IBOutlet weak var curentLocationOUT: UIButton!
+    //@IBOutlet weak var curentLocationOUT: UIButton!
+    @IBOutlet weak var messageBTN: UIBarButtonItem!
     
     //let locationManager = CLLocationManager()
     var cityId = 0
@@ -29,6 +30,12 @@ class homeVC: UIViewController {
     var city = [citysModel]()
     var status = [statesModel]()
     var categors = [categoriesModel]()
+    var messageCount = 0
+    var requestsCount = 0
+    
+    let MessageBtnBage = BadgedButtonItem(with: UIImage(named: "chat"))
+    let ProfileBtnBage = BadgedButtonItem(with: UIImage(named: "Group 219"))
+    
     
     
     override func viewDidLoad() {
@@ -41,104 +48,137 @@ class homeVC: UIViewController {
         notCatLabel.isHidden = true
         searchTF.clearButtonMode = .always
         createCityPiker()
-
+        
         //getMyLocation()
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         setUpNavColore()
         handleRefreshgetCat(Url: URLs.categories, serchText: "")
-        
+        getCountOfMessages()
+        getCountOfRequests()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getCountOfMessages()
+        getCountOfRequests()
+    }
+    
+    
+    func getCountOfMessages(){
+        API_Notifactions.countNewMessage(url: URLs.countNewMessages) { (error, success, Data, suscess) in
+            self.navigationItem.rightBarButtonItem = self.MessageBtnBage
+            self.MessageBtnBage.setBadge(with: Data ?? 0)
+            self.MessageBtnBage.tapAction = {
+                // do something chatSuge
+                self.performSegue(withIdentifier: "chatSuge", sender: nil)
+            }
+        }
         
     }
+    
+    func getCountOfRequests(){
+        API_Notifactions.countNewMessage(url: URLs.countNewNotifications) { (error, success, Data, suscess) in
+            self.navigationItem.leftBarButtonItem = self.ProfileBtnBage
+            self.ProfileBtnBage.setBadge(with: Data ?? 0)
+            self.ProfileBtnBage.tapAction = {
+                // do something
+                self.performSegue(withIdentifier: "profileSuge", sender: nil)
+                
+            }
+        }
+        
+    }
+    
+    
     
     @objc private func handleRefreshgetcity() {
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
-           API_CityAndAreas.getAllCity{(error: Error?, city: [citysModel]?) in
-               if let city = city {
-                   self.city = city
-                   print("xxx\(self.city)")
-                   self.textEnabeld()
-               }
+        API_CityAndAreas.getAllCity{(error: Error?, city: [citysModel]?) in
+            if let city = city {
+                self.city = city
+                print("xxx\(self.city)")
+                self.textEnabeld()
+            }
             HPGradientLoading.shared.dismiss()
-           }
-       }
-       
-       
-       @objc private func handleRefreshgetStates() {
+        }
+    }
+    
+    
+    @objc private func handleRefreshgetStates() {
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
-           API_CityAndAreas.getAllStates(city_id: cityId){(error: Error?, status: [statesModel]?) in
-               if let status = status {
-                   self.status = status
-                   print("xxx\(self.status)")
-                   self.textEnabeld()
-               }
+        API_CityAndAreas.getAllStates(city_id: cityId){(error: Error?, status: [statesModel]?) in
+            if let status = status {
+                self.status = status
+                print("xxx\(self.status)")
+                self.textEnabeld()
+            }
             HPGradientLoading.shared.dismiss()
-           }
-       }
-       
-       func createToolbar() {
-           
-           let toolBar = UIToolbar()
-           toolBar.sizeToFit()
-           
-           //Customizations
-           toolBar.barTintColor = .black
-           toolBar.tintColor = .white
-           
-           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(registerVC.dismissKeyboard))
-           
-           toolBar.setItems([doneButton], animated: false)
-           toolBar.isUserInteractionEnabled = true
-           
-           chooseLocation.inputAccessoryView = toolBar
-           chooseArea.inputAccessoryView = toolBar
-           
-       }
-       
-       @objc func dismissKeyboard() {
-           view.endEditing(true)
-       }
-       
-       
-       func textEnabeld() {
-           
-           if city.isEmpty == true {
-               chooseLocation.isEnabled = false
-           }else {
-               chooseLocation.isEnabled = true
-           }
-           
-           if status.isEmpty == true {
-               chooseArea.isEnabled = false
-           }else{
-               chooseArea.isEnabled = true
-           }
-       }
-       
-       func createCityPiker(){
-           let citys = UIPickerView()
-           citys.delegate = self
-           citys.dataSource = self
-           citys.tag = 0
-           chooseLocation.inputView = citys
-           handleRefreshgetcity()
-           citys.reloadAllComponents()
-       }
-       
-       func createStatusPiker(){
-           let stauts = UIPickerView()
-           stauts.delegate = self
-           stauts.dataSource = self
-           stauts.tag = 1
-           chooseArea.inputView = stauts
-           handleRefreshgetStates()
-           stauts.reloadAllComponents()
-       }
-       
-       
+        }
+    }
+    
+    func createToolbar() {
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        //Customizations
+        toolBar.barTintColor = .black
+        toolBar.tintColor = .white
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(registerVC.dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        chooseLocation.inputAccessoryView = toolBar
+        chooseArea.inputAccessoryView = toolBar
+        
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    func textEnabeld() {
+        
+        if city.isEmpty == true {
+            chooseLocation.isEnabled = false
+        }else {
+            chooseLocation.isEnabled = true
+        }
+        
+        if status.isEmpty == true {
+            chooseArea.isEnabled = false
+        }else{
+            chooseArea.isEnabled = true
+        }
+    }
+    
+    func createCityPiker(){
+        let citys = UIPickerView()
+        citys.delegate = self
+        citys.dataSource = self
+        citys.tag = 0
+        chooseLocation.inputView = citys
+        handleRefreshgetcity()
+        citys.reloadAllComponents()
+    }
+    
+    func createStatusPiker(){
+        let stauts = UIPickerView()
+        stauts.delegate = self
+        stauts.dataSource = self
+        stauts.tag = 1
+        chooseArea.inputView = stauts
+        handleRefreshgetStates()
+        stauts.reloadAllComponents()
+    }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destaiantion = segue.destination as? subCatVC{
@@ -158,8 +198,8 @@ class homeVC: UIViewController {
     
     @objc private func handleRefreshgetCat(Url:String,serchText: String) {
         HPGradientLoading.shared.configation.fromColor = .white
-               HPGradientLoading.shared.configation.toColor = .blue
-               HPGradientLoading.shared.showLoading(with: "Loading...")
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
         API_CategoursAndSubCategours.getAllCategours(search: serchText, Url:Url){(error: Error?, categors: [categoriesModel]?,suceess) in
             if let categors = categors {
                 self.categors = categors
@@ -186,47 +226,47 @@ class homeVC: UIViewController {
     }
     
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        if helperAddress.getAddresss().area != nil {
-//            self.curentLocationOUT.setTitle("\(helperAddress.getAddresss().streetAddresss ?? "") \(helperAddress.getAddresss().area ?? "") ", for: .normal)
-//        }else {
-//            self.curentLocationOUT.setTitle("Add Location ", for: .normal)
-//        }
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        if helperAddress.getAddresss().area != nil {
+    //            self.curentLocationOUT.setTitle("\(helperAddress.getAddresss().streetAddresss ?? "") \(helperAddress.getAddresss().area ?? "") ", for: .normal)
+    //        }else {
+    //            self.curentLocationOUT.setTitle("Add Location ", for: .normal)
+    //        }
+    //    }
     
-//    func convertLatLongToAddress(latitude:Double,longitude:Double){
-//        let location = CLLocation(latitude: latitude, longitude: longitude)
-//        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-//            if error != nil {
-//                HPGradientLoading.shared.dismiss()
-//                self.showAlert(title: "Error", message: "Error to get your location")
-//                return
-//            }
-//            if (placemarks?.count)! > 0 {
-//                let pm = placemarks?[0] as CLPlacemark?
-//                helperAddress.saveNewAddress(city: pm?.administrativeArea ?? "", area: pm?.locality ?? "", zone: pm?.subLocality ?? "", streetAddresss: "\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "")", lat: "\(latitude)", long: "\(longitude)")
-//                print("\(String(describing: helperAddress.getAddresss().area))\(helperAddress.getAddresss().city ?? "")\(helperAddress.getAddresss().lat ?? "")")
-//                self.curentLocationOUT.setTitle("\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "") \(pm?.locality ?? "") \(pm?.country ?? "") ", for: .normal)
-//                HPGradientLoading.shared.dismiss()
-//            }else {
-//                print("error2")
-//            }
-//        })
-//    }
-//
-//
-//    func getMyLocation(){
-//        HPGradientLoading.shared.configation.fromColor = .white
-//        HPGradientLoading.shared.configation.toColor = .blue
-//        HPGradientLoading.shared.showLoading(with: "Loading...")
-//        self.locationManager.requestAlwaysAuthorization()
-//        self.locationManager.requestWhenInUseAuthorization()
-//        if CLLocationManager.locationServicesEnabled() {
-//            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-//            self.locationManager.startUpdatingLocation()
-//        }
-//        //
-//    }
+    //    func convertLatLongToAddress(latitude:Double,longitude:Double){
+    //        let location = CLLocation(latitude: latitude, longitude: longitude)
+    //        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+    //            if error != nil {
+    //                HPGradientLoading.shared.dismiss()
+    //                self.showAlert(title: "Error", message: "Error to get your location")
+    //                return
+    //            }
+    //            if (placemarks?.count)! > 0 {
+    //                let pm = placemarks?[0] as CLPlacemark?
+    //                helperAddress.saveNewAddress(city: pm?.administrativeArea ?? "", area: pm?.locality ?? "", zone: pm?.subLocality ?? "", streetAddresss: "\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "")", lat: "\(latitude)", long: "\(longitude)")
+    //                print("\(String(describing: helperAddress.getAddresss().area))\(helperAddress.getAddresss().city ?? "")\(helperAddress.getAddresss().lat ?? "")")
+    //                self.curentLocationOUT.setTitle("\(pm?.subThoroughfare ?? "") \(pm?.thoroughfare ?? "") \(pm?.locality ?? "") \(pm?.country ?? "") ", for: .normal)
+    //                HPGradientLoading.shared.dismiss()
+    //            }else {
+    //                print("error2")
+    //            }
+    //        })
+    //    }
+    //
+    //
+    //    func getMyLocation(){
+    //        HPGradientLoading.shared.configation.fromColor = .white
+    //        HPGradientLoading.shared.configation.toColor = .blue
+    //        HPGradientLoading.shared.showLoading(with: "Loading...")
+    //        self.locationManager.requestAlwaysAuthorization()
+    //        self.locationManager.requestWhenInUseAuthorization()
+    //        if CLLocationManager.locationServicesEnabled() {
+    //            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+    //            self.locationManager.startUpdatingLocation()
+    //        }
+    //        //
+    //    }
     
     func imageText() {
         if let myImage = UIImage(named: "icon_search"){
@@ -234,28 +274,28 @@ class homeVC: UIViewController {
         }
     }
     
-//    @IBAction func getMyLocation(_ sender: Any) {
-//        let actionSheetController = UIAlertController(title: "Select Location", message: nil, preferredStyle: .actionSheet)
-//
-//
-//        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
-//        }
-//        actionSheetController.addAction(cancelActionButton)
-//
-//        let currentLocationActionButton = UIAlertAction(title: "Current location", style: .default) { action -> Void in
-//
-//            self.getMyLocation()
-//        }
-//        actionSheetController.addAction(currentLocationActionButton)
-//
-//        let addAnAddressActionButton = UIAlertAction(title: "Add an address", style: .default) { action -> Void in
-//            self.performSegue(withIdentifier: "suge2", sender: nil)
-//        }
-//        actionSheetController.addAction(addAnAddressActionButton)
-//
-//        self.present(actionSheetController, animated: true, completion: nil)
-//
-//    }
+    //    @IBAction func getMyLocation(_ sender: Any) {
+    //        let actionSheetController = UIAlertController(title: "Select Location", message: nil, preferredStyle: .actionSheet)
+    //
+    //
+    //        let cancelActionButton = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+    //        }
+    //        actionSheetController.addAction(cancelActionButton)
+    //
+    //        let currentLocationActionButton = UIAlertAction(title: "Current location", style: .default) { action -> Void in
+    //
+    //            self.getMyLocation()
+    //        }
+    //        actionSheetController.addAction(currentLocationActionButton)
+    //
+    //        let addAnAddressActionButton = UIAlertAction(title: "Add an address", style: .default) { action -> Void in
+    //            self.performSegue(withIdentifier: "suge2", sender: nil)
+    //        }
+    //        actionSheetController.addAction(addAnAddressActionButton)
+    //
+    //        self.present(actionSheetController, animated: true, completion: nil)
+    //
+    //    }
 }
 
 extension homeVC: UITableViewDelegate,UITableViewDataSource {
@@ -327,9 +367,9 @@ extension homeVC: UITextFieldDelegate{
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-          handleRefreshgetCat(Url: URLs.categories, serchText: searchTF.text ?? "")
-            
-      return true
+        handleRefreshgetCat(Url: URLs.categories, serchText: searchTF.text ?? "")
+        
+        return true
     }
 }
 
