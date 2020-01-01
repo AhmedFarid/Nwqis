@@ -29,6 +29,7 @@ class registerVC: UIViewController {
         imageText()
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         createCityPiker()
+        textEnabeld()
         
     }
     

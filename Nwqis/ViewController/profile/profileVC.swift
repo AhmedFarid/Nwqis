@@ -27,6 +27,8 @@ class profileVC: UIViewController {
     var phone = ""
     var name = ""
     var catId = 0
+    var cityId = 0
+    var statsID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,6 +149,8 @@ class profileVC: UIViewController {
             destaiantion.email = email
             destaiantion.fullName = name
             destaiantion.phone = phone
+            destaiantion.cittid = cityId
+            destaiantion.statId = statsID
         }else if let destaiantion = segue.destination as? myRequestsDitelsVC {
             if let sub = sender as? myRequests{
                 destaiantion.singleItem = sub
@@ -159,13 +163,16 @@ class profileVC: UIViewController {
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
         
-        API_Prfoile.getMyProfile{(error: Error?,successConnction,success,full_name,email,phone) in
+        API_Prfoile.getMyProfile{(error: Error?,successConnction,success,full_name,email,phone,city_id,state_id) in
             if success == true {
                 self.emailLb.text = email
                 self.nameLb.text = full_name
                 self.email = email ?? ""
                 self.phone = phone ?? ""
                 self.name = full_name ?? ""
+                self.cityId = city_id ?? 0
+                self.statsID = state_id ?? 0
+                print(state_id ?? 0)
             }else {
                 self.showAlert(title: "Internet Connection", message: "check internet connection")
             }

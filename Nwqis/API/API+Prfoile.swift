@@ -12,11 +12,11 @@ import SwiftyJSON
 
 class API_Prfoile: NSObject {
     
-    class func getMyProfile(completion: @escaping (_ error: Error?, _ success: Bool,_ successs: Bool?, _ full_name: String?, _ email: String?, _ phone: String?)->Void) {
+    class func getMyProfile(completion: @escaping (_ error: Error?, _ success: Bool,_ successs: Bool?, _ full_name: String?, _ email: String?, _ phone: String?,_ city_id: Int?,_ state_id: Int? )->Void) {
         
         
         guard let user_token = helperLogin.getAPIToken() else {
-            completion(nil,false,false,nil,nil,nil)
+            completion(nil,false,false,nil,nil,nil,nil,nil)
             return
         }
         
@@ -35,7 +35,7 @@ class API_Prfoile: NSObject {
             switch response.result
             {
             case .failure(let error):
-                completion(error, false,false,nil,nil,nil)
+                completion(error, false,false,nil,nil,nil,nil,nil)
                 print(error)
                 //self.showAlert(title: "Error", message: "\(error)")
                 
@@ -47,13 +47,15 @@ class API_Prfoile: NSObject {
                     let full_name = json["data"]["full_name"].string
                     let email = json["data"]["email"].string
                     let phone = json["data"]["phone"].string
-                    completion(nil,true,success,full_name,email,phone)
+                    let state_id = json["data"]["state_id"].int
+                    let city_id = json["data"]["city_id"].int
+                    completion(nil,true,success,full_name,email,phone,city_id,state_id)
                 }
             }
         }
     }
     
-    class func updateProfile(email: String,phone: String,full_name: String,completion: @escaping (_ error: Error?, _ success: Bool,_ successs: Bool?,_ message: String?,_ phoneError: String?,_ emailError: String?)->Void) {
+    class func updateProfile(cityID: Int,state_id: Int,email: String,phone: String,full_name: String,completion: @escaping (_ error: Error?, _ success: Bool,_ successs: Bool?,_ message: String?,_ phoneError: String?,_ emailError: String?)->Void) {
            
            
            guard let user_token = helperLogin.getAPIToken() else {
@@ -70,12 +72,12 @@ class API_Prfoile: NSObject {
             "email": email,
             "phone": phone,
             "full_name": full_name,
-            "city_id": "1",
-            "state_id": "1",
+//            "city_id": cityID,
+//            "state_id": state_id,
             "lat": "",
             "lng": ""
-        ]
-           
+            ] as [String : Any]
+           print(parameters)
            let headers = [
                "X-localization": lang,
                "Authorization": "Bearer \(user_token)"

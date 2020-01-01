@@ -20,6 +20,8 @@ class editProifleVC: UIViewController {
     var email = ""
     var fullName = ""
     var phone = ""
+    var cittid = 0
+    var statId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +99,7 @@ class editProifleVC: UIViewController {
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
         
-        API_Prfoile.updateProfile(email: emailTF.text ?? "", phone: phoneTF.text ?? "", full_name: fullnameTF.text ?? ""){(error: Error?,successConnction,success,message,errorPhone,emailError) in 
+        API_Prfoile.updateProfile(cityID: cittid, state_id: statId, email: emailTF.text ?? "", phone: phoneTF.text ?? "", full_name: fullnameTF.text ?? ""){(error: Error?,successConnction,success,message,errorPhone,emailError) in
             if successConnction {
                 if success == true {
                     self.showAlert(title: "Update", message: "\(message ?? "")")
