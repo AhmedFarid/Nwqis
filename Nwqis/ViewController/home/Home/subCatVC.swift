@@ -55,12 +55,16 @@ class subCatVC: UIViewController {
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
-        API_CategoursAndSubCategours.getAllSubCategours(search: search, Url: url, category_id: singleItem?.id ?? 0){(error: Error?, Subcategor: [SubcategoriesModel]?,suceess) in
-            if let Subcategor = Subcategor {
-                self.Subcategor = Subcategor
-                print("xxx\(self.Subcategor)")
-                self.tableView.reloadData()
-                
+        API_CategoursAndSubCategours.getAllSubCategours(search: search, Url: url, category_id: singleItem?.id ?? 0){(error: Error?, Subcategor: [SubcategoriesModel]?,suceess,data) in
+            if suceess == true {
+                if let Subcategor = Subcategor {
+                    self.Subcategor = Subcategor
+                    print("xxx\(self.Subcategor)")
+                    self.tableView.reloadData()
+                    
+                }
+            }else {
+                self.showAlert(title: "", message: data ?? "")
             }
             HPGradientLoading.shared.dismiss()
             

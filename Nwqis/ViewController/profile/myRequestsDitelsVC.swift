@@ -12,13 +12,14 @@ import HPGradientLoading
 class myRequestsDitelsVC: UIViewController {
     
     @IBOutlet weak var catInfoLabel: UILabel!
-    @IBOutlet weak var descText: UITextView!
+    @IBOutlet weak var descText: UILabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var tabelView: UITableView!
+    @IBOutlet weak var hightContrines: NSLayoutConstraint!
     
     var myRequestsDitel = [myRequestsDitels]()
     var singleItem: myRequests?
-    
+    var TabelHight: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,9 @@ class myRequestsDitelsVC: UIViewController {
        }
     
     func setUpView() {
+        image.layer.cornerRadius = 5
+        image.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        image.layer.borderWidth = 1
         descText.text = singleItem?.descriptin
         catInfoLabel.text = "Request to: \(singleItem?.category_name ?? "") \(singleItem?.subcategory_name ?? "")"
         let x = singleItem?.image ?? ""
@@ -78,7 +82,11 @@ class myRequestsDitelsVC: UIViewController {
                 self.myRequestsDitel = myRequestsDitel
                 print("xxx\(self.myRequestsDitel)")
                 self.tabelView.reloadData()
+                
             }
+            
+            self.hightContrines.constant = self.descText.frame.height + (self.TabelHight ?? 0.0) * CGFloat(self.myRequestsDitel.count)
+            self.view.layoutIfNeeded()
             HPGradientLoading.shared.dismiss()
         }
     }
@@ -94,6 +102,7 @@ extension myRequestsDitelsVC: UITableViewDelegate, UITableViewDataSource {
         if let cell = tabelView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? myRequDItelsCell {
             let cat = myRequestsDitel[indexPath.row]
             cell.configuerCell(prodect: cat)
+            TabelHight = cell.bounds.height
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.call = {
                 guard let number = URL(string: "tel://" + self.myRequestsDitel[indexPath.row].phone) else { return }

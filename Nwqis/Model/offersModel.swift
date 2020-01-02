@@ -5,6 +5,14 @@
 //  Created by Farido on 12/16/19.
 //  Copyright © 2019 Farido. All rights reserved.
 //
+//
+//"description" : "offers",
+// "shop_image" : "https:\/\/nwqis.com\/uploads\/shops\/1577803551.jpg",
+// "old_price" : null,
+// "title" : "offers",
+// "id" : 4,
+// "image" : "https:\/\/nwqis.com\/uploads\/offers\/1577976130.png",
+// "new_price" : null
 
 import UIKit
 import SwiftyJSON
@@ -13,20 +21,20 @@ class offersModel: NSObject {
     
     var shop_image: String
     var image: String
-    var new_price: String
-    var old_price: String
+    //var new_price: String
+    //var old_price: String
     var descriptin: String
     var id: Int
     var title: String
     
     init?(dict: [String: JSON]){
         
-        guard let shop_image = dict["shop_image"]?.string,let image = dict["image"]?.string, let new_price = dict["new_price"]?.string, let old_price = dict["old_price"]?.string, let descriptin = dict["description"]?.string, let id = dict["id"]?.int, let title = dict["title"]?.string else {return nil}
+        guard let shop_image = dict["shop_image"]?.string,let image = dict["image"]?.string, let descriptin = dict["description"]?.string, let id = dict["id"]?.int, let title = dict["title"]?.string else {return nil}
         
         self.shop_image = shop_image
         self.image = image
-        self.new_price = new_price
-        self.old_price = old_price
+        //self.new_price = new_price
+        //self.old_price = old_price
         self.descriptin = descriptin
         self.id = id
         self.title = title

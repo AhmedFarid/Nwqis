@@ -86,6 +86,14 @@ class searchVC: UIViewController {
     
     
     @IBAction func sendBTN(_ sender: Any) {
+        
+        guard let descrpti = descrption.text, !descrpti.isEmpty else {
+                   let messages = NSLocalizedString("enter description", comment: "hhhh")
+                   let title = NSLocalizedString("Request", comment: "hhhh")
+                   self.showAlert(title: title, message: messages)
+                   return
+               }
+        
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
@@ -96,10 +104,14 @@ class searchVC: UIViewController {
             subcat = "\(singleItem?.id ?? 0)"
         }
         
-        API_Requests.addRequest(description: descrption.text ?? "", city_id: "\(city_id)", state_id: "\(state_id)", lat: "0.0", lng: "0.0", category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")", subcategory_id: subcat, image: requestImage.image ?? #imageLiteral(resourceName: "WhatsApp Image 2019-11-07 at 11.08.38 AM")) { (error, success, sucess, message, error1, erroer2) in
+       
+        
+        API_Requests.addRequest(description: descrpti, city_id: "\(city_id)", state_id: "\(state_id)", lat: "0.0", lng: "0.0", category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")", subcategory_id: subcat, image: requestImage.image ?? #imageLiteral(resourceName: "WhatsApp Image 2019-11-07 at 11.08.38 AM")) { (error, success, sucess, message, error1, erroer2) in
             if success{
                 if sucess == true {
                     self.showAlert(title: "", message: "success add Request")
+                    self.descrption.text = ""
+                    self.requestImage.isHidden = true
                 }
             }else{
                 self.showAlert(title: "", message: "check internet connection")
@@ -209,12 +221,12 @@ extension searchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size
-        return CGSize(width: size.width - 50, height: size.height)
+        return CGSize(width: size.width, height: size.height)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
     }
     

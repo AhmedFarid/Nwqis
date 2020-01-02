@@ -29,7 +29,7 @@ class downCategourysVC: UIViewController {
         HPGradientLoading.shared.configation.fromColor = .white
                HPGradientLoading.shared.configation.toColor = .blue
                HPGradientLoading.shared.showLoading(with: "Loading...")
-        API_CategoursAndSubCategours.getAllCategours(search: "", Url:URLs.categories){(error: Error?, categors: [categoriesModel]?,suceess) in
+        API_CategoursAndSubCategours.getAllCategours(search: "", Url:URLs.categories){(error: Error?, categors: [categoriesModel]?,suceess,data) in
             if let categors = categors {
                 self.categors = categors
                 print("xxx\(self.categors)")

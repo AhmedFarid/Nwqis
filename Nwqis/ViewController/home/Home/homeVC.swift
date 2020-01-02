@@ -200,12 +200,16 @@ class homeVC: UIViewController {
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
-        API_CategoursAndSubCategours.getAllCategours(search: serchText, Url:Url){(error: Error?, categors: [categoriesModel]?,suceess) in
+        API_CategoursAndSubCategours.getAllCategours(search: serchText, Url:Url){(error: Error?, categors: [categoriesModel]?,suceess,data) in
+            if suceess == true {
             if let categors = categors {
                 self.categors = categors
                 print("xxx\(self.categors)")
                 self.tabelView.reloadData()
             }
+            }else {
+                self.showAlert(title: "", message: data ?? "")
+                }
             HPGradientLoading.shared.dismiss()
             
             if categors?.count == 0 {
@@ -367,8 +371,8 @@ extension homeVC: UITextFieldDelegate{
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        handleRefreshgetCat(Url: URLs.categories, serchText: searchTF.text ?? "")
-        
+        guard let search = searchTF.text?.trimmed, !search.isEmpty else { return false}
+        handleRefreshgetCat(Url: URLs.categories, serchText: search)
         return true
     }
 }
@@ -411,5 +415,11 @@ extension homeVC: UIPickerViewDelegate, UIPickerViewDataSource {
             statusID = status[row].id
         }
         
+    }
+}
+
+extension String {
+    var trimmed: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
