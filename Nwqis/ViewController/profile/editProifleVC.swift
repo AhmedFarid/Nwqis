@@ -23,6 +23,7 @@ class editProifleVC: UIViewController {
     var phone = ""
     var cittid = 0
     var statId = 0
+    var profileImage: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,15 @@ class editProifleVC: UIViewController {
         phoneTF.text = phone
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
     }
+    
+    var picker_imag: UIImage? {
+        didSet{
+            guard let image = picker_imag else {return}
+            profilImage.isHidden = false
+            self.profilImage.image = image
+        }
+    }
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +74,28 @@ class editProifleVC: UIViewController {
     
     
     @IBAction func uploadIamgeBTN(_ sender: Any) {
+        let piker = UIImagePickerController()
+        piker.allowsEditing = true
+        piker.sourceType = .photoLibrary
+        piker.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Chose A Source", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                piker.sourceType = .camera
+                self.present(piker, animated: true, completion: nil)
+            }else {
+                print("notFound")
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            piker.sourceType = .photoLibrary
+            self.present(piker, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+        
     }
     
     
@@ -107,7 +139,7 @@ class editProifleVC: UIViewController {
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
         
-        API_Prfoile.updateProfile(cityID: cittid, state_id: statId, email: emailTF.text ?? "", phone: phoneTF.text ?? "", full_name: fullnameTF.text ?? ""){(error: Error?,successConnction,success,message,errorPhone,emailError) in
+        API_Prfoile.updateProfile(cityID: cittid, state_id: statId, email: emailTF.text ?? "", phone: phoneTF.text ?? "", full_name: fullnameTF.text ?? "", image: profilImage.image ?? profileImage?.image ?? #imageLiteral(resourceName: "Group 1227")){(error: Error?,successConnction,success,message,errorPhone,emailError) in
             if successConnction {
                 if success == true {
                     self.showAlert(title: "Update", message: "\(message ?? "")")
@@ -136,5 +168,21 @@ class editProifleVC: UIViewController {
         print("\(isValid)")
         
         return isValid
+    }
+}
+
+extension editProifleVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.picker_imag = editedImage
+        }else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            self.picker_imag = originalImage
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }

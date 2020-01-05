@@ -19,6 +19,7 @@ class profileVC: UIViewController {
     @IBOutlet weak var offersLabel: UILabel!
     @IBOutlet weak var segmentView: UISegmentedControl!
     @IBOutlet weak var myRequestsTabelView: UITableView!
+    @IBOutlet weak var profieImage: UIImageView!
     
     var offers = [offersModel]()
     var myRequest = [myRequests]()
@@ -43,6 +44,7 @@ class profileVC: UIViewController {
         tableView.isHidden = true
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         setupSegment()
+        profieImage.layer.cornerRadius = profieImage.bounds.height / 2
     }
     
     
@@ -151,6 +153,7 @@ class profileVC: UIViewController {
             destaiantion.phone = phone
             destaiantion.cittid = cityId
             destaiantion.statId = statsID
+            destaiantion.profileImage = profieImage
         }else if let destaiantion = segue.destination as? myRequestsDitelsVC {
             if let sub = sender as? myRequests{
                 destaiantion.singleItem = sub
@@ -163,7 +166,7 @@ class profileVC: UIViewController {
         HPGradientLoading.shared.configation.toColor = .blue
         HPGradientLoading.shared.showLoading(with: "Loading...")
         
-        API_Prfoile.getMyProfile{(error: Error?,successConnction,success,full_name,email,phone,city_id,state_id) in
+        API_Prfoile.getMyProfile{(error: Error?,successConnction,success,full_name,email,phone,city_id,state_id,image_path) in
             if success == true {
                 self.emailLb.text = email
                 self.nameLb.text = full_name
@@ -172,6 +175,15 @@ class profileVC: UIViewController {
                 self.name = full_name ?? ""
                 self.cityId = city_id ?? 0
                 self.statsID = state_id ?? 0
+                self.profieImage.image = UIImage(named: "3")
+                let s = image_path
+                let encodedLink = s?.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
+                let encodedURL = NSURL(string: encodedLink!)! as URL
+                self.profieImage.kf.indicatorType = .activity
+                if let url = URL(string: "\(encodedURL)") {
+                    print("g\(url)")
+                    self.profieImage.kf.setImage(with: url)
+                }
                 print(state_id ?? 0)
             }else {
                 self.showAlert(title: "Internet Connection", message: "check internet connection")

@@ -16,8 +16,9 @@ class homeVC: UIViewController {
     var percent: CGFloat = 0
     var timer: Timer? = Timer()
     
-    @IBOutlet weak var chooseArea: roundedTF!
-    @IBOutlet weak var chooseLocation: roundedTF!
+    @IBOutlet weak var locationBtn: UIButton!
+    //    @IBOutlet weak var chooseArea: roundedTF!
+    //    @IBOutlet weak var chooseLocation: roundedTF!
     @IBOutlet weak var notCatLabel: UILabel!
     @IBOutlet weak var tabelView: UITableView!
     @IBOutlet weak var searchTF: roundedTF!
@@ -27,8 +28,7 @@ class homeVC: UIViewController {
     //let locationManager = CLLocationManager()
     var cityId = 0
     var statusID = 0
-    var city = [citysModel]()
-    var status = [statesModel]()
+    
     var categors = [categoriesModel]()
     var messageCount = 0
     var requestsCount = 0
@@ -47,7 +47,7 @@ class homeVC: UIViewController {
         //locationManager.delegate = self
         notCatLabel.isHidden = true
         searchTF.clearButtonMode = .always
-        createCityPiker()
+        //createCityPiker()
         
         //getMyLocation()
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
@@ -90,93 +90,66 @@ class homeVC: UIViewController {
     
     
     
-    @objc private func handleRefreshgetcity() {
-        HPGradientLoading.shared.configation.fromColor = .white
-        HPGradientLoading.shared.configation.toColor = .blue
-        HPGradientLoading.shared.showLoading(with: "Loading...")
-        API_CityAndAreas.getAllCity{(error: Error?, city: [citysModel]?) in
-            if let city = city {
-                self.city = city
-                print("xxx\(self.city)")
-                self.textEnabeld()
-            }
-            HPGradientLoading.shared.dismiss()
-        }
-    }
     
     
-    @objc private func handleRefreshgetStates() {
-        HPGradientLoading.shared.configation.fromColor = .white
-        HPGradientLoading.shared.configation.toColor = .blue
-        HPGradientLoading.shared.showLoading(with: "Loading...")
-        API_CityAndAreas.getAllStates(city_id: cityId){(error: Error?, status: [statesModel]?) in
-            if let status = status {
-                self.status = status
-                print("xxx\(self.status)")
-                self.textEnabeld()
-            }
-            HPGradientLoading.shared.dismiss()
-        }
-    }
+    //    func createToolbar() {
+    //
+    //        let toolBar = UIToolbar()
+    //        toolBar.sizeToFit()
+    //
+    //        //Customizations
+    //        toolBar.barTintColor = .black
+    //        toolBar.tintColor = .white
+    //
+    //        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(registerVC.dismissKeyboard))
+    //
+    //        toolBar.setItems([doneButton], animated: false)
+    //        toolBar.isUserInteractionEnabled = true
+    //
+    //        chooseLocation.inputAccessoryView = toolBar
+    //        chooseArea.inputAccessoryView = toolBar
+    //
+    //    }
     
-    func createToolbar() {
-        
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        
-        //Customizations
-        toolBar.barTintColor = .black
-        toolBar.tintColor = .white
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(registerVC.dismissKeyboard))
-        
-        toolBar.setItems([doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
-        chooseLocation.inputAccessoryView = toolBar
-        chooseArea.inputAccessoryView = toolBar
-        
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+    //    @objc func dismissKeyboard() {
+    //        view.endEditing(true)
+    //    }
     
     
-    func textEnabeld() {
-        
-        if city.isEmpty == true {
-            chooseLocation.isEnabled = false
-        }else {
-            chooseLocation.isEnabled = true
-        }
-        
-        if status.isEmpty == true {
-            chooseArea.isEnabled = false
-        }else{
-            chooseArea.isEnabled = true
-        }
-    }
-    
-    func createCityPiker(){
-        let citys = UIPickerView()
-        citys.delegate = self
-        citys.dataSource = self
-        citys.tag = 0
-        chooseLocation.inputView = citys
-        handleRefreshgetcity()
-        citys.reloadAllComponents()
-    }
-    
-    func createStatusPiker(){
-        let stauts = UIPickerView()
-        stauts.delegate = self
-        stauts.dataSource = self
-        stauts.tag = 1
-        chooseArea.inputView = stauts
-        handleRefreshgetStates()
-        stauts.reloadAllComponents()
-    }
+    //    func textEnabeld() {
+    //
+    //        if city.isEmpty == true {
+    //            chooseLocation.isEnabled = false
+    //        }else {
+    //            chooseLocation.isEnabled = true
+    //        }
+    //
+    //        if status.isEmpty == true {
+    //            chooseArea.isEnabled = false
+    //        }else{
+    //            chooseArea.isEnabled = true
+    //        }
+    //    }
+    //
+    //    func createCityPiker(){
+    //        let citys = UIPickerView()
+    //        citys.delegate = self
+    //        citys.dataSource = self
+    //        citys.tag = 0
+    //        chooseLocation.inputView = citys
+    //        handleRefreshgetcity()
+    //        citys.reloadAllComponents()
+    //    }
+    //
+    //    func createStatusPiker(){
+    //        let stauts = UIPickerView()
+    //        stauts.delegate = self
+    //        stauts.dataSource = self
+    //        stauts.tag = 1
+    //        chooseArea.inputView = stauts
+    //        handleRefreshgetStates()
+    //        stauts.reloadAllComponents()
+    //    }
     
     
     
@@ -193,6 +166,8 @@ class homeVC: UIViewController {
             }
             destaiantion.city_id = cityId
             destaiantion.state_id = statusID
+        }else if let destaiantion = segue.destination as? cityVC {
+            destaiantion.delegate = self
         }
     }
     
@@ -202,14 +177,14 @@ class homeVC: UIViewController {
         HPGradientLoading.shared.showLoading(with: "Loading...")
         API_CategoursAndSubCategours.getAllCategours(search: serchText, Url:Url){(error: Error?, categors: [categoriesModel]?,suceess,data) in
             if suceess == true {
-            if let categors = categors {
-                self.categors = categors
-                print("xxx\(self.categors)")
-                self.tabelView.reloadData()
-            }
-            }else {
-                self.showAlert(title: "", message: data ?? "")
+                if let categors = categors {
+                    self.categors = categors
+                    print("xxx\(self.categors)")
+                    self.tabelView.reloadData()
                 }
+            }else {
+                self.showAlert(title: "", message: data ?? "check internet connection")
+            }
             HPGradientLoading.shared.dismiss()
             
             if categors?.count == 0 {
@@ -300,6 +275,17 @@ class homeVC: UIViewController {
     //        self.present(actionSheetController, animated: true, completion: nil)
     //
     //    }
+    
+    @IBAction func showaddressBTn(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "sutus") as! cityVC
+        let navigationController = UINavigationController(rootViewController: vc)
+        //let vcs = self.storyboard?.instantiateViewController(withIdentifier: "sutus2") as! statusVC
+        vc.delegate = self
+        self.present(navigationController, animated: true, completion: nil)
+        
+        
+    }
 }
 
 extension homeVC: UITableViewDelegate,UITableViewDataSource {
@@ -321,7 +307,7 @@ extension homeVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard chooseArea.text?.isEmpty == false else{
+        guard statusID != 0 else{
             showAlert(title: "Error", message: "choose area please")
             return
         }
@@ -377,49 +363,59 @@ extension homeVC: UITextFieldDelegate{
     }
 }
 
-extension homeVC: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        if pickerView.tag == 0{
-            return 1
-        }else {
-            return 1
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 0{
-            return city.count
-        }else {
-            return status.count
-        }
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == 0{
-            return city[row].name
-        }else{
-            return status[row].name
-        }
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 0{
-            chooseLocation.text = city[row].name
-            cityId = city[row].id
-            createStatusPiker()
-            //self.view.endEditing(false)
-        }else {
-            chooseArea.text = status[row].name
-            statusID = status[row].id
-        }
-        
-    }
-}
+//extension homeVC: UIPickerViewDelegate, UIPickerViewDataSource {
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        if pickerView.tag == 0{
+//            return 1
+//        }else {
+//            return 1
+//        }
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        if pickerView.tag == 0{
+//            return city.count
+//        }else {
+//            return status.count
+//        }
+//    }
+//
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        if pickerView.tag == 0{
+//            return city[row].name
+//        }else{
+//            return status[row].name
+//        }
+//
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        if pickerView.tag == 0{
+//            chooseLocation.text = city[row].name
+//            cityId = city[row].id
+//            createStatusPiker()
+//            //self.view.endEditing(false)
+//        }else {
+//            chooseArea.text = status[row].name
+//            statusID = status[row].id
+//        }
+//
+//    }
+//}
 
 extension String {
     var trimmed: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+
+extension homeVC: addressDeleget{
+    func filterValueSelectedAddress(cityId: Int, StutsId: Int, title: String) {
+        self.cityId = cityId
+        self.statusID = StutsId
+        print(statusID)
+        print(StutsId)
+        self.locationBtn.setTitle(title, for: .normal)
     }
 }

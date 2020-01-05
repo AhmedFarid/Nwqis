@@ -18,7 +18,10 @@ class searchVC: UIViewController {
     @IBOutlet weak var requestImage: UIImageView!
     
     var timer = Timer()
+    var currentIndex = 0
     var counter = 0
+    
+    
     var city_id = 0
     var state_id = 0
     var subcat = ""
@@ -47,6 +50,7 @@ class searchVC: UIViewController {
         
         self.navigationItem.title = ("\(singleItem?.name ?? "")\(singelItems?.name ?? "")")
         handleRefreshgetBanner()
+        startTimer()
     }
     
     
@@ -128,32 +132,33 @@ class searchVC: UIViewController {
                 self.collectionView.reloadData()
                 self.pageview.numberOfPages =  banner.count
                 self.pageview.currentPage = 0
-                if banner.count != 0{
-                    DispatchQueue.main.async {
-                        self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
-                    }
-                    
-                }
             }
         }
     }
     
-    
-    @objc func changeImage() {
-        if counter < 10 {
-            let index = IndexPath.init(item: counter, section: 0)
-            self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
-            pageview.currentPage = counter
-            counter += 1
-        } else {
-            counter = 0
-            let index = IndexPath.init(item: counter, section: 0)
-            self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
-            pageview.currentPage = counter
-            counter = 1
+    func startTimer(){
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
         }
-        
     }
+    
+        @objc func changeImage() {
+            
+            if currentIndex < banner.count {
+                let index = IndexPath.init(item: currentIndex, section: 0)
+                self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+                pageview.currentPage = currentIndex
+                currentIndex += 1
+            } else {
+                currentIndex = 0
+                let index = IndexPath.init(item: currentIndex, section: 0)
+                self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
+                pageview.currentPage = currentIndex
+                currentIndex = 1
+            }
+            
+        }
+    
     
     
     func navTitleWithImageAndText(titleText: String, imageName: String) -> UIView {
@@ -222,23 +227,6 @@ extension searchVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size
         return CGSize(width: size.width, height: size.height)
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 10.0
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10.0
-        
     }
 }
 
