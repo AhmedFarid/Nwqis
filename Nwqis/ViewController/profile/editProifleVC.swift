@@ -16,6 +16,7 @@ class editProifleVC: UIViewController {
     @IBOutlet weak var fullnameTF: roundedTF!
     @IBOutlet weak var phoneTF: roundedTF!
     @IBOutlet weak var passwordTF: roundedTF!
+    @IBOutlet weak var profilImage: UIImageView!
     
     var email = ""
     var fullName = ""
@@ -59,6 +60,13 @@ class editProifleVC: UIViewController {
     
     func editPassword() {
     }
+    
+    
+    
+    @IBAction func uploadIamgeBTN(_ sender: Any) {
+    }
+    
+    
     
     @IBAction func editBTN(_ sender: Any) {
         

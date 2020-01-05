@@ -84,8 +84,9 @@ class myRequestsDitelsVC: UIViewController {
                 self.tabelView.reloadData()
                 
             }
-            
-            self.hightContrines.constant = self.descText.frame.height + (self.TabelHight ?? 0.0) * CGFloat(self.myRequestsDitel.count)
+            self.TabelHight = self.tabelView.contentSize.height + self.tabelView.contentInset.bottom + self.tabelView.contentInset.top
+            self.hightContrines.constant = (self.TabelHight ?? 0.0) + self.descText.frame.height
+//            self.hightContrines.constant = self.descText.frame.height + (self.TabelHight ?? 0.0) * CGFloat(self.myRequestsDitel.count)
             self.view.layoutIfNeeded()
             HPGradientLoading.shared.dismiss()
         }

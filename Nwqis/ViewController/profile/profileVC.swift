@@ -52,7 +52,7 @@ class profileVC: UIViewController {
         segmentView.setTitleTextAttributes(titleTextAttributes, for: .selected)
         segmentView.layer.cornerRadius = segmentView.bounds.height / 2
         segmentView.layer.borderWidth = 3
-        segmentView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        segmentView.layer.borderColor = #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
         segmentView.clipsToBounds = true
         segmentView.layer.masksToBounds = true
         
