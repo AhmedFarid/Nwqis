@@ -19,7 +19,7 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let gcmMessageIDKey = "gcm.message_id"
-    //var window: UIWindow?
+    var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -149,13 +149,21 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         completionHandler([])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,didReceive response: UNNotificationResponse,withCompletionHandler completionHandler: @escaping () -> Void) {
         let application = UIApplication.shared
         
         if(application.applicationState == .active){
+            
           print("user tapped the notification bar when the app is in foreground")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+               // instantiate the view controller from storyboard
+               if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "controller1VC") as? profileVC {
+
+                   // set the view controller as root
+                   self.window?.rootViewController = conversationVC
+               }
+            
           
         }
         

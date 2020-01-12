@@ -195,7 +195,7 @@ class registerVC: UIViewController {
             return
         }
         
-        guard password.text?.count ?? 0 >= 8 else {
+        guard password.text?.count ?? 0 >= 6 else {
             let messages = NSLocalizedString("password at least 8", comment: "hhhh")
             let title = NSLocalizedString("Register", comment: "hhhh")
             self.showAlert(title: title, message: messages)

@@ -24,6 +24,7 @@
 		692A6AA023AFA79400973645 /* API+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A6A9F23AFA79400973645 /* API+Messages.swift */; };
 		692A6AA323AFAE4D00973645 /* historyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A6AA223AFAE4D00973645 /* historyMessageCell.swift */; };
 		692A6AA523AFC73C00973645 /* messageDitealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A6AA423AFC73C00973645 /* messageDitealsCell.swift */; };
+		692D51CC23CB25960027B48F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692D51CB23CB25960027B48F /* User.swift */; };
 		693382DD23C2204200EB0506 /* cityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693382DC23C2204200EB0506 /* cityVC.swift */; };
 		693382E023C2222500EB0506 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693382DF23C2222500EB0506 /* CityCell.swift */; };
 		693382E223C2245100EB0506 /* statusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693382E123C2245100EB0506 /* statusVC.swift */; };
@@ -90,6 +91,7 @@
 		692A6A9F23AFA79400973645 /* API+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Messages.swift"; sourceTree = "<group>"; };
 		692A6AA223AFAE4D00973645 /* historyMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = historyMessageCell.swift; sourceTree = "<group>"; };
 		692A6AA423AFC73C00973645 /* messageDitealsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageDitealsCell.swift; sourceTree = "<group>"; };
+		692D51CB23CB25960027B48F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		693382DC23C2204200EB0506 /* cityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityVC.swift; sourceTree = "<group>"; };
 		693382DF23C2222500EB0506 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		693382E123C2245100EB0506 /* statusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statusVC.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				698421BE23A7E5DF000C63BD /* offersModel.swift */,
 				692A6A9D23AFA5BD00973645 /* messageModel.swift */,
 				694BC24523BCB12F006A89B5 /* cats.swift */,
+				692D51CB23CB25960027B48F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				692A6AA523AFC73C00973645 /* messageDitealsCell.swift in Sources */,
 				698421C223A7EAB1000C63BD /* offersCell.swift in Sources */,
 				69E1416C238C16CF001D8FDE /* addNewAddressVC.swift in Sources */,
+				692D51CC23CB25960027B48F /* User.swift in Sources */,
 				6959BA6F23A94C38001DB7AF /* API+Requests.swift in Sources */,
 				69F764C3239E67200022D3C2 /* LocationSearchTable.swift in Sources */,
 				694CC50323A2830600F371B8 /* subCatVC.swift in Sources */,
@@ -729,6 +733,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Nwqis/Nwqis.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4Z34DQ34UQ;
 				INFOPLIST_FILE = Nwqis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -749,6 +754,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Nwqis/Nwqis.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4Z34DQ34UQ;
 				INFOPLIST_FILE = Nwqis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

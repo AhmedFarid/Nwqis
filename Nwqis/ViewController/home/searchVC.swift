@@ -38,7 +38,7 @@ class searchVC: UIViewController {
         collectionView.layer.cornerRadius = 7.0
         collectionView.layer.borderWidth = 0.0
         collectionView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-        handleRefreshgetBanner()
+        //handleRefreshgetBanner()
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -92,11 +92,11 @@ class searchVC: UIViewController {
     @IBAction func sendBTN(_ sender: Any) {
         
         guard let descrpti = descrption.text, !descrpti.isEmpty else {
-                   let messages = NSLocalizedString("enter description", comment: "hhhh")
-                   let title = NSLocalizedString("Request", comment: "hhhh")
-                   self.showAlert(title: title, message: messages)
-                   return
-               }
+            let messages = NSLocalizedString("enter description", comment: "hhhh")
+            let title = NSLocalizedString("Request", comment: "hhhh")
+            self.showAlert(title: title, message: messages)
+            return
+        }
         
         HPGradientLoading.shared.configation.fromColor = .white
         HPGradientLoading.shared.configation.toColor = .blue
@@ -108,7 +108,7 @@ class searchVC: UIViewController {
             subcat = "\(singleItem?.id ?? 0)"
         }
         
-       
+        
         
         API_Requests.addRequest(description: descrpti, city_id: "\(city_id)", state_id: "\(state_id)", lat: "0.0", lng: "0.0", category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")", subcategory_id: subcat, image: requestImage.image ?? #imageLiteral(resourceName: "WhatsApp Image 2019-11-07 at 11.08.38 AM")) { (error, success, sucess, message, error1, erroer2) in
             if success{
@@ -142,22 +142,22 @@ class searchVC: UIViewController {
         }
     }
     
-        @objc func changeImage() {
-            
-            if currentIndex < banner.count {
-                let index = IndexPath.init(item: currentIndex, section: 0)
-                self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
-                pageview.currentPage = currentIndex
-                currentIndex += 1
-            } else {
-                currentIndex = 0
-                let index = IndexPath.init(item: currentIndex, section: 0)
-                self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
-                pageview.currentPage = currentIndex
-                currentIndex = 1
-            }
-            
+    @objc func changeImage() {
+        
+        if currentIndex < banner.count {
+            let index = IndexPath.init(item: currentIndex, section: 0)
+            self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+            pageview.currentPage = currentIndex
+            currentIndex += 1
+        } else {
+            currentIndex = 0
+            let index = IndexPath.init(item: currentIndex, section: 0)
+            self.collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
+            pageview.currentPage = currentIndex
+            currentIndex = 1
         }
+        
+    }
     
     
     
@@ -244,4 +244,10 @@ extension searchVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        currentIndex = Int(scrollView.contentOffset.x / collectionView	.frame.size.width)
+        pageview.currentPage = currentIndex
+    }
+    
 }

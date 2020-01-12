@@ -62,6 +62,10 @@ class homeVC: UIViewController {
         getCountOfRequests()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.view.endEditing(true)
+    }
+    
     
     func getCountOfMessages(){
         API_Notifactions.countNewMessage(url: URLs.countNewMessages) { (error, success, Data, suscess) in
@@ -313,8 +317,10 @@ extension homeVC: UITableViewDelegate,UITableViewDataSource {
         }
         let cell = categors[indexPath.row]
         if cell.count_subcategoires == 0{
+            self.view.endEditing(true)
             self.performSegue(withIdentifier: "suge3", sender: categors[indexPath.row])
         }else {
+            self.view.endEditing(true)
             self.performSegue(withIdentifier: "suge", sender: categors[indexPath.row])
         }
     }

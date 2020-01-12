@@ -35,6 +35,12 @@ class subCatVC: UIViewController {
         
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.view.endEditing(true)
+    }
+    
+    
     func imageText() {
         if let myImage = UIImage(named: "icon_search"){
             searchTF.withImage(direction: .Left, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0, green: 0.3333333333, blue: 1, alpha: 1))
@@ -64,7 +70,7 @@ class subCatVC: UIViewController {
                     
                 }
             }else {
-                self.showAlert(title: "", message: data ?? "")
+                self.showAlert(title: "No internet connection", message: data ?? "")
             }
             HPGradientLoading.shared.dismiss()
             
@@ -102,6 +108,7 @@ extension subCatVC: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
         self.performSegue(withIdentifier: "suge", sender: Subcategor[indexPath.row])
     }
     
