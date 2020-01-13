@@ -36,6 +36,9 @@ class homeVC: UIViewController {
     let MessageBtnBage = BadgedButtonItem(with: UIImage(named: "chat"))
     let ProfileBtnBage = BadgedButtonItem(with: UIImage(named: "Group 219"))
     
+    var countOfAppIconMessage = 0
+    var countOfAppIconRequests = 0
+    
     
     
     override func viewDidLoad() {
@@ -71,6 +74,7 @@ class homeVC: UIViewController {
         API_Notifactions.countNewMessage(url: URLs.countNewMessages) { (error, success, Data, suscess) in
             self.navigationItem.rightBarButtonItem = self.MessageBtnBage
             self.MessageBtnBage.setBadge(with: Data ?? 0)
+            self.countOfAppIconMessage = Data ?? 0
             self.MessageBtnBage.tapAction = {
                 // do something chatSuge
                 self.performSegue(withIdentifier: "chatSuge", sender: nil)
@@ -83,6 +87,7 @@ class homeVC: UIViewController {
         API_Notifactions.countNewMessage(url: URLs.countNewNotifications) { (error, success, Data, suscess) in
             self.navigationItem.leftBarButtonItem = self.ProfileBtnBage
             self.ProfileBtnBage.setBadge(with: Data ?? 0)
+            self.countOfAppIconRequests = Data ?? 0
             self.ProfileBtnBage.tapAction = {
                 // do something
                 self.performSegue(withIdentifier: "profileSuge", sender: nil)
@@ -187,7 +192,7 @@ class homeVC: UIViewController {
                     self.tabelView.reloadData()
                 }
             }else {
-                self.showAlert(title: "", message: data ?? "check internet connection")
+                self.showAlert(title: "Internet Connection", message: data ?? "check internet connection")
             }
             HPGradientLoading.shared.dismiss()
             
@@ -312,7 +317,7 @@ extension homeVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard statusID != 0 else{
-            showAlert(title: "Error", message: "choose area please")
+            showAlert(title: "", message: "choose area please")
             return
         }
         let cell = categors[indexPath.row]

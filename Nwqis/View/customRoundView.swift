@@ -12,6 +12,12 @@ import UIKit
 @IBDesignable
 class customRoundView: UIView {
     
+    @IBInspectable var borderColor: UIColor = UIColor.clear{
+           didSet{
+               self.layer.borderColor = borderColor.cgColor
+           }
+       }
+    
     @IBInspectable var cornerRadius: CGFloat = 0{
         didSet{
             self.layer.cornerRadius = self.layer.bounds.height/2

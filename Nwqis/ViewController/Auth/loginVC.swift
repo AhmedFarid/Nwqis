@@ -70,10 +70,10 @@ class loginVC: UIViewController {
             
             emailTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
         }
-        if let myImage = UIImage(named: "Group 77"){
-            
-            passwordTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
-        }
+//        if let myImage = UIImage(named: "Group 77"){
+//
+//            passwordTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
+//        }
     }
     
     
@@ -137,6 +137,10 @@ class loginVC: UIViewController {
     
     
     
+    @IBAction func showPasswordBTN(_ sender: Any) {
+        passwordTF.isSecureTextEntry.toggle()
+
+    }
     
     @IBAction func loginBTN(_ sender: Any) {
         

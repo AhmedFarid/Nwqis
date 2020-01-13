@@ -138,10 +138,10 @@ class registerVC: UIViewController {
             area.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
         }
         
-        if let myImage = UIImage(named: "Group 77"){
-            
-            password.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
-        }
+//        if let myImage = UIImage(named: "Group 77"){
+//            
+//            password.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
+//        }
         
         if let myImage = UIImage(named: "email"){
             
@@ -151,6 +151,9 @@ class registerVC: UIViewController {
     }
     
     
+    @IBAction func showPasswordBTN(_ sender: Any) {
+        password.isSecureTextEntry.toggle()
+    }
     @IBAction func signUp(_ sender: Any) {
         
         guard let names = name.text, !names.isEmpty else {

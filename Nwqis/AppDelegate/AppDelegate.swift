@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let gcmMessageIDKey = "gcm.message_id"
     var window: UIWindow?
+    var countOfAppIconMessage = 0
+    var countOfAppIconRequests = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -52,14 +54,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         BarButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         BarButtonItemAppearance.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -200, vertical: 0), for:UIBarMetrics.default)
-       
+        
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-
+        
+        API_Notifactions.countNewMessage(url: URLs.countNewMessages) { (error, success, Data, suscess) in
+            self.countOfAppIconMessage = Data ?? 0
+            application.applicationIconBadgeNumber = self.countOfAppIconMessage + self.countOfAppIconRequests
+        }
+        
+        API_Notifactions.countNewMessage(url: URLs.countNewNotifications) { (error, success, Data, suscess) in
+            self.countOfAppIconRequests = Data ?? 0
+            application.applicationIconBadgeNumber = self.countOfAppIconMessage + self.countOfAppIconRequests
+        }
         
         return true
     }
     
-
+    func getCountOfMessages(){
+        API_Notifactions.countNewMessage(url: URLs.countNewMessages) { (error, success, Data, suscess) in
+            self.countOfAppIconMessage = Data ?? 0
+        }
+        
+    }
+    
+    func getCountOfRequests(){
+        API_Notifactions.countNewMessage(url: URLs.countNewNotifications) { (error, success, Data, suscess) in
+            self.countOfAppIconRequests = Data ?? 0
+        }
+        
+    }
+    
+    
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         guard let urlScheme = url.scheme else { return false }
         if urlScheme.hasPrefix("fb") {
@@ -120,11 +146,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 // This method will be called when app received push notifications in foreground
-func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
-{
-    completionHandler([.alert, .badge, .sound])
+extension AppDelegate {
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+//    {
+//        completionHandler([.alert, .badge, .sound])
+//    }
 }
-
 // [START ios_10_message_handling]
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
@@ -134,6 +161,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
+        let application = UIApplication.shared
         
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
@@ -144,7 +172,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         completionHandler([.alert, .badge, .sound])
         // Print full message.
         print("llllll\(userInfo)")
+        API_Notifactions.countNewMessage(url: URLs.countNewMessages) { (error, success, Data, suscess) in
+            self.countOfAppIconMessage = Data ?? 0
+            application.applicationIconBadgeNumber =  self.countOfAppIconMessage + self.countOfAppIconRequests
+        }
         
+        API_Notifactions.countNewMessage(url: URLs.countNewNotifications) { (error, success, Data, suscess) in
+            self.countOfAppIconRequests = Data ?? 0
+            application.applicationIconBadgeNumber = self.countOfAppIconMessage + self.countOfAppIconRequests
+        }
         // Change this to your preferred presentation option
         completionHandler([])
     }
@@ -154,22 +190,22 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         if(application.applicationState == .active){
             
-          print("user tapped the notification bar when the app is in foreground")
+            print("user tapped the notification bar when the app is in foreground")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-               // instantiate the view controller from storyboard
-               if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "controller1VC") as? profileVC {
-
-                   // set the view controller as root
-                   self.window?.rootViewController = conversationVC
-               }
             
-          
+            // instantiate the view controller from storyboard
+            if  let conversationVC = storyboard.instantiateViewController(withIdentifier: "controller1VC") as? profileVC {
+                
+                // set the view controller as root
+                self.window?.rootViewController = conversationVC
+            }
+            
+            
         }
         
         if(application.applicationState == .inactive)
         {
-          print("user tapped the notification bar when the app is in background")
+            print("user tapped the notification bar when the app is in background")
         }
         
         let userInfo = response.notification.request.content.userInfo
@@ -190,13 +226,13 @@ extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
         
-                    API_Notifactions.sendKayFireBase(firebaseToken: fcmToken) { (error, succes, data, states) in
-                        if succes {
-                            if states == true {
-                                print(data ?? "")
-                            }
-                        }
-                    }
+        API_Notifactions.sendKayFireBase(firebaseToken: fcmToken) { (error, succes, data, states) in
+            if succes {
+                if states == true {
+                    print(data ?? "")
+                }
+            }
+        }
         
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)

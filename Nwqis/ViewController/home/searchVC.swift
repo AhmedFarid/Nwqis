@@ -48,7 +48,7 @@ class searchVC: UIViewController {
             catId = "\(singelItems?.id ?? 0)"
         }
         
-        self.navigationItem.title = ("\(singleItem?.name ?? "")\(singelItems?.name ?? "")")
+        self.navigationItem.title = "Search for your need"
         handleRefreshgetBanner()
         startTimer()
     }
@@ -118,7 +118,7 @@ class searchVC: UIViewController {
                     self.requestImage.isHidden = true
                 }
             }else{
-                self.showAlert(title: "", message: "check internet connection")
+                self.showAlert(title: "Internet Connection", message: "check internet connection")
             }
             HPGradientLoading.shared.dismiss()
         }
