@@ -425,6 +425,7 @@
 				693488592384040500871ABE /* Frameworks */,
 				6934885A2384040500871ABE /* Resources */,
 				32C98BA4ED2B2EBE86C9F1D6 /* [CP] Embed Pods Frameworks */,
+				3748B11BF56EE6F69E4C127E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -498,6 +499,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nwqis/Pods-Nwqis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3748B11BF56EE6F69E4C127E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nwqis/Pods-Nwqis-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nwqis/Pods-Nwqis-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nwqis/Pods-Nwqis-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE91195CBB6C8CFB57FC04DD /* [CP] Check Pods Manifest.lock */ = {

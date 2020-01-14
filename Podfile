@@ -21,5 +21,6 @@ target 'Nwqis' do
   pod 'Firebase/Messaging'
   pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'GoogleSignIn'
   
 end

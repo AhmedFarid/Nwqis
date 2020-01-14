@@ -1,3 +1,2 @@
 ${PODS_ROOT}/Target Support Files/Pods-Nwqis/Pods-Nwqis-resources.sh
-${PODS_CONFIGURATION_BUILD_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.bundle
-${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle
+${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle

@@ -14,9 +14,10 @@ import FirebaseInstanceID
 import FirebaseMessaging
 import FacebookCore
 import FBSDKCoreKit
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     let gcmMessageIDKey = "gcm.message_id"
     var window: UIWindow?
@@ -24,11 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var countOfAppIconRequests = 0
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        GIDSignIn.sharedInstance().clientID = "653758592339-ce527lg3q076vl82driquqorahlgph36.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         // [START set_messaging_delegate]
         Messaging.messaging().delegate = self
+        
         // [END set_messaging_delegate]
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
@@ -70,6 +73,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+//      return GIDSignIn.sharedInstance().handle(url)
+//    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+         if let error = error {
+           if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+             print("The user has not signed in before or they have since signed out.")
+           } else {
+             print("\(error.localizedDescription)")
+           }
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: nil)
+            // [END_EXCLUDE]
+           return
+         }
+         // Perform any operations on signed in user here.
+         let userId = user.userID                  // For client-side use only!
+         let idToken = user.authentication.idToken // Safe to send to the server
+         let fullName = user.profile.name
+         let givenName = user.profile.givenName
+         let familyName = user.profile.familyName
+         let email = user.profile.email
+         // ...
+        print(userId ?? "no")
+        print(idToken ?? "no")
+        print(fullName ?? "no")
+        print(givenName ?? "no")
+        print(familyName ?? "no")
+        print(email ?? "no")
+        
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: "ToggleAuthUINotification"),
+            object: nil,
+            userInfo: ["email": "\(email ?? "")",
+                       "name": "\(fullName ?? "")",
+                       "id": "\(userId ?? "")"])
+        // [END_EXCLUDE]
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("User has disconnected")
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: "ToggleAuthUINotification"),
+            object: nil,
+            userInfo: ["statusText": "User has disconnected."])
+        // [END_EXCLUDE]
+    }
+    
     func getCountOfMessages(){
         API_Notifactions.countNewMessage(url: URLs.countNewMessages) { (error, success, Data, suscess) in
             self.countOfAppIconMessage = Data ?? 0
@@ -91,7 +143,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if urlScheme.hasPrefix("fb") {
             return ApplicationDelegate.shared.application(app, open: url, options: options)
         }
-        return true
+        return GIDSignIn.sharedInstance().handle(url)
+        //return true
     }
     
     // [START receive_message]

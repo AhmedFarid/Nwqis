@@ -485,7 +485,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Group 219" id="gNg-MB-f9y"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gwr-IA-WSa">
-                            <rect key="frame" x="92.5" y="0.0" width="229" height="44"/>
+                            <rect key="frame" x="94" y="0.0" width="229" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="NWQIS1">
                                 <color key="titleShadowColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2299,7 +2299,7 @@ seller</string>
                     <navigationItem key="navigationItem" id="KqM-Y7-B7t">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qNJ-so-MIo">
-                            <rect key="frame" x="69" y="0.0" width="276" height="44"/>
+                            <rect key="frame" x="50" y="0.0" width="276" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="NWQIS1">
                                 <color key="titleShadowColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2358,10 +2358,10 @@ seller</string>
                                 <rect key="frame" x="0.0" y="358.5" width="414" height="537.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U00-mh-yYz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-nw-DZb">
-                                                <rect key="frame" x="85" y="461" width="244" height="36"/>
+                                                <rect key="frame" x="85" y="519" width="244" height="36"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                 <state key="normal" title="Don't have an account sign up?">
                                                     <color key="titleColor" red="0.098039215690000001" green="0.2274509804" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2523,6 +2523,19 @@ seller</string>
                                                     <action selector="showPasswordBTN:" destination="9ia-on-xAG" eventType="touchUpInside" id="UHG-3u-AlF"/>
                                                 </connections>
                                             </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2L-cz-OoN">
+                                                <rect key="frame" x="16" y="453" width="382" height="50"/>
+                                                <color key="backgroundColor" red="0.098039215690000001" green="0.2274509804" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="bYm-6c-uGE"/>
+                                                </constraints>
+                                                <state key="normal" title="       LOGIN WITH FACEBOOK" image="Symbol 3 – 9">
+                                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="signGooleBTNAction:" destination="9ia-on-xAG" eventType="touchUpInside" id="SHt-KJ-gEJ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -2530,6 +2543,7 @@ seller</string>
                                             <constraint firstItem="Io0-Ks-Ulz" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="8" id="5UV-Rp-Bl1"/>
                                             <constraint firstItem="FEC-JL-0Ox" firstAttribute="top" secondItem="Io0-Ks-Ulz" secondAttribute="bottom" constant="8" id="8wL-gU-er8"/>
                                             <constraint firstItem="Tji-Ot-WxQ" firstAttribute="centerX" secondItem="U00-mh-yYz" secondAttribute="centerX" id="Fxq-rn-knd"/>
+                                            <constraint firstItem="e2L-cz-OoN" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="K8e-EI-CIb"/>
                                             <constraint firstItem="Ord-Gr-DqU" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="Nh2-cI-DGu"/>
                                             <constraint firstItem="7ql-ee-a5E" firstAttribute="trailing" secondItem="FEC-JL-0Ox" secondAttribute="trailing" id="O8z-H2-BlH"/>
                                             <constraint firstItem="T23-Tg-8SQ" firstAttribute="leading" secondItem="Io0-Ks-Ulz" secondAttribute="leading" id="PP1-kx-Ea2"/>
@@ -2539,20 +2553,22 @@ seller</string>
                                             <constraint firstItem="Ord-Gr-DqU" firstAttribute="top" secondItem="Tji-Ot-WxQ" secondAttribute="bottom" constant="16" id="UQ5-VJ-K2X"/>
                                             <constraint firstItem="Io0-Ks-Ulz" firstAttribute="top" secondItem="U00-mh-yYz" secondAttribute="top" id="Vjb-WA-7g7"/>
                                             <constraint firstItem="YCi-nw-DZb" firstAttribute="centerX" secondItem="U00-mh-yYz" secondAttribute="centerX" id="afc-CO-hh0"/>
-                                            <constraint firstItem="YCi-nw-DZb" firstAttribute="top" secondItem="Lo1-sz-jQG" secondAttribute="bottom" constant="16" id="cFU-hJ-RF4"/>
+                                            <constraint firstItem="e2L-cz-OoN" firstAttribute="top" secondItem="Lo1-sz-jQG" secondAttribute="bottom" constant="8" id="bX3-Th-Gje"/>
                                             <constraint firstItem="iwb-1N-SiA" firstAttribute="trailing" secondItem="T23-Tg-8SQ" secondAttribute="trailing" id="czh-mO-dbw"/>
                                             <constraint firstItem="Tji-Ot-WxQ" firstAttribute="top" secondItem="RTS-HX-MYY" secondAttribute="bottom" constant="16" id="dK3-9i-xGi"/>
+                                            <constraint firstItem="YCi-nw-DZb" firstAttribute="top" secondItem="e2L-cz-OoN" secondAttribute="bottom" constant="16" id="eFV-NI-0D4"/>
                                             <constraint firstItem="Lo1-sz-jQG" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="eYG-62-WxU"/>
                                             <constraint firstItem="FEC-JL-0Ox" firstAttribute="leading" secondItem="Io0-Ks-Ulz" secondAttribute="leading" id="jJ6-iT-b3C"/>
                                             <constraint firstItem="7ql-ee-a5E" firstAttribute="top" secondItem="iwb-1N-SiA" secondAttribute="bottom" constant="16" id="k8z-0s-9h6"/>
                                             <constraint firstItem="RTS-HX-MYY" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="kwp-Ad-1Ek"/>
                                             <constraint firstItem="iwb-1N-SiA" firstAttribute="leading" secondItem="T23-Tg-8SQ" secondAttribute="leading" id="lv1-8F-hmk"/>
                                             <constraint firstItem="IXy-Xx-LA2" firstAttribute="centerY" secondItem="iwb-1N-SiA" secondAttribute="centerY" id="pMH-MQ-8ic"/>
-                                            <constraint firstAttribute="height" constant="550" id="qA3-Cy-Kdb"/>
+                                            <constraint firstAttribute="height" constant="650" id="qA3-Cy-Kdb"/>
                                             <constraint firstItem="T23-Tg-8SQ" firstAttribute="top" secondItem="FEC-JL-0Ox" secondAttribute="bottom" constant="8" id="qna-8Z-0zd"/>
                                             <constraint firstItem="Lo1-sz-jQG" firstAttribute="top" secondItem="Ord-Gr-DqU" secondAttribute="bottom" constant="8" id="txt-mD-dlD"/>
                                             <constraint firstItem="FEC-JL-0Ox" firstAttribute="trailing" secondItem="Io0-Ks-Ulz" secondAttribute="trailing" id="uiR-yZ-Sla"/>
                                             <constraint firstItem="iwb-1N-SiA" firstAttribute="top" secondItem="T23-Tg-8SQ" secondAttribute="bottom" constant="8" id="vVc-au-lMM"/>
+                                            <constraint firstAttribute="trailing" secondItem="e2L-cz-OoN" secondAttribute="trailing" constant="16" id="wCe-Da-jQD"/>
                                             <constraint firstAttribute="trailing" secondItem="Io0-Ks-Ulz" secondAttribute="trailing" constant="8" id="y2b-tn-nAa"/>
                                             <constraint firstItem="T23-Tg-8SQ" firstAttribute="trailing" secondItem="Io0-Ks-Ulz" secondAttribute="trailing" id="yPK-PD-PBa"/>
                                             <constraint firstItem="RTS-HX-MYY" firstAttribute="top" secondItem="7ql-ee-a5E" secondAttribute="bottom" constant="16" id="yc0-ng-DIQ"/>
@@ -2608,6 +2624,7 @@ seller</string>
                     <connections>
                         <outlet property="emailTF" destination="FEC-JL-0Ox" id="vYL-Cz-26l"/>
                         <outlet property="passwordTF" destination="iwb-1N-SiA" id="3dX-Xj-nMe"/>
+                        <outlet property="signGooleBtn" destination="e2L-cz-OoN" id="kD7-pf-8IU"/>
                         <outlet property="signWihtAppleBTN" destination="Lo1-sz-jQG" id="Q6k-zc-LCY"/>
                     </connections>
                 </viewController>
