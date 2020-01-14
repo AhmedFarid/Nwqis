@@ -110,7 +110,8 @@ class profileVC: UIViewController {
             if myRequest?.count == 0 {
                 self.myRequestsTabelView.isHidden = true
                 self.offersLabel.isHidden = false
-                self.offersLabel.text = "No Requests"
+                let message = NSLocalizedString("No Requests!", comment: "profuct list lang")
+                self.offersLabel.text = message
             }else {
                 self.myRequestsTabelView.isHidden = false
                 self.offersLabel.isHidden = true

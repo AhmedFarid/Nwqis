@@ -1,0 +1,12 @@
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "نحن بحاجة إلى الوصول إلى الكاميرا للحصول على صور لطلبك";
+
+/* Privacy - Location Always and When In Use Usage Description */
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "نحن بحاجة إلى موقعك للحصول على أقرب طلب";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "we need your location to get the nearest  request";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "نحن بحاجة إلى الوصول إلى مكتبة الصور الخاصة بك للحصول على صور لطلبك";
+

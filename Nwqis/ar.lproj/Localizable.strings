@@ -1,8 +1,30 @@
 /* hhhh */
+"Accebted by:" = "قبلت من طرف:";
+
+/* hhhh */
 "Add new address" = "اضف عنوان جديد";
+
+/* profuct list lang */
+"Camera" = "الكاميرا ";
+
+/* profuct list lang */
+"Cancel" = "الغاء";
+
+/* hhhh
+   profuct list lang */
+"check internet connection" = "افحص الاتصال ب الانترنت";
+
+/* hhhh */
+"choose area please" = "اختار المدينه";
+
+/* profuct list lang */
+"Chose A Source" = "اختار المصدر";
 
 /* hhhh */
 "email not correct" = "الاميل خطاء";
+
+/* hhhh */
+"Email or passwod Wrong" = "الاميل او البسورد خطاء";
 
 /* profuct list lang */
 "en" = "ar";
@@ -41,13 +63,38 @@
 "enter your zone name" = "ادخل المنطقه";
 
 /* hhhh */
+"Full name not correct" = "الاسم خطاء";
+
+/* hhhh
+   profuct list lang */
+"Internet Connection" = "الاتصال ب النترنت";
+
+/* hhhh */
 "login" = "تسجيل الدخول";
+
+/* hhhh */
+"Login Fail" = "التسجيل فشل";
 
 /* hhhh */
 "Login Filed" = "التسجيل فشل";
 
+/* profuct list lang */
+"message to:" = "رساله ل:";
+
+/* hhhh */
+"No internet connection" = "لا يوجد اتصال ب الانترنت";
+
+/* profuct list lang */
+"No Requests!" = "لا يوجد طلبات";
+
 /* hhhh */
 "password at least 8" = "البسورد اكتر من ٦";
+
+/* profuct list lang */
+"Photo Library" = "معرض الصور";
+
+/* profuct list lang */
+"Photo Source" = "مصدر الصور";
 
 /* hhhh */
 "please choose your location on map" = "اختار عنوان علي الخريطه";
@@ -57,6 +104,16 @@
 
 /* hhhh */
 "Request" = "طلبك";
+
+/* hhhh */
+"Request to:" = "طلب ل :";
+
+/* profuct list lang */
+"Search for your need" = "ابحث عن احتياجاتك";
+
+/* hhhh
+   profuct list lang */
+"success add Request" = "نجح اضافه طلبك";
 
 /* hhhh */
 "Update" = "تعديل";

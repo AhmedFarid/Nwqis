@@ -63,7 +63,8 @@ class myRequestsDitelsVC: UIViewController {
         image.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         image.layer.borderWidth = 1
         descText.text = singleItem?.descriptin
-        catInfoLabel.text = "Request to: \(singleItem?.category_name ?? "") \(singleItem?.subcategory_name ?? "")"
+        let decLang = NSLocalizedString("Request to:", comment: "hhhh")
+        catInfoLabel.text = "\(decLang) \(singleItem?.category_name ?? "") \(singleItem?.subcategory_name ?? "")"
         let x = singleItem?.image ?? ""
         let encodedLinkx = x.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
         let encodedURLx = NSURL(string: encodedLinkx!)! as URL

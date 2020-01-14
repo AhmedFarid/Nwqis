@@ -15,9 +15,11 @@ class myRequestsCell: UITableViewCell {
     @IBOutlet weak var nembuerOfAccepted: UILabel!
     
     func configuerCell(prodect: myRequests) {
-        dec.text = "Request to: \(prodect.category_name) \(prodect.subcategory_name)"
+        let decLang = NSLocalizedString("Request to:", comment: "hhhh")
+        dec.text = "\(decLang) \(prodect.category_name) \(prodect.subcategory_name)"
         date.text = prodect.created_at
-        nembuerOfAccepted.text = "Accebted by: \(prodect.accepted_by_shop) "
+        let nembuerOfAcceptedLang = NSLocalizedString("Accebted by:", comment: "hhhh")
+        nembuerOfAccepted.text = "\(nembuerOfAcceptedLang) \(prodect.accepted_by_shop) "
         
         
     }

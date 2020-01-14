@@ -47,8 +47,8 @@ class searchVC: UIViewController {
         }else if singleItem?.category_id == "0"{
             catId = "\(singelItems?.id ?? 0)"
         }
-        
-        self.navigationItem.title = "Search for your need"
+        let message = NSLocalizedString("Search for your need", comment: "profuct list lang")
+        self.navigationItem.title = message
         handleRefreshgetBanner()
         startTimer()
     }
