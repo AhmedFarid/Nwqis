@@ -192,7 +192,9 @@ class homeVC: UIViewController {
                     self.tabelView.reloadData()
                 }
             }else {
-                self.showAlert(title: "Internet Connection", message: data ?? "check internet connection")
+                let messages = NSLocalizedString("Internet Connection", comment: "hhhh")
+                let title = NSLocalizedString("check internet connection", comment: "hhhh")
+                self.showAlert(title: title, message: data ?? messages)
             }
             HPGradientLoading.shared.dismiss()
             
@@ -317,7 +319,8 @@ extension homeVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard statusID != 0 else{
-            showAlert(title: "", message: "choose area please")
+            let messages = NSLocalizedString("choose area please", comment: "hhhh")
+            showAlert(title: "", message: messages)
             return
         }
         let cell = categors[indexPath.row]

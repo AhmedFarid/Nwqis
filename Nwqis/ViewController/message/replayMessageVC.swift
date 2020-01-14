@@ -43,10 +43,12 @@ class replayMessageVC: UIViewController {
         API_Messages.newMessage(image: images.image ?? #imageLiteral(resourceName: "WhatsApp Image 2019-11-07 at 11.08.38 AM"), message: messageTF.text ?? "", shop_id: "\(singleItem?.id ?? singleItems?.id ?? 0)"){ (error, success, sucess, message, error1, erroer2) in
             if success{
                 if sucess == true {
-                    self.showAlert(title: "", message: "success add Request")
+                    let message = NSLocalizedString("success add Request", comment: "profuct list lang")
+                    self.showAlert(title: "", message: message)
                 }
             }else{
-                self.showAlert(title: "", message: "check internet connection")
+                let message = NSLocalizedString("check internet connection", comment: "profuct list lang")
+                self.showAlert(title: "", message: message)
             }
             HPGradientLoading.shared.dismiss()
         }
@@ -59,9 +61,12 @@ class replayMessageVC: UIViewController {
         piker.allowsEditing = true
         piker.sourceType = .photoLibrary
         piker.delegate = self
+        let title = NSLocalizedString("Photo Source", comment: "profuct list lang")
+        let message = NSLocalizedString("Chose A Source", comment: "profuct list lang")
+        let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Chose A Source", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+        let titles = NSLocalizedString("Camera", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titles, style: .default, handler: { (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 piker.sourceType = .camera
                 self.present(piker, animated: true, completion: nil)
@@ -69,12 +74,13 @@ class replayMessageVC: UIViewController {
                 print("notFound")
             }
         }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+        let titless = NSLocalizedString("Photo Library", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titless, style: .default, handler: { (action:UIAlertAction) in
             piker.sourceType = .photoLibrary
             self.present(piker, animated: true, completion: nil)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let titlesss = NSLocalizedString("Cancel", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titlesss, style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
     }
 }

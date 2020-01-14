@@ -123,6 +123,7 @@ PODS:
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
   - leveldb-library (1.22)
+  - MOLH (1.1.2)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -148,6 +149,7 @@ DEPENDENCIES:
   - HPGradientLoading
   - IQKeyboardManagerSwift
   - Kingfisher
+  - MOLH
   - SVProgressHUD
   - SwiftyJSON
   - UPCarouselFlowLayout
@@ -182,6 +184,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Kingfisher
     - leveldb-library
+    - MOLH
     - nanopb
     - Protobuf
     - SnapKit
@@ -219,6 +222,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MOLH: 79723d6938aff0ac02aebe4d89cc96b73f46fa32
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
@@ -227,6 +231,6 @@ SPEC CHECKSUMS:
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
   VisualEffectView: 8c05bdc77490d84aabfa9fd17b1ffd6476da0e2c
 
-PODFILE CHECKSUM: dc8eeca39c2173d85282133c6fae658fac907948
+PODFILE CHECKSUM: c8a2306f469e68395fb2ceb6cf5c58539600ca78
 
 COCOAPODS: 1.8.4

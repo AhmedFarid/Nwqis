@@ -8,6 +8,7 @@
 
 import UIKit
 import HPGradientLoading
+import MOLH
 
 class editProifleVC: UIViewController {
     
@@ -73,14 +74,21 @@ class editProifleVC: UIViewController {
     
     
     
+    @IBAction func langBTN(_ sender: Any) {
+        MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")
+              //MOLH.reset(transition: .transitionCrossDissolve)
+        helperLogin.restartApp()
+    }
     @IBAction func uploadIamgeBTN(_ sender: Any) {
         let piker = UIImagePickerController()
         piker.allowsEditing = true
         piker.sourceType = .photoLibrary
         piker.delegate = self
-        
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Chose A Source", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+        let title = NSLocalizedString("Photo Source", comment: "profuct list lang")
+        let message = NSLocalizedString("Chose A Source", comment: "profuct list lang")
+        let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let titles = NSLocalizedString("Camera", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titles, style: .default, handler: { (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 piker.sourceType = .camera
                 self.present(piker, animated: true, completion: nil)
@@ -88,12 +96,13 @@ class editProifleVC: UIViewController {
                 print("notFound")
             }
         }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+        let titless = NSLocalizedString("Photo Library", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titless, style: .default, handler: { (action:UIAlertAction) in
             piker.sourceType = .photoLibrary
             self.present(piker, animated: true, completion: nil)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let titlesss = NSLocalizedString("Cancel", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titlesss, style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
         
     }
@@ -124,7 +133,9 @@ class editProifleVC: UIViewController {
         }
         
         guard isValidInput(Input: names) == true else {
-            self.showAlert(title: "Update", message: "Full name not correct")
+            let messages = NSLocalizedString("Full name not correct", comment: "hhhh")
+            let title = NSLocalizedString("Update", comment: "hhhh")
+            self.showAlert(title: title, message: messages)
             return
         }
         
@@ -142,13 +153,17 @@ class editProifleVC: UIViewController {
         API_Prfoile.updateProfile(cityID: cittid, state_id: statId, email: emailTF.text ?? "", phone: phoneTF.text ?? "", full_name: fullnameTF.text ?? "", image: profilImage.image ?? profileImage?.image ?? #imageLiteral(resourceName: "Group 1227")){(error: Error?,successConnction,success,message,errorPhone,emailError) in
             if successConnction {
                 if success == true {
-                    self.showAlert(title: "Update", message: "\(message ?? "")")
+                    let title = NSLocalizedString("Update", comment: "hhhh")
+                    self.showAlert(title: title, message: "\(message ?? "")")
                 }else {
-                    self.showAlert(title: "Update", message: "\(errorPhone ?? "")\(emailError ?? "")")
+                    let title = NSLocalizedString("Update", comment: "hhhh")
+                    self.showAlert(title: title, message: "\(errorPhone ?? "")\(emailError ?? "")")
                 }
                 HPGradientLoading.shared.dismiss()
             }else{
-                self.showAlert(title: "Update", message: "check internet connection")
+                let messages = NSLocalizedString("check internet connection", comment: "hhhh")
+                let title = NSLocalizedString("Update", comment: "hhhh")
+                self.showAlert(title: title, message: messages)
             }
             HPGradientLoading.shared.dismiss()
         }

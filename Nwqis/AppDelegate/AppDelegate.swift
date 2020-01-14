@@ -15,6 +15,7 @@ import FirebaseMessaging
 import FacebookCore
 import FBSDKCoreKit
 import GoogleSignIn
+import MOLH
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -70,12 +71,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             application.applicationIconBadgeNumber = self.countOfAppIconMessage + self.countOfAppIconRequests
         }
         
+       
+               MOLH.shared.activate(true)
         return true
     }
     
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
 //      return GIDSignIn.sharedInstance().handle(url)
 //    }
+    
+    
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
          if let error = error {

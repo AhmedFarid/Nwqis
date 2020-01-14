@@ -1,0 +1,10 @@
+/* Bundle name */
+"CFBundleName" = "Nwqis";
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "we need to acess you camera to get photos to your request ";
+/* Privacy - Location Always and When In Use Usage Description */
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "we need your location to get the nearest  request";
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "we need your location to get the nearest  request";
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "we need to acess you photo library to get photos to your request ";

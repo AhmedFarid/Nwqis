@@ -69,8 +69,12 @@ class searchVC: UIViewController {
         piker.sourceType = .photoLibrary
         piker.delegate = self
         
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Chose A Source", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+        let title = NSLocalizedString("Photo Source", comment: "profuct list lang")
+        let message = NSLocalizedString("Chose A Source", comment: "profuct list lang")
+        let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let titles = NSLocalizedString("Camera", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titles, style: .default, handler: { (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 piker.sourceType = .camera
                 self.present(piker, animated: true, completion: nil)
@@ -78,14 +82,14 @@ class searchVC: UIViewController {
                 print("notFound")
             }
         }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+        let titless = NSLocalizedString("Photo Library", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titless, style: .default, handler: { (action:UIAlertAction) in
             piker.sourceType = .photoLibrary
             self.present(piker, animated: true, completion: nil)
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let titlesss = NSLocalizedString("Cancel", comment: "profuct list lang")
+        actionSheet.addAction(UIAlertAction(title: titlesss, style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
-        
     }
     
     
@@ -113,12 +117,15 @@ class searchVC: UIViewController {
         API_Requests.addRequest(description: descrpti, city_id: "\(city_id)", state_id: "\(state_id)", lat: "0.0", lng: "0.0", category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")", subcategory_id: subcat, image: requestImage.image ?? #imageLiteral(resourceName: "WhatsApp Image 2019-11-07 at 11.08.38 AM")) { (error, success, sucess, message, error1, erroer2) in
             if success{
                 if sucess == true {
-                    self.showAlert(title: "", message: "success add Request")
+                    let messages = NSLocalizedString("success add Request", comment: "hhhh")
+                    self.showAlert(title: "", message: messages)
                     self.descrption.text = ""
                     self.requestImage.isHidden = true
                 }
             }else{
-                self.showAlert(title: "Internet Connection", message: "check internet connection")
+                let message = NSLocalizedString("check internet connection", comment: "hhhh")
+                let title = NSLocalizedString("Internet Connection", comment: "hhhh")
+                self.showAlert(title: title, message: message)
             }
             HPGradientLoading.shared.dismiss()
         }

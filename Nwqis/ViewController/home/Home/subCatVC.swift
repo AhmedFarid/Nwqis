@@ -70,7 +70,8 @@ class subCatVC: UIViewController {
                     
                 }
             }else {
-                self.showAlert(title: "No internet connection", message: data ?? "")
+                let title = NSLocalizedString("No internet connection", comment: "hhhh")
+                self.showAlert(title: title, message: data ?? "")
             }
             HPGradientLoading.shared.dismiss()
             

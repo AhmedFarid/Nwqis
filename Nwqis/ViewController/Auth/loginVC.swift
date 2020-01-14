@@ -33,25 +33,25 @@ class loginVC: UIViewController {
         setupViewAppleBTN()
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         
-//        GIDSignIn.sharedInstance()?.presentingViewController = self
-//
-//         //Automatically sign in the user.
-//        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-//
-//        let gSignIn = GIDSignInButton(frame: CGRect(x:0, y: 0, width: 230, height: 48))
-//        gSignIn.center = view.center
-//
-//        view.addSubview(gSignIn)
+        //        GIDSignIn.sharedInstance()?.presentingViewController = self
+        //
+        //         //Automatically sign in the user.
+        //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        //
+        //        let gSignIn = GIDSignInButton(frame: CGRect(x:0, y: 0, width: 230, height: 48))
+        //        gSignIn.center = view.center
+        //
+        //        view.addSubview(gSignIn)
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
-
+        
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-
+        
         NotificationCenter.default.addObserver(self,
-            selector: #selector(loginVC.receiveToggleAuthUINotification(_:)),
-            name: NSNotification.Name(rawValue: "ToggleAuthUINotification"),
-            object: nil)
+                                               selector: #selector(loginVC.receiveToggleAuthUINotification(_:)),
+                                               name: NSNotification.Name(rawValue: "ToggleAuthUINotification"),
+                                               object: nil)
         toggleAuthUI()
         
         //GIDSignIn.sharedInstance().signOut()
@@ -59,79 +59,83 @@ class loginVC: UIViewController {
     }
     
     func toggleAuthUI() {
-      if let _ = GIDSignIn.sharedInstance()?.currentUser?.authentication {
-        
-//        HPGradientLoading.shared.configation.fromColor = .white
-//        HPGradientLoading.shared.configation.toColor = .blue
-//        HPGradientLoading.shared.showLoading(with: "Loading...")
-//
-//        API_Auth.FBLogin(full_name: "", email: "", social_id: ""){ (error, suces,success) in
-//            if suces {
-//                if success == true {
-//                    print("success")
-//                }else {
-//                    self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
-//                }
-//            }else{
-//                self.showAlert(title: "Login Fail", message: "check internet connection")
-//            }
-//            HPGradientLoading.shared.dismiss()
-//        }
-      } else {
-        //self.showAlert(title: "Login Fail", message: "")
-      }
+        if let _ = GIDSignIn.sharedInstance()?.currentUser?.authentication {
+            
+            //        HPGradientLoading.shared.configation.fromColor = .white
+            //        HPGradientLoading.shared.configation.toColor = .blue
+            //        HPGradientLoading.shared.showLoading(with: "Loading...")
+            //
+            //        API_Auth.FBLogin(full_name: "", email: "", social_id: ""){ (error, suces,success) in
+            //            if suces {
+            //                if success == true {
+            //                    print("success")
+            //                }else {
+            //                    self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
+            //                }
+            //            }else{
+            //                self.showAlert(title: "Login Fail", message: "check internet connection")
+            //            }
+            //            HPGradientLoading.shared.dismiss()
+            //        }
+        } else {
+            //self.showAlert(title: "Login Fail", message: "")
+        }
     }
     // [END toggle_auth]
-
+    
     deinit {
-      NotificationCenter.default.removeObserver(self,
-          name: NSNotification.Name(rawValue: "ToggleAuthUINotification"),
-          object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name(rawValue: "ToggleAuthUINotification"),
+                                                  object: nil)
     }
-
+    
     @objc func receiveToggleAuthUINotification(_ notification: NSNotification) {
-      if notification.name.rawValue == "ToggleAuthUINotification" {
-        self.toggleAuthUI()
-        if notification.userInfo != nil {
-          guard let userInfo = notification.userInfo as? [String:String] else { return }
-            print(userInfo)
-            let gogole = userInfo as [String: AnyObject]
-            print(gogole)
-            let email = gogole["email"] as! String
-            print(email)
-            let id = gogole["id"] as! String
-            print(id)
-            let fname = gogole["name"] as! String
-            print(fname)
-            
-            HPGradientLoading.shared.configation.fromColor = .white
-            HPGradientLoading.shared.configation.toColor = .blue
-            HPGradientLoading.shared.showLoading(with: "Loading...")
-            
-            API_Auth.FBLogin(full_name: fname, email: email, social_id: id){ (error, suces,success) in
-                if suces {
-                    if success == true {
-                        print("success")
-                    }else {
-                        self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
+        if notification.name.rawValue == "ToggleAuthUINotification" {
+            self.toggleAuthUI()
+            if notification.userInfo != nil {
+                guard let userInfo = notification.userInfo as? [String:String] else { return }
+                print(userInfo)
+                let gogole = userInfo as [String: AnyObject]
+                print(gogole)
+                let email = gogole["email"] as! String
+                print(email)
+                let id = gogole["id"] as! String
+                print(id)
+                let fname = gogole["name"] as! String
+                print(fname)
+                
+                HPGradientLoading.shared.configation.fromColor = .white
+                HPGradientLoading.shared.configation.toColor = .blue
+                HPGradientLoading.shared.showLoading(with: "Loading...")
+                
+                API_Auth.FBLogin(full_name: fname, email: email, social_id: id){ (error, suces,success) in
+                    if suces {
+                        if success == true {
+                            print("success")
+                        }else {
+                            let message = NSLocalizedString("Email or passwod Wrong", comment: "hhhh")
+                            let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                            self.showAlert(title: title, message: message)
+                        }
+                    }else{
+                        let message = NSLocalizedString("check internet connection", comment: "hhhh")
+                        let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                        self.showAlert(title: title, message: message)
                     }
-                }else{
-                    self.showAlert(title: "Login Fail", message: "check internet connection")
+                    HPGradientLoading.shared.dismiss()
                 }
-                HPGradientLoading.shared.dismiss()
             }
         }
-      }
     }
     
     
     @IBAction func signGooleBTNAction(_ sender: Any) {
         
-       GIDSignIn.sharedInstance()?.presentingViewController = self
-
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-
+        
     }
     
     func setUpNavColore(){
@@ -188,10 +192,10 @@ class loginVC: UIViewController {
             
             emailTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
         }
-//        if let myImage = UIImage(named: "Group 77"){
-//
-//            passwordTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
-//        }
+        //        if let myImage = UIImage(named: "Group 77"){
+        //
+        //            passwordTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
+        //        }
     }
     
     
@@ -240,10 +244,14 @@ class loginVC: UIViewController {
                                 if success == true {
                                     print("success")
                                 }else {
-                                    self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
+                                    let message = NSLocalizedString("Email or passwod Wrong", comment: "hhhh")
+                                    let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                                    self.showAlert(title: title, message: message)
                                 }
                             }else{
-                                self.showAlert(title: "Login Fail", message: "check internet connection")
+                                let message = NSLocalizedString("check internet connection", comment: "hhhh")
+                                let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                                self.showAlert(title: title, message: message)
                             }
                             HPGradientLoading.shared.dismiss()
                         }
@@ -257,7 +265,7 @@ class loginVC: UIViewController {
     
     @IBAction func showPasswordBTN(_ sender: Any) {
         passwordTF.isSecureTextEntry.toggle()
-
+        
     }
     
     @IBAction func loginBTN(_ sender: Any) {
@@ -285,10 +293,14 @@ class loginVC: UIViewController {
                 if success == true {
                     print("success")
                 }else {
-                    self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
+                    let message = NSLocalizedString("Email or passwod Wrong", comment: "hhhh")
+                    let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                    self.showAlert(title: title, message: message)
                 }
             }else{
-                self.showAlert(title: "Login Fail", message: "check internet connection")
+                let message = NSLocalizedString("check internet connection", comment: "hhhh")
+                let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                self.showAlert(title: title, message: message)
             }
             HPGradientLoading.shared.dismiss()
         }
@@ -310,10 +322,14 @@ extension loginVC: ASAuthorizationControllerDelegate {
                     if success == true {
                         print("success")
                     }else {
-                        self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
+                        let message = NSLocalizedString("Email or passwod Wrong", comment: "hhhh")
+                        let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                        self.showAlert(title: title, message: message)
                     }
                 }else{
-                    self.showAlert(title: "Login Fail", message: "check internet connection")
+                    let message = NSLocalizedString("check internet connection", comment: "hhhh")
+                    let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                    self.showAlert(title: title, message: message)
                 }
                 HPGradientLoading.shared.dismiss()
             }

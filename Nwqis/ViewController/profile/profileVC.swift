@@ -186,7 +186,9 @@ class profileVC: UIViewController {
                 }
                 print(state_id ?? 0)
             }else {
-                self.showAlert(title: "Internet Connection", message: "check internet connection")
+                let message = NSLocalizedString("Internet Connection", comment: "profuct list lang")
+                let title = NSLocalizedString("check internet connection", comment: "profuct list lang")
+                self.showAlert(title: title, message: message)
             }
             HPGradientLoading.shared.dismiss()
         }

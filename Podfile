@@ -22,5 +22,6 @@ target 'Nwqis' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'GoogleSignIn'
+  pod 'MOLH'
   
 end
