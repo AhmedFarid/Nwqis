@@ -104,7 +104,7 @@
 "dVF-eX-dH1.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "       LOGIN WITH FACEBOOK"; ObjectID = "e2L-cz-OoN"; */
-"e2L-cz-OoN.normalTitle" = "       LOGIN WITH FACEBOOK";
+"e2L-cz-OoN.normalTitle" = "تسجيل الدخول باستخدام facebook";
 
 /* Class = "UILabel"; text = "Password"; ObjectID = "Ef4-uA-EOK"; */
 "Ef4-uA-EOK.text" = "كلمه المورو";
@@ -188,7 +188,7 @@
 "KX6-Rx-ebQ.placeholder" = "كلمه المرور";
 
 /* Class = "UIButton"; normalTitle = "       LOGIN WITH FACEBOOK"; ObjectID = "Lo1-sz-jQG"; */
-"Lo1-sz-jQG.normalTitle" = "       LOGIN WITH FACEBOOK";
+"Lo1-sz-jQG.normalTitle" = "تسجيل الدخول باستخدام facebook";
 
 /* Class = "UITextField"; placeholder = "search Category ..."; ObjectID = "lvd-ET-fP3"; */
 "lvd-ET-fP3.placeholder" = "بحث ...";
@@ -230,7 +230,7 @@
 "OIu-7N-6gW.text" = "Subtitle";
 
 /* Class = "UIButton"; normalTitle = "       LOGIN WITH FACEBOOK"; ObjectID = "Ord-Gr-DqU"; */
-"Ord-Gr-DqU.normalTitle" = "       LOGIN WITH FACEBOOK";
+"Ord-Gr-DqU.normalTitle" = "تسجيل الدخول باستخدام facebook";
 
 /* Class = "UILabel"; text = "Password"; ObjectID = "ORL-CN-lgs"; */
 "ORL-CN-lgs.text" = "كلمه المرور";
