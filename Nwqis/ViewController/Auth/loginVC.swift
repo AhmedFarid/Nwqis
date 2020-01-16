@@ -12,8 +12,9 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import AuthenticationServices
 import GoogleSignIn
+import SafariServices
 
-class loginVC: UIViewController {
+class loginVC: UIViewController,SFSafariViewControllerDelegate {
     
     
     @IBOutlet weak var signGooleBtn: GIDSignInButton!
@@ -58,6 +59,22 @@ class loginVC: UIViewController {
         
     }
     
+    
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func loginAsCompany(_ sender: Any) {
+        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/company/login")! as URL)
+            self.present(safariVC, animated: true, completion: nil)
+            safariVC.delegate = self
+    }
+    @IBAction func loginAsShop(_ sender: Any) {
+            let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/shop/login")! as URL)
+            self.present(safariVC, animated: true, completion: nil)
+            safariVC.delegate = self
+    }
     func toggleAuthUI() {
         if let _ = GIDSignIn.sharedInstance()?.currentUser?.authentication {
             

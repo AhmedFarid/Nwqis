@@ -13,11 +13,16 @@ class myRequDItelsCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var addrees: UILabel!
     @IBOutlet weak var images: UIImageView!
+    @IBOutlet weak var roundedeView: roundedView!
     
     var call: (()->())?
     var message: (()->())?
     
     func configuerCell(prodect: myRequestsDitels) {
+        if prodect.premium != "1" {
+            roundedeView.borderWidth = 2
+        }
+        addrees.text = prodect.address
         name.text = prodect.name
         images.image = UIImage(named: "3")
         self.images.layer.cornerRadius = 10.0

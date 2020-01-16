@@ -51,9 +51,11 @@ class myRequestsDitels: NSObject {
     var lat: String
     var lng: String
     var name: String
+    var premium: String
+    var address: String
     
     init?(dict: [String: JSON]){
-        guard let id = dict["id"]?.int,let email = dict["email"]?.string,let phone = dict["phone"]?.string,let image = dict["image"]?.string,let lat = dict["lat"]?.string,let lng = dict["lng"]?.string,let name = dict["name"]?.string else {return nil}
+        guard let id = dict["id"]?.int,let email = dict["email"]?.string,let phone = dict["phone"]?.string,let image = dict["image"]?.string,let lat = dict["lat"]?.string,let lng = dict["lng"]?.string,let name = dict["name"]?.string,let premium = dict["premium"]?.string,let address = dict["address"]?.string else {return nil}
         self.id = id
         self.email = email
         self.phone = phone
@@ -61,6 +63,8 @@ class myRequestsDitels: NSObject {
         self.lat = lat
         self.lng = lng
         self.name = name
+        self.premium = premium
+        self.address = address
     }
 }
 

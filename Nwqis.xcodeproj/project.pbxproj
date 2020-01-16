@@ -49,6 +49,7 @@
 		694CC50E23A2A40E00F371B8 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694CC50D23A2A40E00F371B8 /* CollectionViewCell.swift */; };
 		6959BA6D23A90942001DB7AF /* FilterDeleget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6959BA6C23A90942001DB7AF /* FilterDeleget.swift */; };
 		6959BA6F23A94C38001DB7AF /* API+Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6959BA6E23A94C38001DB7AF /* API+Requests.swift */; };
+		695C4E6323D07F8100620F25 /* loginAndRegesterWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C4E6223D07F8100620F25 /* loginAndRegesterWebViewVC.swift */; };
 		6964C1CF23AA845E00032926 /* myRequestsDitelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964C1CE23AA845E00032926 /* myRequestsDitelsVC.swift */; };
 		6964C1D123AA8B5B00032926 /* myRequDItelsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964C1D023AA8B5B00032926 /* myRequDItelsCell.swift */; };
 		6978658723A6890300EDEEB7 /* profileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978658623A6890300EDEEB7 /* profileVC.swift */; };
@@ -123,6 +124,7 @@
 		694CC50D23A2A40E00F371B8 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		6959BA6C23A90942001DB7AF /* FilterDeleget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDeleget.swift; sourceTree = "<group>"; };
 		6959BA6E23A94C38001DB7AF /* API+Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Requests.swift"; sourceTree = "<group>"; };
+		695C4E6223D07F8100620F25 /* loginAndRegesterWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginAndRegesterWebViewVC.swift; sourceTree = "<group>"; };
 		6964C1CE23AA845E00032926 /* myRequestsDitelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRequestsDitelsVC.swift; sourceTree = "<group>"; };
 		6964C1D023AA8B5B00032926 /* myRequDItelsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRequDItelsCell.swift; sourceTree = "<group>"; };
 		6978658623A6890300EDEEB7 /* profileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileVC.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				693488632384040500871ABE /* loginVC.swift */,
 				698664262386A4CA00848F61 /* registerVC.swift */,
+				695C4E6223D07F8100620F25 /* loginAndRegesterWebViewVC.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				694CC50323A2830600F371B8 /* subCatVC.swift in Sources */,
 				69B461E02386E64100A53D60 /* customRoundView.swift in Sources */,
 				694CC50C23A29A9C00F371B8 /* banners.swift in Sources */,
+				695C4E6323D07F8100620F25 /* loginAndRegesterWebViewVC.swift in Sources */,
 				694CC50A23A29A6F00F371B8 /* API+Requsests.swift in Sources */,
 				693382E023C2222500EB0506 /* CityCell.swift in Sources */,
 				692A6A9C23AF918300973645 /* rondedSegent.swift in Sources */,

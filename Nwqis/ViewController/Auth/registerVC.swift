@@ -8,8 +8,9 @@
 
 import UIKit
 import HPGradientLoading
+import SafariServices
 
-class registerVC: UIViewController {
+class registerVC: UIViewController,SFSafariViewControllerDelegate {
     
     @IBOutlet weak var name: roundedTF!
     @IBOutlet weak var phone: roundedTF!
@@ -33,6 +34,20 @@ class registerVC: UIViewController {
         
     }
     
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func signUpCompany(_ sender: Any) {
+        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/company/login")! as URL)
+        self.present(safariVC, animated: true, completion: nil)
+        safariVC.delegate = self
+    }
+    @IBAction func signUPShop(_ sender: Any) {
+        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/company/login")! as URL)
+        self.present(safariVC, animated: true, completion: nil)
+        safariVC.delegate = self
+    }
     
     @objc private func handleRefreshgetcity() {
         API_CityAndAreas.getAllCity{(error: Error?, city: [citysModel]?) in
