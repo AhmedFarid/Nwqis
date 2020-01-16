@@ -37,6 +37,9 @@
 /* Class = "UIButton"; normalTitle = " Forget Password ?"; ObjectID = "7ql-ee-a5E"; */
 "7ql-ee-a5E.normalTitle" = "نسيت كلمه المرور؟";
 
+/* Class = "UIButton"; normalTitle = "Login as company"; ObjectID = "7rZ-tT-0iw"; */
+"7rZ-tT-0iw.normalTitle" = "تسجيل الدخول كشركه";
+
 /* Class = "UILabel"; text = "Find your needs"; ObjectID = "8aX-I2-EUd"; */
 "8aX-I2-EUd.text" = "ابحث عن احتياجاتك";
 
@@ -45,6 +48,9 @@
 
 /* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "8yZ-LM-Faq"; */
 "8yZ-LM-Faq.normalTitle" = "تسجيل";
+
+/* Class = "UIButton"; normalTitle = "SignUp as shop"; ObjectID = "24z-l1-5fw"; */
+"24z-l1-5fw.normalTitle" = "سجل كمحل تجاري";
 
 /* Class = "UINavigationItem"; title = "My request details"; ObjectID = "83u-yd-24g"; */
 "83u-yd-24g.title" = "تفاصيل طلبي";
@@ -199,6 +205,9 @@
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "M7d-BK-FPG"; */
 "M7d-BK-FPG.placeholder" = "اميل";
 
+/* Class = "UIButton"; normalTitle = "Login as shop"; ObjectID = "MBV-Ar-17m"; */
+"MBV-Ar-17m.normalTitle" = "تسجيل الدخول كمحل تجاري";
+
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "mcQ-oi-Kal"; */
 "mcQ-oi-Kal.title" = "Item";
 
@@ -258,6 +267,9 @@
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "RGv-bq-Wkq"; */
 "RGv-bq-Wkq.placeholder" = "اميل";
+
+/* Class = "UIButton"; normalTitle = "SignUp as company"; ObjectID = "rq4-X4-bZR"; */
+"rq4-X4-bZR.normalTitle" = "سجل كشركه";
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "RTS-HX-MYY"; */
 "RTS-HX-MYY.normalTitle" = "تسجيل الدخول";

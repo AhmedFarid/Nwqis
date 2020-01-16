@@ -39,12 +39,12 @@ class registerVC: UIViewController,SFSafariViewControllerDelegate {
     }
     
     @IBAction func signUpCompany(_ sender: Any) {
-        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/company/login")! as URL)
+        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/en/customer/showRegisterFormCompany")! as URL)
         self.present(safariVC, animated: true, completion: nil)
         safariVC.delegate = self
     }
     @IBAction func signUPShop(_ sender: Any) {
-        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/company/login")! as URL)
+        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/en/customer/showRegisterFormShop")! as URL)
         self.present(safariVC, animated: true, completion: nil)
         safariVC.delegate = self
     }
