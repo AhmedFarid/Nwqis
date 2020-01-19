@@ -14,6 +14,7 @@ class myRequDItelsCell: UITableViewCell {
     @IBOutlet weak var addrees: UILabel!
     @IBOutlet weak var images: UIImageView!
     @IBOutlet weak var roundedeView: roundedView!
+    @IBOutlet weak var startImage: UIImageView!
     
     var call: (()->())?
     var message: (()->())?
@@ -21,6 +22,7 @@ class myRequDItelsCell: UITableViewCell {
     func configuerCell(prodect: myRequestsDitels) {
         if prodect.premium != "1" {
             roundedeView.borderWidth = 2
+            startImage.isHidden = false
         }
         addrees.text = prodect.address
         name.text = prodect.name
