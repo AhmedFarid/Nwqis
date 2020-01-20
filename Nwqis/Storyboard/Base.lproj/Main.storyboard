@@ -2479,7 +2479,7 @@ seller</string>
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCi-nw-DZb">
-                                                <rect key="frame" x="85" y="577" width="244" height="36"/>
+                                                <rect key="frame" x="85" y="461" width="244" height="36"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                 <state key="normal" title="Don't have an account sign up?">
                                                     <color key="titleColor" red="0.098039215690000001" green="0.2274509804" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -2494,27 +2494,6 @@ seller</string>
                                                 <state key="normal" title=" Forget Password ?">
                                                     <color key="titleColor" red="0.098039215690000001" green="0.2274509804" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ord-Gr-DqU" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="395" width="382" height="50"/>
-                                                <color key="backgroundColor" red="0.236697346" green="0.35170382259999999" blue="0.59668922420000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="YXX-P3-GUL"/>
-                                                </constraints>
-                                                <state key="normal" title="       LOGIN WITH FACEBOOK" image="Symbol 3 – 9">
-                                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.30447437840000002" green="0.48186579330000001" blue="0.84990284969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiuscoustom">
-                                                        <real key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="fbLoginBTN:" destination="9ia-on-xAG" eventType="touchUpInside" id="8l7-vl-V0D"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTS-HX-MYY" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="308" width="382" height="50"/>
@@ -2612,43 +2591,12 @@ seller</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lo1-sz-jQG" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="453" width="382" height="50"/>
-                                                <color key="backgroundColor" red="0.098039215690000001" green="0.2274509804" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="fCJ-p0-cAi"/>
-                                                </constraints>
-                                                <state key="normal" title="       LOGIN WITH FACEBOOK" image="Symbol 3 – 9">
-                                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="fbLoginBTN:" destination="9ia-on-xAG" eventType="touchUpInside" id="EGZ-wG-Ebe"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXy-Xx-LA2">
                                                 <rect key="frame" x="363" y="204" width="27" height="22"/>
                                                 <color key="tintColor" red="0.30588235289999999" green="0.4823529412" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="eye.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="showPasswordBTN:" destination="9ia-on-xAG" eventType="touchUpInside" id="UHG-3u-AlF"/>
-                                                </connections>
-                                            </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2L-cz-OoN">
-                                                <rect key="frame" x="16" y="511" width="382" height="50"/>
-                                                <color key="backgroundColor" red="0.098039215690000001" green="0.2274509804" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="bYm-6c-uGE"/>
-                                                </constraints>
-                                                <state key="normal" title="       LOGIN WITH FACEBOOK" image="Symbol 3 – 9">
-                                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signGooleBTNAction:" destination="9ia-on-xAG" eventType="touchUpInside" id="SHt-KJ-gEJ"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B4T-Vo-KMR">
@@ -2706,29 +2654,98 @@ seller</string>
                                                     </button>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2L-cz-OoN" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
+                                                <rect key="frame" x="64" y="395" width="50" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="9SF-NH-PNo"/>
+                                                    <constraint firstAttribute="height" constant="50" id="O0a-pt-Qhi"/>
+                                                </constraints>
+                                                <state key="normal" image="search-2">
+                                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOffset">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="100"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="googleACtion:" destination="9ia-on-xAG" eventType="touchUpInside" id="wrp-Lg-Av3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ord-Gr-DqU" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
+                                                <rect key="frame" x="182" y="395" width="50" height="50"/>
+                                                <color key="backgroundColor" red="0.236697346" green="0.35170382259999999" blue="0.59668922420000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="8Ap-rr-5VB"/>
+                                                    <constraint firstAttribute="height" constant="50" id="e3c-kn-QA4"/>
+                                                </constraints>
+                                                <state key="normal" image="Symbol 3 – 9">
+                                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.30447437840000002" green="0.48186579330000001" blue="0.84990284969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="fbLoginBTN:" destination="9ia-on-xAG" eventType="touchUpInside" id="8l7-vl-V0D"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lo1-sz-jQG" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
+                                                <rect key="frame" x="300" y="395" width="50" height="50"/>
+                                                <color key="backgroundColor" red="0.098039215690000001" green="0.2274509804" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="390-zR-Tkw"/>
+                                                    <constraint firstAttribute="height" constant="50" id="yf7-xU-QhP"/>
+                                                </constraints>
+                                                <state key="normal" image="Symbol 3 – 9">
+                                                    <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="fbLoginBTN:" destination="9ia-on-xAG" eventType="touchUpInside" id="EGZ-wG-Ebe"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Lo1-sz-jQG" secondAttribute="trailing" constant="16" id="2hT-Wf-te4"/>
                                             <constraint firstItem="Io0-Ks-Ulz" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="8" id="5UV-Rp-Bl1"/>
                                             <constraint firstAttribute="trailing" secondItem="B4T-Vo-KMR" secondAttribute="trailing" constant="8" id="6lJ-79-OsQ"/>
                                             <constraint firstItem="FEC-JL-0Ox" firstAttribute="top" secondItem="Io0-Ks-Ulz" secondAttribute="bottom" constant="8" id="8wL-gU-er8"/>
                                             <constraint firstItem="Tji-Ot-WxQ" firstAttribute="centerX" secondItem="U00-mh-yYz" secondAttribute="centerX" id="Fxq-rn-knd"/>
-                                            <constraint firstItem="e2L-cz-OoN" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="K8e-EI-CIb"/>
-                                            <constraint firstItem="Ord-Gr-DqU" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="Nh2-cI-DGu"/>
+                                            <constraint firstItem="Lo1-sz-jQG" firstAttribute="centerY" secondItem="Ord-Gr-DqU" secondAttribute="centerY" id="NvE-tN-TOh"/>
                                             <constraint firstItem="7ql-ee-a5E" firstAttribute="trailing" secondItem="FEC-JL-0Ox" secondAttribute="trailing" id="O8z-H2-BlH"/>
                                             <constraint firstItem="B4T-Vo-KMR" firstAttribute="top" secondItem="U00-mh-yYz" secondAttribute="top" id="OXQ-AO-aVw"/>
                                             <constraint firstItem="T23-Tg-8SQ" firstAttribute="leading" secondItem="Io0-Ks-Ulz" secondAttribute="leading" id="PP1-kx-Ea2"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ord-Gr-DqU" secondAttribute="trailing" constant="16" id="Pjf-xr-cl0"/>
+                                            <constraint firstItem="YCi-nw-DZb" firstAttribute="top" secondItem="Ord-Gr-DqU" secondAttribute="bottom" constant="16" id="PiF-Cr-bUR"/>
                                             <constraint firstAttribute="trailing" secondItem="RTS-HX-MYY" secondAttribute="trailing" constant="16" id="ScV-5Y-xcT"/>
                                             <constraint firstItem="7ql-ee-a5E" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U00-mh-yYz" secondAttribute="leading" constant="20" symbolic="YES" id="TDc-OQ-ghY"/>
-                                            <constraint firstItem="Ord-Gr-DqU" firstAttribute="top" secondItem="Tji-Ot-WxQ" secondAttribute="bottom" constant="16" id="UQ5-VJ-K2X"/>
+                                            <constraint firstItem="Ord-Gr-DqU" firstAttribute="centerX" secondItem="U00-mh-yYz" secondAttribute="centerX" id="YWW-be-NqA"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lo1-sz-jQG" secondAttribute="trailing" constant="64" id="adu-Bj-IhB"/>
                                             <constraint firstItem="YCi-nw-DZb" firstAttribute="centerX" secondItem="U00-mh-yYz" secondAttribute="centerX" id="afc-CO-hh0"/>
-                                            <constraint firstItem="e2L-cz-OoN" firstAttribute="top" secondItem="Lo1-sz-jQG" secondAttribute="bottom" constant="8" id="bX3-Th-Gje"/>
+                                            <constraint firstItem="e2L-cz-OoN" firstAttribute="centerY" secondItem="Ord-Gr-DqU" secondAttribute="centerY" id="csP-eV-N83"/>
                                             <constraint firstItem="iwb-1N-SiA" firstAttribute="trailing" secondItem="T23-Tg-8SQ" secondAttribute="trailing" id="czh-mO-dbw"/>
                                             <constraint firstItem="Tji-Ot-WxQ" firstAttribute="top" secondItem="RTS-HX-MYY" secondAttribute="bottom" constant="16" id="dK3-9i-xGi"/>
-                                            <constraint firstItem="YCi-nw-DZb" firstAttribute="top" secondItem="e2L-cz-OoN" secondAttribute="bottom" constant="16" id="eFV-NI-0D4"/>
-                                            <constraint firstItem="Lo1-sz-jQG" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="eYG-62-WxU"/>
                                             <constraint firstItem="FEC-JL-0Ox" firstAttribute="leading" secondItem="Io0-Ks-Ulz" secondAttribute="leading" id="jJ6-iT-b3C"/>
                                             <constraint firstItem="7ql-ee-a5E" firstAttribute="top" secondItem="iwb-1N-SiA" secondAttribute="bottom" constant="16" id="k8z-0s-9h6"/>
                                             <constraint firstItem="RTS-HX-MYY" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="16" id="kwp-Ad-1Ek"/>
@@ -2737,10 +2754,10 @@ seller</string>
                                             <constraint firstAttribute="height" constant="650" id="qA3-Cy-Kdb"/>
                                             <constraint firstItem="T23-Tg-8SQ" firstAttribute="top" secondItem="FEC-JL-0Ox" secondAttribute="bottom" constant="8" id="qna-8Z-0zd"/>
                                             <constraint firstItem="B4T-Vo-KMR" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="8" id="rtN-qm-Fgd"/>
-                                            <constraint firstItem="Lo1-sz-jQG" firstAttribute="top" secondItem="Ord-Gr-DqU" secondAttribute="bottom" constant="8" id="txt-mD-dlD"/>
+                                            <constraint firstItem="Ord-Gr-DqU" firstAttribute="top" secondItem="Tji-Ot-WxQ" secondAttribute="bottom" constant="16" id="sbo-m6-h9u"/>
+                                            <constraint firstItem="e2L-cz-OoN" firstAttribute="leading" secondItem="U00-mh-yYz" secondAttribute="leading" constant="64" id="svF-OH-l7V"/>
                                             <constraint firstItem="FEC-JL-0Ox" firstAttribute="trailing" secondItem="Io0-Ks-Ulz" secondAttribute="trailing" id="uiR-yZ-Sla"/>
                                             <constraint firstItem="iwb-1N-SiA" firstAttribute="top" secondItem="T23-Tg-8SQ" secondAttribute="bottom" constant="8" id="vVc-au-lMM"/>
-                                            <constraint firstAttribute="trailing" secondItem="e2L-cz-OoN" secondAttribute="trailing" constant="16" id="wCe-Da-jQD"/>
                                             <constraint firstAttribute="trailing" secondItem="Io0-Ks-Ulz" secondAttribute="trailing" constant="8" id="y2b-tn-nAa"/>
                                             <constraint firstItem="T23-Tg-8SQ" firstAttribute="trailing" secondItem="Io0-Ks-Ulz" secondAttribute="trailing" id="yPK-PD-PBa"/>
                                             <constraint firstItem="Io0-Ks-Ulz" firstAttribute="top" secondItem="B4T-Vo-KMR" secondAttribute="bottom" constant="8" id="yQW-Rb-hZK"/>
@@ -3394,6 +3411,7 @@ seller</string>
         <image name="information" width="28.5" height="28.5"/>
         <image name="location" width="54" height="54"/>
         <image name="order" width="54.5" height="38"/>
+        <image name="search-2" width="32" height="32"/>
         <image name="settings" width="25.5" height="25.5"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>

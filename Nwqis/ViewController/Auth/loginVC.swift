@@ -16,47 +16,21 @@ import SafariServices
 
 class loginVC: UIViewController,SFSafariViewControllerDelegate {
     
-    
     @IBOutlet weak var signGooleBtn: GIDSignInButton!
     @IBOutlet weak var emailTF: roundedTF!
     @IBOutlet weak var passwordTF: roundedTF!
     @IBOutlet weak var signWihtAppleBTN: roundedBTN!
     
     var user: User?
-    
+    var googleSignIn = GIDSignIn.sharedInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().signOut()
         setUpNavColore()
-        setupViewGoogleBTN()
         imageText()
         setupViewAppleBTN()
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
-        
-        //        GIDSignIn.sharedInstance()?.presentingViewController = self
-        //
-        //         //Automatically sign in the user.
-        //        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        //
-        //        let gSignIn = GIDSignInButton(frame: CGRect(x:0, y: 0, width: 230, height: 48))
-        //        gSignIn.center = view.center
-        //
-        //        view.addSubview(gSignIn)
-        
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        
-        // Automatically sign in the user.
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(loginVC.receiveToggleAuthUINotification(_:)),
-                                               name: NSNotification.Name(rawValue: "ToggleAuthUINotification"),
-                                               object: nil)
-        toggleAuthUI()
-        
-        //GIDSignIn.sharedInstance().signOut()
-        
     }
     
     
@@ -67,128 +41,50 @@ class loginVC: UIViewController,SFSafariViewControllerDelegate {
     
     @IBAction func loginAsCompany(_ sender: Any) {
         let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/company/login")! as URL)
-            self.present(safariVC, animated: true, completion: nil)
-            safariVC.delegate = self
+        self.present(safariVC, animated: true, completion: nil)
+        safariVC.delegate = self
     }
     @IBAction func loginAsShop(_ sender: Any) {
-            let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/shop/login")! as URL)
-            self.present(safariVC, animated: true, completion: nil)
-            safariVC.delegate = self
+        let safariVC = SFSafariViewController(url: NSURL(string:"http://nwqis.com/shop/login")! as URL)
+        self.present(safariVC, animated: true, completion: nil)
+        safariVC.delegate = self
     }
-    func toggleAuthUI() {
-        if let _ = GIDSignIn.sharedInstance()?.currentUser?.authentication {
-            
-            //        HPGradientLoading.shared.configation.fromColor = .white
-            //        HPGradientLoading.shared.configation.toColor = .blue
-            //        HPGradientLoading.shared.showLoading(with: "Loading...")
-            //
-            //        API_Auth.FBLogin(full_name: "", email: "", social_id: ""){ (error, suces,success) in
-            //            if suces {
-            //                if success == true {
-            //                    print("success")
-            //                }else {
-            //                    self.showAlert(title: "Login Fail", message: "Email or passwod Wrong")
-            //                }
-            //            }else{
-            //                self.showAlert(title: "Login Fail", message: "check internet connection")
-            //            }
-            //            HPGradientLoading.shared.dismiss()
-            //        }
-        } else {
-            //self.showAlert(title: "Login Fail", message: "")
-        }
-    }
-    // [END toggle_auth]
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self,
-                                                  name: NSNotification.Name(rawValue: "ToggleAuthUINotification"),
-                                                  object: nil)
-    }
-    
-    @objc func receiveToggleAuthUINotification(_ notification: NSNotification) {
-        if notification.name.rawValue == "ToggleAuthUINotification" {
-            self.toggleAuthUI()
-            if notification.userInfo != nil {
-                guard let userInfo = notification.userInfo as? [String:String] else { return }
-                print(userInfo)
-                let gogole = userInfo as [String: AnyObject]
-                print(gogole)
-                let email = gogole["email"] as! String
-                print(email)
-                let id = gogole["id"] as! String
-                print(id)
-                let fname = gogole["name"] as! String
-                print(fname)
-                
-                HPGradientLoading.shared.configation.fromColor = .white
-                HPGradientLoading.shared.configation.toColor = .blue
-                HPGradientLoading.shared.showLoading(with: "Loading...")
-                
-                API_Auth.FBLogin(full_name: fname, email: email, social_id: id){ (error, suces,success) in
-                    if suces {
-                        if success == true {
-                            print("success")
-                        }else {
-                            let message = NSLocalizedString("Email or passwod Wrong", comment: "hhhh")
-                            let title = NSLocalizedString("Login Fail", comment: "hhhh")
-                            self.showAlert(title: title, message: message)
-                        }
-                    }else{
-                        let message = NSLocalizedString("check internet connection", comment: "hhhh")
-                        let title = NSLocalizedString("Login Fail", comment: "hhhh")
-                        self.showAlert(title: title, message: message)
-                    }
-                    HPGradientLoading.shared.dismiss()
-                }
-            }
-        }
-    }
-    
-    
-    @IBAction func signGooleBTNAction(_ sender: Any) {
-        
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        
-        // Automatically sign in the user.
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        
-    }
-    
+
     func setUpNavColore(){
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
     }
     
-    
     func setupViewAppleBTN() {
-        let appleButton = ASAuthorizationAppleIDButton()
-        appleButton.translatesAutoresizingMaskIntoConstraints = false
-        appleButton.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
-        view.addSubview(appleButton)
-        //appleButton.layer.cornerRadius = appleButton.layer.bounds.height / 2
+        let customAppleLoginBtn = UIButton()
+        customAppleLoginBtn.layer.cornerRadius = 25
+        customAppleLoginBtn.backgroundColor = UIColor.black
+        customAppleLoginBtn.setImage(UIImage(named: "apple"), for: .normal)
+        customAppleLoginBtn.imageEdgeInsets = UIEdgeInsets.init(top: 16, left: 16, bottom: 16, right: 16)
+        customAppleLoginBtn.translatesAutoresizingMaskIntoConstraints = false
+        customAppleLoginBtn.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
+        view.addSubview(customAppleLoginBtn)
         NSLayoutConstraint.activate([
-            appleButton.centerYAnchor.constraint(equalTo: signWihtAppleBTN.centerYAnchor),
-            appleButton.centerXAnchor.constraint(equalTo: signWihtAppleBTN.centerXAnchor),
-            appleButton.widthAnchor.constraint(equalTo: signWihtAppleBTN.widthAnchor),
-            appleButton.heightAnchor.constraint(equalTo: signWihtAppleBTN.heightAnchor),
+            customAppleLoginBtn.centerYAnchor.constraint(equalTo: signWihtAppleBTN.centerYAnchor),
+            customAppleLoginBtn.centerXAnchor.constraint(equalTo: signWihtAppleBTN.centerXAnchor),
+            customAppleLoginBtn.widthAnchor.constraint(equalTo: signWihtAppleBTN.widthAnchor),
+            customAppleLoginBtn.heightAnchor.constraint(equalTo: signWihtAppleBTN.heightAnchor),
         ])
     }
     
-    func setupViewGoogleBTN() {
-        let gSignIn = GIDSignInButton()
-        gSignIn.translatesAutoresizingMaskIntoConstraints = false
-        //gSignIn.addTarget(self, action: #selector(didTapAppleButton), for: .touchUpInside)
-        view.addSubview(gSignIn)
-        //appleButton.layer.cornerRadius = appleButton.layer.bounds.height / 2
-        NSLayoutConstraint.activate([
-            gSignIn.centerYAnchor.constraint(equalTo: signGooleBtn.centerYAnchor),
-            gSignIn.centerXAnchor.constraint(equalTo: signGooleBtn.centerXAnchor),
-            gSignIn.widthAnchor.constraint(equalTo: signGooleBtn.widthAnchor),
-            gSignIn.heightAnchor.constraint(equalTo: signGooleBtn.heightAnchor),
-        ])
+    
+    @IBAction func googleACtion(_ sender: Any) {
+        self.googleAuthLogin()
     }
+    
+    func googleAuthLogin() {
+        self.googleSignIn?.presentingViewController = self
+        self.googleSignIn?.clientID = "653758592339-ce527lg3q076vl82driquqorahlgph36.apps.googleusercontent.com"
+        self.googleSignIn?.delegate = self
+        self.googleSignIn?.signIn()
+    }
+
     
     @objc func didTapAppleButton() {
         let provider = ASAuthorizationAppleIDProvider()
@@ -208,10 +104,7 @@ class loginVC: UIViewController,SFSafariViewControllerDelegate {
         if let myImage = UIImage(named: "email"){
             emailTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
         }
-        //        if let myImage = UIImage(named: "Group 77"){
-        //
-        //            passwordTF.withImage(direction: .Right, image: myImage, colorSeparator: UIColor.clear, colorBorder: #colorLiteral(red: 0.1241763458, green: 0.3040906787, blue: 0.5637683272, alpha: 1))
-        //        }
+       
     }
     
     
@@ -349,7 +242,6 @@ extension loginVC: ASAuthorizationControllerDelegate {
                 }
                 HPGradientLoading.shared.dismiss()
             }
-        //performSegue(withIdentifier: "segue", sender: user)
         default: break
         }
     }
@@ -362,5 +254,55 @@ extension loginVC: ASAuthorizationControllerDelegate {
 extension loginVC: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return view.window!
+    }
+}
+extension loginVC: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        guard let user = user else {
+            print("Uh oh. The user cancelled the Google login.")
+            return
+        }
+        let userId = user.userID ?? ""
+        print("Google User ID: \(userId)")
+        
+        let userIdToken = user.authentication.idToken ?? ""
+        print("Google ID Token: \(userIdToken)")
+        
+        let userFirstName = user.profile.givenName ?? ""
+        print("Google User First Name: \(userFirstName)")
+        
+        let userLastName = user.profile.familyName ?? ""
+        print("Google User Last Name: \(userLastName)")
+        
+        let userEmail = user.profile.email ?? ""
+        print("Google User Email: \(userEmail)")
+        
+        let googleProfilePicURL = user.profile.imageURL(withDimension: 150)?.absoluteString ?? ""
+        print("Google Profile Avatar URL: \(googleProfilePicURL)")
+        
+        HPGradientLoading.shared.configation.fromColor = .white
+        HPGradientLoading.shared.configation.toColor = .blue
+        HPGradientLoading.shared.showLoading(with: "Loading...")
+        
+        API_Auth.FBLogin(full_name: "\(userFirstName) \(userLastName)", email: userEmail, social_id: userId){ (error, suces,success) in
+            if suces {
+                if success == true {
+                    print("success")
+                }else {
+                    let message = NSLocalizedString("Email or passwod Wrong", comment: "hhhh")
+                    let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                    self.showAlert(title: title, message: message)
+                }
+            }else{
+                let message = NSLocalizedString("check internet connection", comment: "hhhh")
+                let title = NSLocalizedString("Login Fail", comment: "hhhh")
+                self.showAlert(title: title, message: message)
+            }
+            HPGradientLoading.shared.dismiss()
+        }
+    }
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("User has disconnected")
     }
 }
