@@ -61,5 +61,51 @@ class API_Requsests: NSObject {
     }
     
     
-    
+    class func getCatNews(category_id: String,completion: @escaping (_ error: Error?,_ categours: [news]?,_ success: Bool?)-> Void) {
+          
+          guard let user_token = helperLogin.getAPIToken() else {
+              completion(nil,nil,false)
+              return
+          }
+          
+          let url = URLs.customerNews
+          let lang = NSLocalizedString("en", comment: "profuct list lang")
+          
+          let parameters = [
+              "category_id": category_id
+          ]
+          print(parameters)
+          let headers = [
+              "X-localization": lang,
+              "Authorization": "Bearer \(user_token)"
+          ]
+          Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: headers) .responseJSON  { response in
+              switch response.result
+              {
+              case .failure(let error):
+                  completion(error, nil, false)
+                  print(error)
+                  
+              case .success(let value):
+                  print(value)
+                  let json = JSON(value)
+                  let success = json["success"].bool
+                  if success == true {
+                      guard let dataArray = json["data"].array else{
+                          completion(nil, nil,success)
+                          return
+                      }
+                      print(dataArray)
+                      var products = [news]()
+                      for data in dataArray {
+                          if let data = data.dictionary, let prodect = news.init(dict: data){
+                              products.append(prodect)
+                          }
+                      }
+                      completion(nil, products,success)
+                  }
+              }
+          }
+      }
+      
 }

@@ -23,9 +23,11 @@ class myMessageInbox: NSObject {
     var created_at: String
     var image: String
     var owner: String
+    var phone: String
+    var address: String
     
     init?(dict: [String: JSON]){
-        guard let message = dict["message"]?.string,let owner = dict["owner"]?.string,let id = dict["shop"]?["id"].int,let name = dict["shop"]?["name"].string,let created_at = dict["created_at"]?.string,let image = dict["shop"]?["image"].string else {return nil}
+        guard let message = dict["message"]?.string,let owner = dict["owner"]?.string,let id = dict["shop"]?["id"].int,let name = dict["shop"]?["name"].string,let created_at = dict["created_at"]?.string,let image = dict["shop"]?["image"].string,let phone = dict["shop"]?["phone"].string,let address = dict["shop"]?["address"].string else {return nil}
         
         self.message = message
         self.id = id
@@ -33,6 +35,8 @@ class myMessageInbox: NSObject {
         self.name = name
         self.image = image
         self.owner = owner
+        self.address = address
+        self.phone = phone
     }
 
 }

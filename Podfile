@@ -23,5 +23,6 @@ target 'Nwqis' do
   pod 'FacebookLogin'
   pod 'GoogleSignIn'
   pod 'MOLH'
+  pod 'MarqueeLabel'
   
 end

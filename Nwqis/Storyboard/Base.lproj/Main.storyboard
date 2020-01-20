@@ -239,7 +239,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="aky-VV-Y6U"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                                        <state key="normal" title="SignUp as shop">
+                                                        <state key="normal" title="Shop">
                                                             <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -265,7 +265,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="n0u-AU-fn4"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                                        <state key="normal" title="SignUp as company">
+                                                        <state key="normal" title="Company">
                                                             <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -545,7 +545,7 @@
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="Group 219" id="gNg-MB-f9y"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gwr-IA-WSa">
-                            <rect key="frame" x="92.5" y="0.0" width="229" height="44"/>
+                            <rect key="frame" x="94" y="0.0" width="229" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="NWQIS1">
                                 <color key="titleShadowColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -628,7 +628,7 @@
                                                 <color key="currentPageIndicatorTintColor" red="0.99215686274509807" green="0.45490196078431372" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </pageControl>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsc-gM-uXo" customClass="customRoundView" customModule="Nwqis" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="260" width="382" height="49.5"/>
+                                                <rect key="frame" x="16" y="266" width="382" height="49.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi, what on your mind?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfk-Oe-5OY">
                                                         <rect key="frame" x="8" y="8" width="366" height="18"/>
@@ -669,7 +669,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rh7-gl-DTE" customClass="costomTV" customModule="Nwqis" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="309.5" width="382" height="114.5"/>
+                                                <rect key="frame" x="16" y="315.5" width="382" height="114.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -685,7 +685,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6g-vQ-FBI" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
-                                                <rect key="frame" x="103.5" y="506" width="207" height="50"/>
+                                                <rect key="frame" x="103.5" y="512" width="207" height="50"/>
                                                 <color key="backgroundColor" red="0.99319201710000005" green="0.45595359800000002" blue="0.061730571089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9GW-Wr-NfD"/>
@@ -709,7 +709,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW6-Ne-Pn2" customClass="roundedBTN" customModule="Nwqis" customModuleProvider="target">
-                                                <rect key="frame" x="103.5" y="440" width="207" height="50"/>
+                                                <rect key="frame" x="103.5" y="446" width="207" height="50"/>
                                                 <color key="backgroundColor" red="0.99215686270000003" green="0.4549019608" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="gWk-g9-Y9S"/>
@@ -731,12 +731,22 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vtu-zn-T3F">
-                                                <rect key="frame" x="348" y="440" width="50" height="50"/>
+                                                <rect key="frame" x="348" y="446" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Mks-1l-DGC"/>
                                                     <constraint firstAttribute="width" constant="50" id="vAm-8r-fpd"/>
                                                 </constraints>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmj-vG-ebS" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                <rect key="frame" x="16" y="228" width="382" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="L9g-sP-0Fx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -744,11 +754,13 @@
                                             <constraint firstItem="iUH-Wi-4J5" firstAttribute="centerX" secondItem="ybP-Mi-uqq" secondAttribute="centerX" id="26e-NP-7AN"/>
                                             <constraint firstAttribute="height" constant="650" id="2m9-Db-EP2"/>
                                             <constraint firstItem="x3b-KD-c34" firstAttribute="leading" secondItem="ybP-Mi-uqq" secondAttribute="leading" constant="16" id="2ta-ke-7e3"/>
+                                            <constraint firstItem="Hmj-vG-ebS" firstAttribute="trailing" secondItem="x3b-KD-c34" secondAttribute="trailing" id="2uF-0T-wJu"/>
                                             <constraint firstItem="Vtu-zn-T3F" firstAttribute="centerY" secondItem="hW6-Ne-Pn2" secondAttribute="centerY" id="30r-6H-iVj"/>
                                             <constraint firstItem="Rh7-gl-DTE" firstAttribute="height" secondItem="ybP-Mi-uqq" secondAttribute="height" multiplier="0.176339" id="7DM-4e-xT1"/>
                                             <constraint firstItem="Nsc-gM-uXo" firstAttribute="leading" secondItem="x3b-KD-c34" secondAttribute="leading" id="7sR-Co-zwf"/>
                                             <constraint firstItem="hW6-Ne-Pn2" firstAttribute="centerX" secondItem="ybP-Mi-uqq" secondAttribute="centerX" id="8V2-k0-JTW"/>
-                                            <constraint firstItem="Nsc-gM-uXo" firstAttribute="top" secondItem="iUH-Wi-4J5" secondAttribute="bottom" constant="32" id="9gK-yQ-jYs"/>
+                                            <constraint firstItem="Hmj-vG-ebS" firstAttribute="leading" secondItem="x3b-KD-c34" secondAttribute="leading" id="AWe-gb-hMA"/>
+                                            <constraint firstItem="Hmj-vG-ebS" firstAttribute="top" secondItem="iUH-Wi-4J5" secondAttribute="bottom" id="CEP-20-Gu1"/>
                                             <constraint firstItem="iUH-Wi-4J5" firstAttribute="top" secondItem="x3b-KD-c34" secondAttribute="bottom" id="IMG-6W-53m"/>
                                             <constraint firstItem="hW6-Ne-Pn2" firstAttribute="width" secondItem="ybP-Mi-uqq" secondAttribute="width" multiplier="0.5" id="Kii-OK-muN"/>
                                             <constraint firstItem="hW6-Ne-Pn2" firstAttribute="top" secondItem="Rh7-gl-DTE" secondAttribute="bottom" constant="16" id="OdE-07-vs4"/>
@@ -757,6 +769,7 @@
                                             <constraint firstItem="Rh7-gl-DTE" firstAttribute="leading" secondItem="Nsc-gM-uXo" secondAttribute="leading" id="XOc-WS-KIm"/>
                                             <constraint firstItem="Nsc-gM-uXo" firstAttribute="height" secondItem="ybP-Mi-uqq" secondAttribute="height" multiplier="0.0758929" id="aYm-Ae-m77"/>
                                             <constraint firstItem="Rh7-gl-DTE" firstAttribute="top" secondItem="Nsc-gM-uXo" secondAttribute="bottom" id="ayP-Kq-Q7g"/>
+                                            <constraint firstItem="Nsc-gM-uXo" firstAttribute="top" secondItem="Hmj-vG-ebS" secondAttribute="bottom" constant="8" id="gmG-Fo-vfg"/>
                                             <constraint firstItem="x3b-KD-c34" firstAttribute="top" secondItem="ybP-Mi-uqq" secondAttribute="top" constant="16" id="myC-5V-x4E"/>
                                             <constraint firstAttribute="trailing" secondItem="x3b-KD-c34" secondAttribute="trailing" constant="16" id="nie-6p-xo9"/>
                                             <constraint firstItem="Vtu-zn-T3F" firstAttribute="trailing" secondItem="Rh7-gl-DTE" secondAttribute="trailing" id="qiU-i7-JQ1"/>
@@ -793,6 +806,7 @@
                     <connections>
                         <outlet property="collectionView" destination="x3b-KD-c34" id="dcP-vI-dLM"/>
                         <outlet property="descrption" destination="Rh7-gl-DTE" id="YSO-Un-OF7"/>
+                        <outlet property="newsLabel" destination="Hmj-vG-ebS" id="yJu-dA-or7"/>
                         <outlet property="pageview" destination="iUH-Wi-4J5" id="Kcj-vc-TCr"/>
                         <outlet property="requestImage" destination="Vtu-zn-T3F" id="Pg7-qY-102"/>
                     </connections>
@@ -2371,7 +2385,7 @@ seller</string>
                     <navigationItem key="navigationItem" id="KqM-Y7-B7t">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qNJ-so-MIo">
-                            <rect key="frame" x="69" y="0.0" width="276" height="44"/>
+                            <rect key="frame" x="50" y="0.0" width="276" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="NWQIS1">
                                 <color key="titleShadowColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2647,7 +2661,7 @@ seller</string>
                                                             <constraint firstAttribute="height" constant="50" id="GQw-v2-14P"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                                        <state key="normal" title="Login as shop">
+                                                        <state key="normal" title="Shop">
                                                             <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -2672,7 +2686,7 @@ seller</string>
                                                             <constraint firstAttribute="height" constant="50" id="D4K-C5-Uqv"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                                        <state key="normal" title="Login as company">
+                                                        <state key="normal" title="Company">
                                                             <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>

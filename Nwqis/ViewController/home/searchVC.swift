@@ -9,6 +9,8 @@
 import UIKit
 import Kingfisher
 import HPGradientLoading
+import MarqueeLabel
+import MOLH
 
 class searchVC: UIViewController {
     
@@ -16,6 +18,7 @@ class searchVC: UIViewController {
     @IBOutlet weak var pageview: UIPageControl!
     @IBOutlet weak var descrption: costomTV!
     @IBOutlet weak var requestImage: UIImageView!
+    @IBOutlet weak var newsLabel: MarqueeLabel!
     
     var timer = Timer()
     var currentIndex = 0
@@ -31,6 +34,7 @@ class searchVC: UIViewController {
     var singleItem: SubcategoriesModel?
     var singelItems: categoriesModel?
     var banner = [banners]()
+    var new = [news]()
     
     
     override func viewDidLoad() {
@@ -50,6 +54,7 @@ class searchVC: UIViewController {
         let message = NSLocalizedString("Search for your need", comment: "profuct list lang")
         self.navigationItem.title = message
         handleRefreshgetBanner()
+        newsHandelRefresh()
         startTimer()
     }
     
@@ -59,6 +64,25 @@ class searchVC: UIViewController {
             guard let image = picker_imag else {return}
             requestImage.isHidden = false
             self.requestImage.image = image
+        }
+    }
+    
+    func newsHandelRefresh(){
+        newsLabel.layer.cornerRadius = newsLabel.bounds.height / 2
+        newsLabel.type = .continuous
+        newsLabel.animationCurve = .linear
+        if MOLHLanguage.currentAppleLanguage() == "ar"{
+            newsLabel.type = .rightLeft
+        }
+        API_Requsests.getCatNews(category_id: "\(singelItems?.id ?? 0)\(singleItem?.category_id ?? "")"){(error: Error?, new: [news]?,suceess) in
+        if let new = new {
+            self.new = new
+            print("xxx\(self.new)")
+            }
+            for n in self.new{
+                self.newsLabel.text?.append(" - \(n.title )")
+            }
+            self.newsLabel.speed = .duration(CGFloat(10*self.new.count))
         }
     }
     

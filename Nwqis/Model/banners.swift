@@ -23,3 +23,16 @@ class banners: NSObject {
     
     
 }
+
+class news: NSObject {
+    var title: String
+    
+    init?(dict: [String: JSON]){
+        
+        guard let title = dict["title"]?.string else {return nil}
+        self.title = title
+        
+    }
+    
+    
+}

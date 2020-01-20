@@ -36,6 +36,7 @@ struct URLs {
     static let updateFirebaseToken = main + "customer/updateFirebaseToken"
     static let countNewNotifications = main + "customer/countNewNotifications"
     static let countNewMessages = main + "customer/countNewMessages"
+    static let customerNews = main + "customer/news"
 
 }
 

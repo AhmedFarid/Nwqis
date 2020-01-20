@@ -25,8 +25,8 @@ class replayMessageVC: UIViewController {
         Spiner.addSpiner(isEnableDismiss: false, isBulurBackgroud: true, isBlurLoadin: true, durationAnimation: 1.5, fontSize: 20)
         let message = NSLocalizedString("message to:", comment: "profuct list lang")
         messageToLabel.text = "\(message) \(singleItem?.name ?? singleItems?.name ?? "")"
-         phoneLB.text = "\(singleItem?.name ?? singleItems?.phone ?? "")"
-        addresss.text = "\(singleItem?.name ?? singleItems?.address ?? "")"
+         phoneLB.text = "\(singleItem?.phone ?? singleItems?.phone ?? "")"
+        addresss.text = "\(singleItem?.address ?? singleItems?.address ?? "")"
         
     }
     
